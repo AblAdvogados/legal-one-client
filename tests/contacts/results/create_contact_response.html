@@ -1,0 +1,1334 @@
+
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Pesquisa de pessoas f&#237;sicas/jur&#237;dicas - Legal One</title>
+    <meta name="google" value="notranslate">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE" />
+    <meta http-equiv="X-UA-Compatible" content="IE=9">
+    <meta name="viewport" content="width=1280, initial-scale=1.0, maximum-scale=1.0" />
+
+    <script>
+
+        // in order to use it on SingalR, we must collect the domain and keep it in a global var
+        document.cookiedomain = '.novajus.com.br'
+
+        // this will configure signalR to work as 'dbritto' (or any 3+ char subdomain), '*' (a random 4 char subdomain) or 'multiFixed' (will choose between a large list of fixed subdomains
+        // this configuration its supposed to be found on web.config, under active distribution element, with SignalRSubdomainMethod name
+        document.signalRDomainMethod = '';
+    </script>
+    <meta name="viewport" content="width=1280, initial-scale=1.0, maximum-scale=1.0" />
+        <meta name="view-model" content="ContatosSearchViewModel" />
+
+    
+<link rel="SHORTCUT ICON" href="/static/content/images/favicon.ico" />
+<link rel="apple-touch-icon" href="/static/content/images/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/static/content/images/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/static/content/images/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/static/content/images/apple-touch-icon-152x152.png">
+<script src='/static/Scripts/ScriptsResources/NOVAJUS-pt-BR.js?v=9xdmjfv4jyP2FPu2Pv8hlVA' type='text/javascript'></script>
+<link href="/Static/Content/defaultStyleBundle?v=fp3H1oFYfSYo41SQ_9EcHjnBF-FXLEXmmLr_-QwYYNE1" rel="stylesheet"/>
+<link href="/static/content/calendar/fullcalendar.print.css" rel="stylesheet" media="print" />
+<link href="/static/content/font-awesome-4.3.0/css/font-awesome.min.css" rel="stylesheet"/>
+<link href="/static/content/Products/style.css" rel="stylesheet"/>
+<script src="/defaultScriptBundle?v=w5R089lsHltAFYTA5K4CALwCsHLHuSE8njWXk2XOrX41"></script>
+<script src="/globalizeBundle?v=t-LWvqMPlVLWKN4BM6QooROWLUF5zPn9tNbT1X0Iw2Q1"></script>
+        <script type="text/javascript">
+            $.validator.methods.number = function (value, element) {
+                return this.optional(element) || !isNaN(Globalize.parseFloat(value));
+            }
+
+            $(function () {
+                Globalize.culture("pt-BR");
+                    });
+        </script>
+<script src="/atualizacaoMonetariaBundle?v=OGenrcmIKysfCafj5inOtY2b1XZ8pQAHyNYGdm7XgG01"></script>
+
+
+    
+
+    <link href='/static/Content/themes/dark-theme.css' rel='stylesheet' type='text/css' />
+
+    
+        <script type="text/javascript">
+            $(function (e) {
+                        showMessage("<span>Pessoa física <a href='/contatos/Pessoas/Details/100256'>VANDIRIO DOS SANTOS</a> salva com sucesso.</span>", true, "sucesso", true, true, null, false);
+            });
+        </script>
+
+    <script type="text/javascript">
+        window._resourceWebsiteHost = "/static/";
+
+        $(document).ready(function () {
+            var totalMillisseconds = parseInt('-1');
+
+            if (typeof (Storage) !== "undefined") {
+                localStorage.setItem('SessionExInat',new Date())
+            }
+
+            if (totalMillisseconds > 20000) {
+                if (typeof(ProccessSessionExpiration) == "function") //20 segundos é o mínimo, caso contrário, nem dispara.
+                    ProccessSessionExpiration(totalMillisseconds, "/ca/authentication/logout");
+            }
+
+            // Menu
+            window.modules.thirdPartyMenu.setup({
+                contractAnalysisModalMessage: 'O m&#243;dulo An&#225;lise de minutas n&#227;o est&#225; liberado para seu usu&#225;rio. &lt;a href=&#39;/config/Usuarios/EditAuthenticatedUser?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue&#39;&gt;Clique aqui&lt;/a&gt; para configurar esta permiss&#227;o ou entre em contato com um administrador para obter acesso.',
+                contractAnalysisModalTitle: 'Acesso negado',
+                contractAnalysisModalButtonText: 'Fechar'
+            });
+            window.modules.gridModule.setupPopOverMenus();
+
+
+            // iManage Login
+            var iManageLoginURL = "";
+
+            if (iManageLoginURL != "") {
+                window.modules.iManageLoginPopup.iManageLoginPopup(iManageLoginURL, "iManage Acessar", 400, 330);
+            }
+
+            // Async load JS cache
+            window.modules.cache.setup('10.0.29');
+            window.modules.configuration.NotReadNotificationsCount('0');
+        });
+    </script>
+
+    <!-- Application Insights -->
+    <script type="text/javascript">
+        var appInsights = window.appInsights || function (a) {
+            function b(a) { c[a] = function () { var b = arguments; c.queue.push(function () { c[a].apply(c, b) }) } } var c = { config: a }, d = document, e = window; setTimeout(function () { var b = d.createElement("script"); b.src = a.url || "https://az416426.vo.msecnd.net/scripts/a/ai.0.js", d.getElementsByTagName("script")[0].parentNode.appendChild(b) }); try { c.cookie = d.cookie } catch (a) { } c.queue = []; for (var f = ["Event", "Exception", "Metric", "PageView", "Trace", "Dependency"]; f.length;)b("track" + f.pop()); if (b("setAuthenticatedUserContext"), b("clearAuthenticatedUserContext"), b("startTrackEvent"), b("stopTrackEvent"), b("startTrackPage"), b("stopTrackPage"), b("flush"), !a.disableExceptionTracking) { f = "onerror", b("_" + f); var g = e[f]; e[f] = function (a, b, d, e, h) { var i = g && g(a, b, d, e, h); return !0 !== i && c["_" + f](a, b, d, e, h), i } } return c
+        }({
+            instrumentationKey: "3b270b2c-64c4-4df6-b320-d96b9ac11f94"
+        });
+
+        window.appInsights = appInsights, appInsights.queue && 0 === appInsights.queue.length && appInsights.trackPageView();
+    </script>
+
+        <!--Datadog RUM-->
+        <script type="text/javascript">
+        (function (h, o, u, n, d) {
+            h = h[d] = h[d] || { q: [], onReady: function (c) { h.q.push(c) } }
+            d = o.createElement(u); d.async = 1; d.src = n
+            n = o.getElementsByTagName(u)[0]; n.parentNode.insertBefore(d, n)
+        })(window, document, 'script', 'https://www.datadoghq-browser-agent.com/us1/v5/datadog-rum.js', 'DD_RUM')
+        window.DD_RUM.onReady(function () {
+            window.DD_RUM.init({
+                clientToken: 'pubafd376c598e2fd103c44ab4560dc1f0e',
+                applicationId: 'e09b08f3-a015-49cb-b354-f8844ddfcef5',
+                site: 'datadoghq.com',
+                env: 'prod',
+                sessionSampleRate: 100,
+                sessionReplaySampleRate: 100,
+                trackResources: true,
+                trackLongTasks: true,
+                trackUserInteractions: true,
+                telemetrySampleRate: 100,
+                traceSampleRate: 100,
+            });
+
+            window.DD_RUM.setUser({
+                id: '63047',
+                profile: 'ITProfessional',
+                uniqueId: '63047' + '_' + 'abladv'
+            });
+
+            window.DD_RUM.setGlobalContextProperty('tenant', 'abladv');
+            window.DD_RUM.setGlobalContextProperty('maxContractedUsers',102);
+            window.DD_RUM.setGlobalContextProperty('sipId', '681504');
+            window.DD_RUM.setGlobalContextProperty('instanceId', 8251755);
+            window.DD_RUM.setGlobalContextProperty('isAdmin', 'False');
+            window.DD_RUM.setGlobalContextProperty('tier', 'Plus');
+            window.DD_RUM.setGlobalContextProperty('package', 'Advanced');
+        })
+        </script>
+
+    <!--Pendo Analytics - User engagement platform-->
+    
+
+    <script>
+    (function(apiKey){
+        (function(p,e,n,d,o){var v,w,x,y,z;o=p[d]=p[d]||{};o._q=o._q||[];
+        v=['initialize','identify','updateOptions','pageLoad','track'];for(w=0,x=v.length;w<x;++w)(function(m){
+            o[m]=o[m]||function(){o._q[m===v[0]?'unshift':'push']([m].concat([].slice.call(arguments,0)));};})(v[w]);
+            y=e.createElement(n);y.async=!0;y.src='https://cdn.pendo.io/agent/static/'+apiKey+'/pendo.js';
+            z=e.getElementsByTagName(n)[0];z.parentNode.insertBefore(y,z);})(window,document,'script','pendo');
+
+        pendo.initialize({
+            visitor: {
+                id: '681504_63047',
+                name: 'THOMAS MAIA MACHADO',
+                email: 'thomas.maia@abladvogados.com',
+                role: 'Coordenador Jurídico',
+                isAdmin: false,
+                sipId: '681504',
+                instanceId: '8251755'
+            },
+            account: {
+                id: '681504',
+                tenant: 'abladv',
+                distribution: 'novajus',
+                package: 'Advanced',
+                maxUsers: 102,
+                country: 'BR',
+                sipId: '681504'
+            }
+        });
+    })('8e7fadf9-5803-45ea-b7f7-0d8729fdd17d');
+    </script>
+
+
+    <!-- Validation Form Fields -->
+    <script type="text/javascript">
+            $(document).ready(function () {
+            let errorsDictionary = {};
+            let errorsList = [];
+
+
+            if (JSON.stringify(errorsDictionary) !== "{}") {
+                window.modules.processModelStateValidationFormFields.execute(errorsDictionary);
+            }
+        });
+    </script>
+
+    <!-- Chatbot-->
+
+</head>
+<body>
+
+
+
+
+
+             <div class="header">
+            <!-- PESQUISA GLOBAL -->
+        <div class="right-menu">
+            <div class="logo">
+    <a href="/">
+        <span class="logo-text"></span>
+    </a>
+    
+
+<div class="product-dropdown">
+    <div class="product-drop-arrow">
+        <ul class="product-dropdown-content">
+            <li>
+                <a target="_blank" href='/acervojuridico/AcervoJuridico/RedirectDocSearch'>Artigos Doutrin&#225;rios <i class="i-New-Tab-1 pull-right"></i></a>
+            </li>
+            <li>
+                <a target="_blank" href='/acervojuridico/AcervoJuridico/RedirectJurisSearch'>Jurisprud&#234;ncia <i class="i-New-Tab-1 pull-right"></i></a>
+            </li>
+            <li>
+                <a target="_blank" href='/acervojuridico/AcervoJuridico/RedirectLegisSearch'>Legisla&#231;&#227;o <i class="i-New-Tab-1 pull-right"></i></a>
+            </li>
+            <li>
+                <a target="_blank" href='/acervojuridico/AcervoJuridico/RedirectProview'>Biblioteca Digital Proview <i class="i-New-Tab-1 pull-right"></i></a>
+            </li>
+        </ul>
+    </div>
+</div>
+    <a href="/">
+        <span class="separator"> </span>
+        <span class="escname">
+            AITH, BADARI E LUCHIN SOCIEDADE DE ADVOGADOS
+            <br />
+            <span class="version-novajus">
+                Pacote Advanced - vers&#227;o 10.0.29
+            </span>
+        </span>
+    </a>
+</div>
+
+            <div class="global-search-wrapper">    
+    <form id="global-search-form" onsubmit="return false;">
+        <input id="global-search-input" type="search" name="search" spellcheck="false" autocomplete="off" placeholder="Pesquise processos, contatos e outros conteúdos" />
+        <div id="global-search-contexts" readonly> </div>
+        <button id="global-search-find-btn" type="button"> Pesquisar </button>
+        <div id="search-contexts-options" style="display: none">
+            <ul>
+                        <li>
+                            <input checked="checked" id="global-search-context-3" name="global-search-context-3" style="border: 1px solid #ddd!important" type="checkbox" value="true" /><input name="global-search-context-3" type="hidden" value="false" />
+                            <a>Contatos</a>
+                        </li>
+                        <li>
+                            <input checked="checked" id="global-search-context-4" name="global-search-context-4" style="border: 1px solid #ddd!important" type="checkbox" value="true" /><input name="global-search-context-4" type="hidden" value="false" />
+                            <a>Compromissos</a>
+                        </li>
+                        <li>
+                            <input checked="checked" id="global-search-context-5" name="global-search-context-5" style="border: 1px solid #ddd!important" type="checkbox" value="true" /><input name="global-search-context-5" type="hidden" value="false" />
+                            <a>Tarefas</a>
+                        </li>
+                        <li>
+                            <input checked="checked" id="global-search-context-1" name="global-search-context-1" style="border: 1px solid #ddd!important" type="checkbox" value="true" /><input name="global-search-context-1" type="hidden" value="false" />
+                            <a>Processos</a>
+                        </li>
+                        <li>
+                            <input checked="checked" id="global-search-context-2" name="global-search-context-2" style="border: 1px solid #ddd!important" type="checkbox" value="true" /><input name="global-search-context-2" type="hidden" value="false" />
+                            <a>Servi&#231;os</a>
+                        </li>
+                        <li>
+                            <input checked="checked" id="global-search-context-6" name="global-search-context-6" style="border: 1px solid #ddd!important" type="checkbox" value="true" /><input name="global-search-context-6" type="hidden" value="false" />
+                            <a>Contrato(s) de honor&#225;rio</a>
+                        </li>
+                        <li>
+                            <input checked="checked" id="global-search-context-7" name="global-search-context-7" style="border: 1px solid #ddd!important" type="checkbox" value="true" /><input name="global-search-context-7" type="hidden" value="false" />
+                            <a>Contratos de clientes</a>
+                        </li>
+                        <li>
+                            <input checked="checked" id="global-search-context-10" name="global-search-context-10" style="border: 1px solid #ddd!important" type="checkbox" value="true" /><input name="global-search-context-10" type="hidden" value="false" />
+                            <a>Time Sheet</a>
+                        </li>
+                    <li class="li-search-select-all">
+                        <input checked="checked" id="searchselectall" name="searchselectall" style="border: 1px solid #ddd!important" type="checkbox" value="true" /><input name="searchselectall" type="hidden" value="false" />
+                        <a>Selecionar todos</a>
+                    </li>
+
+            </ul>
+        </div>        
+    </form>
+</div>
+
+<script src='/static/Scripts/GlobalSearch/global-search.js' type='text/javascript'></script>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        var options = {
+            globalSearchInput: "#global-search-input",
+            globalSearchInputRto: "#global-search-input-rto",
+            globalSearchForm: "#global-search-form",
+            globalSearchFormRto: "#global-search-form-rto",
+            contentUrl: "/shared/global/search",
+            globalSearchData: "global-search",
+            warningLessThan3Characters: "O campo 'Pesquisa' necessita de pelo menos 3 caracteres.",
+            legalOneId: "#legalone",
+            rtoId: '#rto',
+            activeClass: "active",
+            globalSearchContextInput: "#global-search-contexts",
+            searchContextOptions: "#search-contexts-options",
+            inputContextOptions: "#search-contexts-options ul li input[type='checkbox']",
+            liContextOptions: "#search-contexts-options ul li",
+            inputContextSelectAllOption: "#searchselectall",
+            persistSelectedContextUrl: "/shared/Global/SaveContexts"
+        };
+
+        window.modules.globalSearch.setup(options);
+
+    });
+</script>
+            
+
+<div class="popover-menu-wrapper"><span class="user-popover-menu popover-menu-button main-popover-menu-button" data-title="User Info" list="14fb5a80e3464374b5674b7e56bb4ac3"><span class="main-popover-menu-text">TMM</span></span><ul class="popover-menu-list" id="14fb5a80e3464374b5674b7e56bb4ac3"><li><span class="user-name-popover">THOMAS MAIA MACHADO</span></li><li><a href="/config/usuarios/editProfile?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue" id="manage-profile" style="">Alterar perfil</a></li><li><a href="/shared/faleconosco/RedirectToForm?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue" target="_blank">Fale conosco</a></li><li><a href="https://customer.legalone.com.br/auth/login" target="_blank">Base de conhecimento</a></li><li><a href="/ca/authentication/logout" style="">Sair</a></li></ul></div>
+
+
+                <a class="two-factor-auth-button" id="two-factor-auth-button-id" href="#" onclick="window.modules.legalOneAuthenticatorHomeButton.LegalOneAutheticatorManagementButtonClick();" title="Ir para gest&#227;o de autenticadores">
+                    2FA
+                </a>
+
+            <a class="nplk-bar-icon notification" id="nplk-bar-icon-notification" href="/shared/notificacoes/search" title="Notifica&#231;&#245;es">
+                <div class="count"> </div>
+            </a>
+
+                <a class="cronometro-bar-icon cronometro-sem-hora-ativa-icon"></a>
+
+
+        </div>
+        <div class="clear"></div>
+
+    <div>
+        
+
+<div class="main-menu menu collapsible-menu">
+    <ul id="menu">
+            <li class="" id="menuhome" data-name="Home">
+            <a href="/" id="menu-id-3cb477d6f971413e8ef5c5f00c3113d1">Home</a><script type="text/javascript">$('#menu-id-3cb477d6f971413e8ef5c5f00c3113d1').ajaxContent({"containerId":"main-container","externalLink":false})</script>
+
+        </li>
+            <li class="current " id="menucontatos" data-name="Contatos">
+            <a href="/contatos/contatos/search" id="menu-id-21b6877ff98c486893d167b9f5a3a8e3">Contatos</a><script type="text/javascript">$('#menu-id-21b6877ff98c486893d167b9f5a3a8e3').ajaxContent({"containerId":"main-container","externalLink":false})</script>
+
+                <div class="submenu-dropdown">
+<a href="/contatos" id="menu-id-a1dacbc1c2c0415fa036c4e6be673dba">Painel</a><script type="text/javascript">$('#menu-id-a1dacbc1c2c0415fa036c4e6be673dba').ajaxContent({"containerId":"main-container","externalLink":false})</script><a href="/contatos/contatos/search" id="menu-id-094e7bc696f64783a77a36537c12e534">Contatos</a><script type="text/javascript">$('#menu-id-094e7bc696f64783a77a36537c12e534').ajaxContent({"containerId":"main-container","externalLink":false})</script><a href="/contatos/reportcontatos/searchmodelos" id="menu-id-6becc7c1f21e4b11a6aaab2fef1871d3">Relatórios</a><script type="text/javascript">$('#menu-id-6becc7c1f21e4b11a6aaab2fef1871d3').ajaxContent({"containerId":"main-container","externalLink":false})</script>                </div>
+        </li>
+            <li class="" id="menuagenda" data-name="Agenda">
+            <a href="/agenda/compromissotarefa" id="menu-id-c986966218a84e178fa320dc700d6ae1">Agenda</a><script type="text/javascript">$('#menu-id-c986966218a84e178fa320dc700d6ae1').ajaxContent({"containerId":"main-container","externalLink":false})</script>
+
+                <div class="submenu-dropdown">
+<a href="/agenda" id="menu-id-ec3ae9a357d54679bd6828c2e2cdb287">Painel</a><script type="text/javascript">$('#menu-id-ec3ae9a357d54679bd6828c2e2cdb287').ajaxContent({"containerId":"main-container","externalLink":false})</script><a href="/agenda/compromissotarefa" id="menu-id-2ef5387c98ff47d9b3db1f232f862e10">Compromissos e tarefas</a><script type="text/javascript">$('#menu-id-2ef5387c98ff47d9b3db1f232f862e10').ajaxContent({"containerId":"main-container","externalLink":false})</script><a href="/agenda/kanban" id="menu-id-3dffcb8a4b004a53bd65b5ffec390dc7">Kanban</a><script type="text/javascript">$('#menu-id-3dffcb8a4b004a53bd65b5ffec390dc7').ajaxContent({"containerId":"main-container","externalLink":false})</script><a href="/agenda/AgendaEscritorio" id="menu-id-d560e0d923c44c2ea18553cc98f3553e">Agenda do escritório</a><script type="text/javascript">$('#menu-id-d560e0d923c44c2ea18553cc98f3553e').ajaxContent({"containerId":"main-container","externalLink":false})</script><a href="/agenda/reportagenda/searchmodelos" id="menu-id-77bba23a43cb438b9d173599d73c52a8">Relatórios</a><script type="text/javascript">$('#menu-id-77bba23a43cb438b9d173599d73c52a8').ajaxContent({"containerId":"main-container","externalLink":false})</script>                </div>
+        </li>
+            <li class="" id="menupublicationmanagement" data-name="Publica&#231;&#245;es">
+            <a href="/publications" id="menu-id-7e74d5e3959c4817bdce066189f5532e">Publicações</a><script type="text/javascript">$('#menu-id-7e74d5e3959c4817bdce066189f5532e').ajaxContent({"containerId":"main-container","externalLink":false})</script>
+
+        </li>
+            <li class="" id="menuprocessos" data-name="Processos">
+            <a href="/processos/processos/search" id="menu-id-12ad59ad9190437c8ecc5cdd44feee3c">Processos</a><script type="text/javascript">$('#menu-id-12ad59ad9190437c8ecc5cdd44feee3c').ajaxContent({"containerId":"main-container","externalLink":false})</script>
+
+                <div class="submenu-dropdown">
+<a href="/processos" id="menu-id-0ccd31c75e9843c3831e1fd22324b930">Painel</a><script type="text/javascript">$('#menu-id-0ccd31c75e9843c3831e1fd22324b930').ajaxContent({"containerId":"main-container","externalLink":false})</script><a href="/processos/importer" id="menu-id-a2c87ac99d5646a292e028440d0e5935">Pré-cadastro</a><script type="text/javascript">$('#menu-id-a2c87ac99d5646a292e028440d0e5935').ajaxContent({"containerId":"main-container","externalLink":false})</script><a href="/processos/processos/search" id="menu-id-caaf1490892d4ecfaca786372de30646">Pastas</a><script type="text/javascript">$('#menu-id-caaf1490892d4ecfaca786372de30646').ajaxContent({"containerId":"main-container","externalLink":false})</script><a href="/processos/casos/search" id="menu-id-6c3b0f6f6e3542678d646624ab4f5410">Casos</a><script type="text/javascript">$('#menu-id-6c3b0f6f6e3542678d646624ab4f5410').ajaxContent({"containerId":"main-container","externalLink":false})</script><a href="/processos/processoesocial/search" id="menu-id-f521ed66415b455181505ed1dda00647">eSocial</a><script type="text/javascript">$('#menu-id-f521ed66415b455181505ed1dda00647').ajaxContent({"containerId":"main-container","externalLink":false})</script><a href="/processos/reportprocessos/searchmodelos" id="menu-id-5afc57c51f2a4c2d96cd07e59f33f74a">Relatórios</a><script type="text/javascript">$('#menu-id-5afc57c51f2a4c2d96cd07e59f33f74a').ajaxContent({"containerId":"main-container","externalLink":false})</script>                </div>
+        </li>
+            <li class="" id="menuservicos" data-name="Servi&#231;os">
+            <a href="/servicos/servicos/search" id="menu-id-981937fc88a14fc69d84f41211b0b35e">Serviços</a><script type="text/javascript">$('#menu-id-981937fc88a14fc69d84f41211b0b35e').ajaxContent({"containerId":"main-container","externalLink":false})</script>
+
+                <div class="submenu-dropdown">
+<a href="/servicos" id="menu-id-2c6b6e9328864976b3bd4a6d0f6e5e44">Painel</a><script type="text/javascript">$('#menu-id-2c6b6e9328864976b3bd4a6d0f6e5e44').ajaxContent({"containerId":"main-container","externalLink":false})</script><a href="/servicos/servicos/search" id="menu-id-08ab5867ab4d44f1927149a69cb7df7e">Pastas</a><script type="text/javascript">$('#menu-id-08ab5867ab4d44f1927149a69cb7df7e').ajaxContent({"containerId":"main-container","externalLink":false})</script><a href="/servicos/reportservicos/searchmodelos" id="menu-id-ee4c43328fab4e1cb4e241e3d9d58273">Relatórios</a><script type="text/javascript">$('#menu-id-ee4c43328fab4e1cb4e241e3d9d58273').ajaxContent({"containerId":"main-container","externalLink":false})</script>                </div>
+        </li>
+            <li class="" id="menucontratos" data-name="Contratos">
+            <a href="/contratos/contratocliente/search" id="menu-id-183002f983764dd7b24763967b5d921f">Contratos</a><script type="text/javascript">$('#menu-id-183002f983764dd7b24763967b5d921f').ajaxContent({"containerId":"main-container","externalLink":false})</script>
+
+                <div class="submenu-dropdown">
+<a href="/contratos" id="menu-id-c139d88736a9473283cd35e5187b2e7f">Painel</a><script type="text/javascript">$('#menu-id-c139d88736a9473283cd35e5187b2e7f').ajaxContent({"containerId":"main-container","externalLink":false})</script><a href="/contratos/contratocliente/search" id="menu-id-235d98ebad6b4db69c644af7353c938e">Contratos de cliente</a><script type="text/javascript">$('#menu-id-235d98ebad6b4db69c644af7353c938e').ajaxContent({"containerId":"main-container","externalLink":false})</script>                </div>
+        </li>
+            <li class="" id="menuged" data-name="GED">
+            <a href="/GED/ReportGED/searchmodelos" id="menu-id-67a3bec510894332a02c2419eb524b0f">GED</a><script type="text/javascript">$('#menu-id-67a3bec510894332a02c2419eb524b0f').ajaxContent({"containerId":"main-container","externalLink":false})</script>
+
+                <div class="submenu-dropdown">
+<a href="/GED/ReportGED/searchmodelos" id="menu-id-2c83d041ca3c42faad29c0f8dcca22fc">Relatórios</a><script type="text/javascript">$('#menu-id-2c83d041ca3c42faad29c0f8dcca22fc').ajaxContent({"containerId":"main-container","externalLink":false})</script>                </div>
+        </li>
+            <li class="" id="menuacervojuridico" data-name="Conte&#250;do jur&#237;dico">
+            <a href="/acervojuridico/acervojuridico/search" id="menu-id-736a628908134487a9cb0b32b5fc38cf">Conteúdo jurídico</a><script type="text/javascript">$('#menu-id-736a628908134487a9cb0b32b5fc38cf').ajaxContent({"containerId":"main-container","externalLink":false})</script>
+
+                <div class="submenu-dropdown">
+<a href="/acervojuridico/acervojuridico/search" id="menu-id-e464c49f2a5744d5b1bb271cc5631a0d">Revista dos Tribunais Online</a><script type="text/javascript">$('#menu-id-e464c49f2a5744d5b1bb271cc5631a0d').ajaxContent({"containerId":"main-container","externalLink":false})</script>                </div>
+        </li>
+            <li class="" id="menutimesheet" data-name="Time sheet">
+            <a href="/TimeSheet/HorasTrabalhadas/Search" id="menu-id-838b3a2f51bf44ef8badf66087cc2a13">Time sheet</a><script type="text/javascript">$('#menu-id-838b3a2f51bf44ef8badf66087cc2a13').ajaxContent({"containerId":"main-container","externalLink":false})</script>
+
+                <div class="submenu-dropdown">
+<a href="/TimeSheet/HomeTimeSheet" id="menu-id-caa9ad2143d54646ad828f8d8b621092">Painel</a><script type="text/javascript">$('#menu-id-caa9ad2143d54646ad828f8d8b621092').ajaxContent({"containerId":"main-container","externalLink":false})</script><a href="/TimeSheet/HorasTrabalhadas/Search" id="menu-id-425edc98cdd0498d8e774718078200e9">Horas trabalhadas</a><script type="text/javascript">$('#menu-id-425edc98cdd0498d8e774718078200e9').ajaxContent({"containerId":"main-container","externalLink":false})</script><a href="/TimeSheet/ReportTimeSheet/searchmodelos" id="menu-id-5c95f7b0de7a42e482d5626ed5694de6">Relatórios</a><script type="text/javascript">$('#menu-id-5c95f7b0de7a42e482d5626ed5694de6').ajaxContent({"containerId":"main-container","externalLink":false})</script>                </div>
+        </li>
+            <li class="" id="menulegaloneanalytics" data-name="Legal Analytics">
+            <a href="/shared/Analytics/RedirectAnalytics" id="menu-id-9cfc397c6e454175ba0ce95e664b8460" target="_blank">Legal Analytics</a><script type="text/javascript">$('#menu-id-9cfc397c6e454175ba0ce95e664b8460').ajaxContent({"containerId":"main-container","externalLink":true})</script>
+
+        </li>
+            <li class="opcoes-icon" id="menuopcoes" data-name="Op&#231;&#245;es">
+            <a href="/config/ferramentas" id="menu-id-d9b6879fae234884b47a31dff373ef54">Opções</a><script type="text/javascript">$('#menu-id-d9b6879fae234884b47a31dff373ef54').ajaxContent({"containerId":"main-container","externalLink":false})</script>
+
+                <div class="submenu-dropdown">
+<a href="/config/ferramentas" id="menu-id-944c0ea1cea94145b5acef90bd52ca61">Ferramentas</a><script type="text/javascript">$('#menu-id-944c0ea1cea94145b5acef90bd52ca61').ajaxContent({"containerId":"main-container","externalLink":false})</script><a href="/config/configuracoes" id="menu-id-798d86d0fbef47c8a3aff48869970540">Configurações</a><script type="text/javascript">$('#menu-id-798d86d0fbef47c8a3aff48869970540').ajaxContent({"containerId":"main-container","externalLink":false})</script><a href="/config/TabelasSistema" id="menu-id-33f91e6ae0864e918d179abdf39c171c">Tabelas do sistema</a><script type="text/javascript">$('#menu-id-33f91e6ae0864e918d179abdf39c171c').ajaxContent({"containerId":"main-container","externalLink":false})</script><a href="/Personalizacoes/Modulos/Search" id="menu-id-557dbe7999814e6bb4eb3e49a65f3892">Personalizações</a><script type="text/javascript">$('#menu-id-557dbe7999814e6bb4eb3e49a65f3892').ajaxContent({"containerId":"main-container","externalLink":false})</script><a href="/config/Sobre" id="menu-id-ead4f529887a46aa9b9085c63d4f527c">Sobre</a><script type="text/javascript">$('#menu-id-ead4f529887a46aa9b9085c63d4f527c').ajaxContent({"containerId":"main-container","externalLink":false})</script>                </div>
+        </li>
+            <li class="mesas-icon" id="menumesastrabalho" data-name="Mesas de trabalho">
+            <a href="/MesasTrabalho/Mesas/search" id="menu-id-fa2d05f853024a1282ea6695a0e54a60">Mesas de trabalho</a><script type="text/javascript">$('#menu-id-fa2d05f853024a1282ea6695a0e54a60').ajaxContent({"containerId":"main-container","externalLink":false})</script>
+
+        </li>
+    </ul>
+
+</div>
+
+<script src='/static/Scripts/main-menu.js' type='text/javascript'></script>
+
+<!-- Setup dropdown submenu -->
+<script type="text/javascript">
+    $(document).ready(function () {
+        window.modules.dynamicSubMenu.setupDropDownSubMenu();
+    });
+</script>
+    </div>
+</div>
+
+
+
+
+
+
+<div class="main" id="main-container">
+
+    <div class="main-bar">
+        <div class="main-bar-header">
+            <div class="submenu">
+                
+        <ul>
+                <li class="" id="menucontatossubmenupainel">
+                    <a href="/contatos" id="menu-id-aa114d454209439d8f1769f46fff815c">Painel</a><script type="text/javascript">$('#menu-id-aa114d454209439d8f1769f46fff815c').ajaxContent({"containerId":"main-container","externalLink":false})</script>
+                </li>
+                <li class="current " id="menucontatossubmenucontatos">
+                    <a href="/contatos/contatos/search" id="menu-id-d5527034b15442e8a0cb6ceca5b54ec3">Contatos</a><script type="text/javascript">$('#menu-id-d5527034b15442e8a0cb6ceca5b54ec3').ajaxContent({"containerId":"main-container","externalLink":false})</script>
+                </li>
+                <li class="" id="menucontatossubmenurelatorios">
+                    <a href="/contatos/reportcontatos/searchmodelos" id="menu-id-f228a18717744237851c9bbd511baa6e">Relatórios</a><script type="text/javascript">$('#menu-id-f228a18717744237851c9bbd511baa6e').ajaxContent({"containerId":"main-container","externalLink":false})</script>
+                </li>
+        </ul>
+
+
+            </div>
+            <div class="breadcrumbs">
+            </div>
+            <div style="clear: both">
+            </div>
+        </div>
+
+
+        <script>
+            startPageLoad();
+        </script>
+
+        <div class="documentSpace" style="display: none" id="documentSpaceId">
+            <div id="firstColumn"></div>
+            <div class="document" id="documentArea">
+                    <div class="document-header">
+                        <div class="text">
+                            
+    <h3>Pesquisa de pessoas f&#237;sicas/jur&#237;dicas</h3>
+
+
+                        </div>
+
+
+                            <div class="document-header-main-div">
+                                    <div class="document-header-left-column">
+
+
+                                            <div id="mesa_trabalho_icon_wrapper">
+                                                
+
+<script type="text/javascript">
+
+    function addItemMesa(id, titulo) {
+        // Verifica se o item já foi selecionado
+        var canAdd = true;
+        $.each($('.MesasIds'), function(index, value) {
+            if ($(value).val() == (id)) {
+                canAdd = false;
+            }
+        });
+
+        if (canAdd)
+        {
+            var data = {
+                'Id': id,
+                'Nome': titulo
+            }
+
+            $.ajax({
+                url: "/MesasTrabalho/Mesas/Item",
+                data: data,
+                cache: false,
+                success: function(html) {
+                    $("#Mesas").append(html);
+                }
+            });
+        }
+
+        $("#lookup_mesa").data("lookup").clear();
+        $("#MesaText").focus();
+    }
+
+    $(document).ready(function () {
+        window.modules.userAndHelpMenu.MesaContainerHide();
+
+        // Se a mesa estiver visivel ela não deve sumir caso click dentro dela.
+        $('.mesa-popup').click(function (event) {
+            //o StopPropagation deve ocorrer quando for qualquer click na mesa-popup exceto nos botões concluir e cancelar
+            if (event.target && !$(event.target).is('#save-popup-mesa') && !$(event.target).is('#close-popup-mesa')) {
+                event.stopPropagation();
+            }
+        });
+
+        var $mesa = $('.mesa');
+
+        // Removes whatever "click" binds this element already have
+        $mesa.unbind('click');
+
+        // Decodes the 'value' property from 'NomeItem' input
+        var decodeItemNameValue = function (str) {
+
+            var $input = $('div.mesa-popup-editor input[name="NomeItem"]');
+            var decodedValue = $input.val().replace(/&#(\d+);/g,
+                function (match, dec) { return String.fromCharCode(dec); });
+
+            $input.val(decodedValue);
+        };
+
+        // Evento que abre a mesa
+        $mesa.click(function (event) {
+            var $mesaPopup = $(".mesa-popup");
+
+            //o StopPropagation deve ocorrer quando a mesa ainda não foi criada,caso ela já exista, deve ocorrer para o lookup não permanecer aberto na tela
+            if (event.target
+                && !$(event.target).is('#save-popup-mesa')
+                && !$(event.target).is('#close-popup-mesa')
+                && $mesaPopup.is(':empty') == true) {
+
+                window.modules.userAndHelpMenu.StopPropagationMesa(event);
+
+                /* The urlElement works as a solution to the problems seen in work items #205882 #206757 #207165. The problem is that it does 
+                 * not reflect the advanced search in the context of Details when an advanced search is executed on an item's section. This 
+                 * happens because the element does not alter its value when the search is done, only happening with a page refresh. In order 
+                 * to maintain the correct treatment with urlElement, it will only be used when it is in the context of an advanced module search, 
+                 * while the Details advanced search will use the window.location information */
+
+                var urlElement = $('#workdesk-url');
+                var data = {
+                    url: "search" === "Search" ? urlElement.val() : window.location.pathname + window.location.search,
+                    itemName: "Pesquisa de pessoas f&#237;sicas/jur&#237;dicas",
+                    action: "1",
+                    context: "2",
+                    contextAction: "search"
+                };
+
+                $(".mesa-container").show();
+                $mesaPopup.html("<div class='mesas-loading'></div>");
+
+                $.ajax({
+                    data: data,
+                    cache: false,
+                    type: 'POST',
+                    url: "/MesasTrabalho/Mesas/MesaContainer",
+                    contentType: 'application/x-www-form-urlencoded',
+                    dataType: 'html',
+                    success: function (html) {
+
+                        $mesaPopup.html(html);
+
+                        /* Diego Silveira - For some reason the property 'value' from 'NomeItem' input is being double-encoded,
+                        the Action is not doing it, nor the view that it renders. So I could not find the reason for it, and
+                        I am fixing decoding the property at this point to close a bug. Don't judge me. */
+                        decodeItemNameValue();
+
+                        // escuta do evento change do lookup mesa
+                        $("#lookup_mesa").data("lookup").opts.change = function (data) {
+                            if ($("#MesaId").val() && $("#MesaText").val()) {
+                                addItemMesa($("#MesaId").val(), $("#MesaText").val());
+                            }
+                        }
+                    },
+                    error: function (msg) {
+                        window.modules.userAndHelpMenu.MesaContainerHide();
+                    }
+                });
+            } else {
+                window.modules.userAndHelpMenu.MesaContainerHide();
+            }
+        });
+
+        $('.mesa-container').click(function (event) {
+
+        });
+
+        // No "browser" Internet Explorer: Corrige problema de renderização ao ajustar o tamanho do dialog
+        if (jQuery.browser.msie) {
+            $('#mesa-popup').bind('DOMNodeRemoved', function (e) {
+                var adjustedHeight = $(this).css('height') - $(e.target).css('height');
+
+                $('#mesa-popup').animate({ height: adjustedHeight }, 'fast');
+            });
+        }
+    });
+
+</script>
+
+<div class="mesa">
+    <input type="hidden" value="/contatos/contatos/search?ajaxnavigation=true" id="workdesk-url" />
+    <div id="estrela" title="Mesas de Trabalho" data-title="Mesas de Trabalho" class="icon-on">
+        Mesa de trabalho
+        <div class="mesa-container">
+            <div class="mesa-container-arrow"></div>
+            <div id="mesa-popup" class="mesa-popup" tabindex="0" title=""></div>
+        </div>
+    </div>
+</div>
+
+                                            </div>
+
+
+
+                                    </div>
+
+                            </div>
+                            <div class="clear">
+                            </div>
+                    </div>
+
+                <div class="document-body">
+                    
+
+
+
+
+
+<link href='/static/Content/searchbox.css' rel='stylesheet' type='text/css' />
+
+
+
+
+
+<div class="search-box-wrapper" >
+
+    <div class="filter-options">
+                <div class="additional-filters">
+            <span class="toggle-search">
+                <small onclick="window.modules.mainSearchFilters.openSimpleSearchFilters();" class="button-simple-search active">Simples</small>
+                <small onclick="window.modules.mainSearchFilters.openAdvancedSearchFilters();" class="button-advanced-search ">Avan&#231;ada</small>
+
+            </span>
+        </div>
+
+    </div>
+
+<form action="/contatos/contatos/Search" autocomplete="off" class="search-form" id="SearchForm" method="get"><input id="IsSearchExecutedByUser" name="IsSearchExecutedByUser" type="hidden" value="true" /><input id="ShowAdvancedFilters" name="ShowAdvancedFilters" type="hidden" value="False" /><input id="SwitchToNewUXApplicationToggle_2_1_1" name="SwitchToNewUXApplicationToggle_2_1_1" type="hidden" value="" /><input id="SwitchToNewUXApplicationToggle" name="SwitchToNewUXApplicationToggle" type="hidden" value="True" /><input id="TipoAcaoModeloRelatorio" name="TipoAcaoModeloRelatorio" type="hidden" value="" /><input id="ShowBarCodeFilters" name="ShowBarCodeFilters" type="hidden" value="False" />    <input type="hidden"
+           id="search-filters-ajax-url"
+           name="search-filters-ajax-url"
+           value="/contatos/contatos/SearchFilters?ViewName=SearchFiltersContatos&amp;SearchAction=search"
+           data-val-searchmodel="{&quot;Salario&quot;:{},&quot;Andamento&quot;:{&quot;IsQuemExecutou&quot;:false,&quot;IsContextoProcesso&quot;:false,&quot;VinculosCasos&quot;:{&quot;IsAjax&quot;:false,&quot;RecordCount&quot;:10,&quot;IsSearchExecutedByUser&quot;:false,&quot;SelectedIndexes&quot;:&quot;&quot;,&quot;ShowFilterOptions&quot;:false,&quot;RelatorioPossuiCapa&quot;:false,&quot;IgnoreFocus&quot;:false},&quot;IsAgendaModule&quot;:false,&quot;IsAjax&quot;:false,&quot;RecordCount&quot;:10,&quot;IsSearchExecutedByUser&quot;:false,&quot;SelectedIndexes&quot;:&quot;&quot;,&quot;ShowFilterOptions&quot;:false,&quot;RelatorioPossuiCapa&quot;:false,&quot;IgnoreFocus&quot;:false},&quot;Monitoramento&quot;:{&quot;TipoContexto&quot;:0,&quot;IsAjax&quot;:false,&quot;RecordCount&quot;:10,&quot;IsSearchExecutedByUser&quot;:false,&quot;SelectedIndexes&quot;:&quot;&quot;,&quot;ShowFilterOptions&quot;:false,&quot;RelatorioPossuiCapa&quot;:false,&quot;IgnoreFocus&quot;:false},&quot;GED&quot;:{&quot;DateRangeDuration&quot;:{},&quot;VinculosCasos&quot;:{&quot;IsAjax&quot;:false,&quot;RecordCount&quot;:10,&quot;IsSearchExecutedByUser&quot;:false,&quot;SelectedIndexes&quot;:&quot;&quot;,&quot;ShowFilterOptions&quot;:false,&quot;RelatorioPossuiCapa&quot;:false,&quot;IgnoreFocus&quot;:false},&quot;IsGerarCapa&quot;:false,&quot;IsGraphicReport&quot;:false,&quot;TipoGrafico&quot;:0,&quot;PosicaoLegenda&quot;:0,&quot;TipoLegenda&quot;:0,&quot;TipoFormatoRelatorio&quot;:0,&quot;IsExibir3D&quot;:false,&quot;IsVisualizarGraficoWidgetPainelContexto&quot;:false,&quot;IsVisualizarGraficoWidgetHome&quot;:false,&quot;ReportRecurrence&quot;:{&quot;Recurrence&quot;:{}},&quot;IsAjax&quot;:false,&quot;RecordCount&quot;:10,&quot;IsSearchExecutedByUser&quot;:false,&quot;SelectedIndexes&quot;:&quot;&quot;,&quot;ShowFilterOptions&quot;:false,&quot;RelatorioPossuiCapa&quot;:false,&quot;IgnoreFocus&quot;:false},&quot;CompromissoTarefa&quot;:{&quot;Andamento&quot;:{&quot;IsQuemExecutou&quot;:false,&quot;IsContextoProcesso&quot;:false,&quot;VinculosCasos&quot;:{&quot;IsAjax&quot;:false,&quot;RecordCount&quot;:10,&quot;IsSearchExecutedByUser&quot;:false,&quot;SelectedIndexes&quot;:&quot;&quot;,&quot;ShowFilterOptions&quot;:false,&quot;RelatorioPossuiCapa&quot;:false,&quot;IgnoreFocus&quot;:false},&quot;IsAgendaModule&quot;:true,&quot;IsAjax&quot;:false,&quot;RecordCount&quot;:10,&quot;IsSearchExecutedByUser&quot;:false,&quot;SelectedIndexes&quot;:&quot;&quot;,&quot;ShowFilterOptions&quot;:false,&quot;RelatorioPossuiCapa&quot;:false,&quot;IgnoreFocus&quot;:false},&quot;GED&quot;:{&quot;DateRangeDuration&quot;:{},&quot;VinculosCasos&quot;:{&quot;IsAjax&quot;:false,&quot;RecordCount&quot;:10,&quot;IsSearchExecutedByUser&quot;:false,&quot;SelectedIndexes&quot;:&quot;&quot;,&quot;ShowFilterOptions&quot;:false,&quot;RelatorioPossuiCapa&quot;:false,&quot;IgnoreFocus&quot;:false},&quot;IsGerarCapa&quot;:false,&quot;IsGraphicReport&quot;:false,&quot;TipoGrafico&quot;:0,&quot;PosicaoLegenda&quot;:0,&quot;TipoLegenda&quot;:0,&quot;TipoFormatoRelatorio&quot;:0,&quot;IsExibir3D&quot;:false,&quot;IsVisualizarGraficoWidgetPainelContexto&quot;:false,&quot;IsVisualizarGraficoWidgetHome&quot;:false,&quot;ReportRecurrence&quot;:{&quot;Recurrence&quot;:{}},&quot;IsAjax&quot;:false,&quot;RecordCount&quot;:10,&quot;IsSearchExecutedByUser&quot;:false,&quot;SelectedIndexes&quot;:&quot;&quot;,&quot;ShowFilterOptions&quot;:false,&quot;RelatorioPossuiCapa&quot;:false,&quot;IgnoreFocus&quot;:false},&quot;HoraTrabalhada&quot;:{&quot;GroupAbatementHours&quot;:false,&quot;PanelTitle&quot;:&quot;Pesquisa de dados principais&quot;,&quot;IsSectionSearch&quot;:false,&quot;IsTimeSheetContext&quot;:false,&quot;VinculosCasos&quot;:{&quot;IsAjax&quot;:false,&quot;RecordCount&quot;:10,&quot;IsSearchExecutedByUser&quot;:false,&quot;SelectedIndexes&quot;:&quot;&quot;,&quot;ShowFilterOptions&quot;:false,&quot;RelatorioPossuiCapa&quot;:false,&quot;IgnoreFocus&quot;:false},&quot;IsGerarCapa&quot;:false,&quot;IsGraphicReport&quot;:false,&quot;TipoGrafico&quot;:0,&quot;PosicaoLegenda&quot;:0,&quot;TipoLegenda&quot;:0,&quot;TipoFormatoRelatorio&quot;:0,&quot;IsExibir3D&quot;:false,&quot;IsVisualizarGraficoWidgetPainelContexto&quot;:false,&quot;IsVisualizarGraficoWidgetHome&quot;:false,&quot;ReportRecurrence&quot;:{&quot;Recurrence&quot;:{}},&quot;IsAjax&quot;:false,&quot;RecordCount&quot;:10,&quot;IsSearchExecutedByUser&quot;:false,&quot;SelectedIndexes&quot;:&quot;&quot;,&quot;ShowFilterOptions&quot;:false,&quot;RelatorioPossuiCapa&quot;:false,&quot;IgnoreFocus&quot;:false},&quot;VinculosCasos&quot;:{&quot;IsAjax&quot;:false,&quot;RecordCount&quot;:10,&quot;IsSearchExecutedByUser&quot;:false,&quot;SelectedIndexes&quot;:&quot;&quot;,&quot;ShowFilterOptions&quot;:false,&quot;RelatorioPossuiCapa&quot;:false,&quot;IgnoreFocus&quot;:false},&quot;ShowTasksCompletedLate&quot;:false,&quot;IsGerarCapa&quot;:false,&quot;IsGraphicReport&quot;:false,&quot;TipoGrafico&quot;:0,&quot;PosicaoLegenda&quot;:0,&quot;TipoLegenda&quot;:0,&quot;TipoFormatoRelatorio&quot;:0,&quot;IsExibir3D&quot;:false,&quot;IsVisualizarGraficoWidgetPainelContexto&quot;:false,&quot;IsVisualizarGraficoWidgetHome&quot;:false,&quot;ReportRecurrence&quot;:{&quot;Recurrence&quot;:{}},&quot;IsAjax&quot;:false,&quot;RecordCount&quot;:10,&quot;IsSearchExecutedByUser&quot;:false,&quot;SelectedIndexes&quot;:&quot;&quot;,&quot;ShowFilterOptions&quot;:false,&quot;RelatorioPossuiCapa&quot;:false,&quot;IgnoreFocus&quot;:false},&quot;SolicitacaoFinanceira&quot;:{&quot;IsToAcceptRecorrentes&quot;:false,&quot;IsToRejectRecorrentes&quot;:false,&quot;IsShowMotivo&quot;:false,&quot;GED&quot;:{&quot;DateRangeDuration&quot;:{},&quot;VinculosCasos&quot;:{&quot;IsAjax&quot;:false,&quot;RecordCount&quot;:10,&quot;IsSearchExecutedByUser&quot;:false,&quot;SelectedIndexes&quot;:&quot;&quot;,&quot;ShowFilterOptions&quot;:false,&quot;RelatorioPossuiCapa&quot;:false,&quot;IgnoreFocus&quot;:false},&quot;IsGerarCapa&quot;:false,&quot;IsGraphicReport&quot;:false,&quot;TipoGrafico&quot;:0,&quot;PosicaoLegenda&quot;:0,&quot;TipoLegenda&quot;:0,&quot;TipoFormatoRelatorio&quot;:0,&quot;IsExibir3D&quot;:false,&quot;IsVisualizarGraficoWidgetPainelContexto&quot;:false,&quot;IsVisualizarGraficoWidgetHome&quot;:false,&quot;ReportRecurrence&quot;:{&quot;Recurrence&quot;:{}},&quot;IsAjax&quot;:false,&quot;RecordCount&quot;:10,&quot;IsSearchExecutedByUser&quot;:false,&quot;SelectedIndexes&quot;:&quot;&quot;,&quot;ShowFilterOptions&quot;:false,&quot;RelatorioPossuiCapa&quot;:false,&quot;IgnoreFocus&quot;:false},&quot;IsGerarCapa&quot;:false,&quot;IsGraphicReport&quot;:false,&quot;TipoGrafico&quot;:0,&quot;PosicaoLegenda&quot;:0,&quot;TipoLegenda&quot;:0,&quot;TipoFormatoRelatorio&quot;:0,&quot;IsExibir3D&quot;:false,&quot;IsVisualizarGraficoWidgetPainelContexto&quot;:false,&quot;IsVisualizarGraficoWidgetHome&quot;:false,&quot;ReportRecurrence&quot;:{&quot;Recurrence&quot;:{}},&quot;IsAjax&quot;:false,&quot;RecordCount&quot;:10,&quot;IsSearchExecutedByUser&quot;:false,&quot;SelectedIndexes&quot;:&quot;&quot;,&quot;ShowFilterOptions&quot;:false,&quot;RelatorioPossuiCapa&quot;:false,&quot;IgnoreFocus&quot;:false},&quot;HorasTrabalhadas&quot;:{&quot;GroupAbatementHours&quot;:false,&quot;Contexto&quot;:0,&quot;PanelTitle&quot;:&quot;Pesquisa de time sheet&quot;,&quot;IsSectionSearch&quot;:false,&quot;IsTimeSheetContext&quot;:false,&quot;VinculosCasos&quot;:{&quot;IsAjax&quot;:false,&quot;RecordCount&quot;:10,&quot;IsSearchExecutedByUser&quot;:false,&quot;SelectedIndexes&quot;:&quot;&quot;,&quot;ShowFilterOptions&quot;:false,&quot;RelatorioPossuiCapa&quot;:false,&quot;IgnoreFocus&quot;:false},&quot;IsGerarCapa&quot;:false,&quot;IsGraphicReport&quot;:false,&quot;TipoGrafico&quot;:0,&quot;PosicaoLegenda&quot;:0,&quot;TipoLegenda&quot;:0,&quot;TipoFormatoRelatorio&quot;:0,&quot;IsExibir3D&quot;:false,&quot;IsVisualizarGraficoWidgetPainelContexto&quot;:false,&quot;IsVisualizarGraficoWidgetHome&quot;:false,&quot;ReportRecurrence&quot;:{&quot;Recurrence&quot;:{}},&quot;IsAjax&quot;:false,&quot;RecordCount&quot;:10,&quot;IsSearchExecutedByUser&quot;:false,&quot;SelectedIndexes&quot;:&quot;&quot;,&quot;ShowFilterOptions&quot;:false,&quot;RelatorioPossuiCapa&quot;:false,&quot;IgnoreFocus&quot;:false},&quot;HoraTrabalhada&quot;:{&quot;GroupAbatementHours&quot;:false,&quot;Contexto&quot;:0,&quot;PanelTitle&quot;:&quot;Pesquisa de time sheet&quot;,&quot;IsSectionSearch&quot;:false,&quot;IsTimeSheetContext&quot;:false,&quot;VinculosCasos&quot;:{&quot;IsAjax&quot;:false,&quot;RecordCount&quot;:10,&quot;IsSearchExecutedByUser&quot;:false,&quot;SelectedIndexes&quot;:&quot;&quot;,&quot;ShowFilterOptions&quot;:false,&quot;RelatorioPossuiCapa&quot;:false,&quot;IgnoreFocus&quot;:false},&quot;IsGerarCapa&quot;:false,&quot;IsGraphicReport&quot;:false,&quot;TipoGrafico&quot;:0,&quot;PosicaoLegenda&quot;:0,&quot;TipoLegenda&quot;:0,&quot;TipoFormatoRelatorio&quot;:0,&quot;IsExibir3D&quot;:false,&quot;IsVisualizarGraficoWidgetPainelContexto&quot;:false,&quot;IsVisualizarGraficoWidgetHome&quot;:false,&quot;ReportRecurrence&quot;:{&quot;Recurrence&quot;:{}},&quot;IsAjax&quot;:false,&quot;RecordCount&quot;:10,&quot;IsSearchExecutedByUser&quot;:false,&quot;SelectedIndexes&quot;:&quot;&quot;,&quot;ShowFilterOptions&quot;:false,&quot;RelatorioPossuiCapa&quot;:false,&quot;IgnoreFocus&quot;:false},&quot;BankData&quot;:{&quot;UseAccountNumberAndAgency&quot;:true,&quot;IsGerarCapa&quot;:false,&quot;IsGraphicReport&quot;:false,&quot;TipoGrafico&quot;:0,&quot;PosicaoLegenda&quot;:0,&quot;TipoLegenda&quot;:0,&quot;TipoFormatoRelatorio&quot;:0,&quot;IsExibir3D&quot;:false,&quot;IsVisualizarGraficoWidgetPainelContexto&quot;:false,&quot;IsVisualizarGraficoWidgetHome&quot;:false,&quot;ReportRecurrence&quot;:{&quot;Recurrence&quot;:{}},&quot;IsAjax&quot;:false,&quot;RecordCount&quot;:10,&quot;IsSearchExecutedByUser&quot;:false,&quot;SelectedIndexes&quot;:&quot;&quot;,&quot;ShowFilterOptions&quot;:false,&quot;RelatorioPossuiCapa&quot;:false,&quot;IgnoreFocus&quot;:false},&quot;IsGerarCapa&quot;:false,&quot;IsGraphicReport&quot;:false,&quot;TipoGrafico&quot;:0,&quot;PosicaoLegenda&quot;:0,&quot;TipoLegenda&quot;:0,&quot;TipoFormatoRelatorio&quot;:0,&quot;IsExibir3D&quot;:false,&quot;IsVisualizarGraficoWidgetPainelContexto&quot;:false,&quot;IsVisualizarGraficoWidgetHome&quot;:false,&quot;ReportRecurrence&quot;:{&quot;Recurrence&quot;:{}},&quot;IsAjax&quot;:false,&quot;RecordCount&quot;:50473,&quot;IsSearchExecutedByUser&quot;:false,&quot;SelectedIndexes&quot;:&quot;&quot;,&quot;ListaDeCamposPersonalizados&quot;:[{&quot;Template&quot;:&quot;&quot;,&quot;Name&quot;:&quot;Tag_PessoaFisicaEntitySchema&quot;,&quot;DisplayName&quot;:&quot;Tag&quot;,&quot;MaxLength&quot;:150,&quot;TypeTemplate&quot;:4,&quot;SubType&quot;:0,&quot;EntityName&quot;:&quot;&quot;,&quot;PropertyId&quot;:3699},{&quot;Template&quot;:&quot;&quot;,&quot;Name&quot;:&quot;LinkDaPasta_PessoaFisicaEntitySchema&quot;,&quot;DisplayName&quot;:&quot;Link da pasta&quot;,&quot;MaxLength&quot;:150,&quot;TypeTemplate&quot;:4,&quot;SubType&quot;:0,&quot;EntityName&quot;:&quot;&quot;,&quot;PropertyId&quot;:3700},{&quot;Template&quot;:&quot;&quot;,&quot;Name&quot;:&quot;DataVencimentoKit_PessoaFisicaEntitySchema&quot;,&quot;DisplayName&quot;:&quot;Data Vencimento Kit&quot;,&quot;TypeTemplate&quot;:8,&quot;Type&quot;:3,&quot;SubType&quot;:0,&quot;EntityName&quot;:&quot;&quot;,&quot;PropertyId&quot;:3701},{&quot;Template&quot;:&quot;&quot;,&quot;Name&quot;:&quot;DataVencimentoComprovante_PessoaFisicaEntitySchema&quot;,&quot;DisplayName&quot;:&quot;Data Vencimento Comprovante&quot;,&quot;TypeTemplate&quot;:8,&quot;Type&quot;:3,&quot;SubType&quot;:0,&quot;EntityName&quot;:&quot;&quot;,&quot;PropertyId&quot;:3702},{&quot;Template&quot;:&quot;&quot;,&quot;Name&quot;:&quot;ClassificacaoBackoffice_PessoaFisicaEntitySchema&quot;,&quot;DisplayName&quot;:&quot;Classifica&amp;#231;&amp;#227;o Backoffice&quot;,&quot;TypeTemplate&quot;:10,&quot;Type&quot;:5,&quot;SubType&quot;:0,&quot;EntityName&quot;:&quot;&quot;,&quot;UrlSourceAction&quot;:&quot;Lookup&quot;,&quot;UrlSourceController&quot;:&quot;Property&quot;,&quot;PropertyId&quot;:3703},{&quot;Template&quot;:&quot;&quot;,&quot;Name&quot;:&quot;NaturezaDoAcidente_PessoaFisicaEntitySchema&quot;,&quot;DisplayName&quot;:&quot;Natureza do acidente&quot;,&quot;TypeTemplate&quot;:10,&quot;Type&quot;:5,&quot;SubType&quot;:0,&quot;EntityName&quot;:&quot;&quot;,&quot;UrlSourceAction&quot;:&quot;Lookup&quot;,&quot;UrlSourceController&quot;:&quot;Property&quot;,&quot;PropertyId&quot;:3704},{&quot;Template&quot;:&quot;&quot;,&quot;Name&quot;:&quot;TratamentoDaLesao_PessoaFisicaEntitySchema&quot;,&quot;DisplayName&quot;:&quot;Tratamento da Les&amp;#227;o&quot;,&quot;TypeTemplate&quot;:10,&quot;Type&quot;:5,&quot;SubType&quot;:0,&quot;EntityName&quot;:&quot;&quot;,&quot;UrlSourceAction&quot;:&quot;Lookup&quot;,&quot;UrlSourceController&quot;:&quot;Property&quot;,&quot;PropertyId&quot;:3705},{&quot;Template&quot;:&quot;&quot;,&quot;Name&quot;:&quot;CID_PessoaFisicaEntitySchema&quot;,&quot;DisplayName&quot;:&quot;CID&quot;,&quot;MaxLength&quot;:150,&quot;TypeTemplate&quot;:4,&quot;SubType&quot;:0,&quot;EntityName&quot;:&quot;&quot;,&quot;PropertyId&quot;:3706},{&quot;Template&quot;:&quot;&quot;,&quot;Name&quot;:&quot;TramitacaoPrioritaria_PessoaFisicaEntitySchema&quot;,&quot;DisplayName&quot;:&quot;Tramita&amp;#231;&amp;#227;o priorit&amp;#225;ria&quot;,&quot;TypeTemplate&quot;:10,&quot;Type&quot;:5,&quot;SubType&quot;:0,&quot;EntityName&quot;:&quot;&quot;,&quot;UrlSourceAction&quot;:&quot;Lookup&quot;,&quot;UrlSourceController&quot;:&quot;Property&quot;,&quot;PropertyId&quot;:3707},{&quot;Template&quot;:&quot;&quot;,&quot;Name&quot;:&quot;Referencia_PessoaFisicaEntitySchema&quot;,&quot;DisplayName&quot;:&quot;Refer&amp;#234;ncia&quot;,&quot;MaxLength&quot;:150,&quot;TypeTemplate&quot;:4,&quot;SubType&quot;:0,&quot;EntityName&quot;:&quot;&quot;,&quot;PropertyId&quot;:3716},{&quot;Template&quot;:&quot;&quot;,&quot;Name&quot;:&quot;Tag_PessoaJuridicaEntitySchema&quot;,&quot;DisplayName&quot;:&quot;Tag&quot;,&quot;MaxLength&quot;:150,&quot;TypeTemplate&quot;:4,&quot;SubType&quot;:0,&quot;EntityName&quot;:&quot;&quot;,&quot;PropertyId&quot;:3715}],&quot;ShowFilterOptions&quot;:false,&quot;RelatorioPossuiCapa&quot;:false,&quot;IgnoreFocus&quot;:false,&quot;IsToExecuteSearch&quot;:true,&quot;SwitchToNewUXApplicationToggle&quot;:true}" />
+    <div class="top-panel">
+            <div class="search-filters hidden">
+                <div class="search-filters-wrapper">
+                                    </div>
+
+                <div class="search-barcode-filters-wrapper">
+                </div>
+
+
+
+            </div>
+    </div>
+    <div class="bottom-panel">
+        <div class="bottom-panel-right">
+                <div class="search-button-wrapper">
+                            <div class="additional-filters">
+            <span class="toggle-search">
+                <small onclick="window.modules.mainSearchFilters.openSimpleSearchFilters();" class="button-simple-search active">Simples</small>
+                <small onclick="window.modules.mainSearchFilters.openAdvancedSearchFilters();" class="button-advanced-search ">Avan&#231;ada</small>
+
+            </span>
+        </div>
+
+
+                    <input type="submit" class="button" value="Pesquisar" style="height: 26px; width: 100px" id="search-box-input-submit" />
+                </div>
+        </div>
+        
+        <div class="bottom-panel-left  ">
+            <div class="limpar hidden">
+                <a href="#" onclick="window.modules.searchBox.limparFiltro(); return false;">Limpar filtro</a>
+            </div>
+                <div class="simple-search-box ">
+                        <div class="text">
+                            <div>
+                                <input autocomplete="off" id="Search" name="Search" placeholder="Pesquisar contatos pelos campos: nome/razão social, CPF/CNPJ e nome fantasia" type="text" value="" />
+                            </div>
+                        </div>
+                </div>
+        </div>
+        <div style="clear: both">
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var isReportModelCreation = 'false';
+            var hasSearchKey = 'false';
+
+			window.modules.searchBox.setupSearchBox(isReportModelCreation, hasSearchKey, false, "a.button-cancel.link-button");
+
+            // If the advanced search is opened, change filter sizes and add the button menu.
+        });
+    </script>
+    <div class="loading-box">
+    </div>
+</form></div>
+<div class="filters-applied-bar hidden">
+    <span><i>A configura&#231;&#227;o de salvar os crit&#233;rios de filtros est&#225; selecionada, portanto podem haver filtro(s) aplicado(s)</i></span>
+</div>
+
+<div id="popovermenus">
+    <div class="popover-menu-wrapper"><span class="grid-columns-popover-menu popover-menu-button main-popover-menu-button" list="211127bee06c4487868117bd45221c06"></span><span class="grid-columns-popover-menu-arrow popover-menu-button main-popover-menu-button"></span></div>
+    <div class="popover-menu-wrapper"><span class="default-popover-menu popover-menu-button main-popover-menu-button" list="847e6ada67034867a168fdea23611c93">Mais A&#231;&#245;es</span><ul class="popover-menu-list" id="847e6ada67034867a168fdea23611c93"><li><a class="popover-menu-long-text" href="/DataCloud/QueryStatus/Search?Origin=contatos" style="">Status DataCloud diários oficiais</a></li></ul></div>
+    <div class="popover-menu-wrapper"><span class="files-popover-menu print-popover-menu popover-menu-button main-popover-menu-button" list="5c50eca8f42b4ac787e2b100a39e5f1d">Arquivos</span><ul class="popover-menu-list" id="5c50eca8f42b4ac787e2b100a39e5f1d"><li><a class="command-link" onclick="showPrintDialog(&#39;/contatos/contatos/search&#39;);">Imprimir</a></li><li><a class="command-link" href="/contatos/ReportContatos/listacontatosgerar/72?ReportTitle=Contatos&amp;ExportTo=0">Gerar relatório padrão</a></li><li><a class="command-link" href="/contatos/ReportContatos/ExcelContatosGerar/209?_h=H4sIAAAAAAAEAK1bUXMbJxD-Ncmjx3Waafvg6ciWnXgmThxbcfqKTsQmOR1X4Bynv76gk05wLOxy8kvTwO4Cy-63n7jN3wvRyjkzbLZaC62ZPD1-vRua82joI9OVWPPGDIPmnK2YNsoNzJoV20weXenPHV9fPPOqM7I7vWS15t70sOhuJFDezSYsn8vG8Gcjb5SsuNYysn4vmqqrpT5nWmqrMPvOnhGhW15JtTqXXWNOfzvO2LrjTFWP_cH46uzXF80VuoEbpoxgNSJ39yh_XoracPWpNUI2Gt1zzYxUQt5IrTtxzlqG7eShkYpfyqqLbVs3PXD7t2u56moeTdv74ItfLXebnLWtFI1xE3rB9A_9VZhH2Zlr-cQ3g6MLA_2f9DjRx2mv4n6keC721bVshNXygnQXifa84WRw5nBqdO6xXubsY9Hw_OFsygfjvaT8MFor8sW7i7mXxPzZucCNuTC5Zc0Dn3eKuYWPzviDaNxwfzIXQ0nZi2YFSmYSOp4eORjSzzgZEg8dHUuknA3tLeVwYF3Q6dfSIiL7IJof77hiaqb-7cSTPF2orp-_0pvxkWU7qlj7KKpb3kplRpdo576JaneFV_riWSyFupXGbmZv2Ulux94GghfiWWp_B_3wB77Bk_2EPbOomNyNHw9Ww5Gd_kIaVrvD1OEeLqVaWycOrhypvZkH574XumO1-I-p7Sm_itUDNzdMNLwe8peg8V6uuSfXL3ZleKO3G-hda6OvU4o3FT_y_nd7K5vQdCOCzeQdq5-Y8v02CmsgkNHQhYI1F575gIxD8FyuWyUdLZALpvg3doTU_JwCxAIo8h4vyO8nwRRyShmooauNbq5kvcz9lpgJo4CumYqVkrOnIqpg_4VxFzCXTULl5EupDLI2LUAKQmJyEJRc-5SLnna1lMuE6AQsRSUYVG2IcsC6RciA0hLaGkWBgFMXig49MEroDWm3xEDJUSBYIyZFSTmAJqXDdU-cUvZiKpW2NpCrvDGPbuUFAwIGi0aULL07TCZF29IWASKXNz1Qu5RYCdkrtOHRP1gzJISwzCEUMbVfFIZIwDMBamjgUgYnpQBCgYz39mfsQrElqx8tb-zLjLlqRJWIOFB-wdVaNAUKWY460ninZNfOlrYMuYr5XnaKfJobZiN7IYzlPTdcWyDU7NXJ8Yq7_7CV1PbPVlmUFS0TGjfnwqBy19RHA3UXV3oh1pZPcW62WVZyG3fdckPdSL4qqsJZXTQvkJWLEgaxhWVSVp2eYog_6LmXP055UlIKdKxCqtVAwOXKdrQKpYIDa2SKeWKJbF1P6CAlfgwWeLUHTlIgTucAwDokOpBYMMMMIo3DSALVXJYvjIxg1GEk_rIsIjpQCaKWYuhhqFmMk5OR8QAspKBfTxHAu96yB9lUddd_ekvK5BhGL3LTLWub8VXKjv25O3tiombLmrtfwaBUUcUtLLEH1dTSIjq1ak4vk-V10V3J3Fx29TdR144Nglcy52xVW7javWSBQu6AmyctN1Vz688P7opTK1NKMLXmYkWWVlWRMkqqm8RCSaiMWCmk1z5ysSNUt0PL2bT6hRWsl61QCOSgIFMIKziQ0KGjBCxieLiTFr2Fcfh9KRpmvScUc2-Y7HPXD3_q7p0LNw-tLqzsbeBKWcFNTWjt1p5Y7W5Ns3pbGWB5-9NPzqqKt2Z3o4bn9-80bvl3-zuTruE8fi2Ne-bDXLMri6g7Cjx34e4JcZyTswfiS7GiCG5SjiC5XfpaPhH3eibXdOFbztdLWWtsJ9D7fFqS-kZfYgF6p0_rZzgLVWkEK_S1MmBDNxJCEFUvBUz0M6fgirxzIohh7_hprZinZGUBvpIP8T1vydmN-Uve6sBjcKMen8GFA16TFo_4TX63FLkU38lbBngPvsTAf3KiJTxogh2PD6W1Q16UljuEH-X2ToI5MrBNhDI6eJXD1RSAokISFVhKQIUCKHQwIQAJGUQKAIQIHhTgKAONIsAggsVLAMV0kKAAxMuDAwEYSKAwARBoYFAGBKUgEAOAe7LT-zc7Pf4omJjffwRMCHhPcpFE-iNfJOq1FUdzmQ9-xpJ--4d2n-FiRfjTHiCW-JQHHtn_dBcJZEg4IjuKRtRyJixR3TA-EfFUoKLnSUUstj08dOOyBYkAFQu80H2xAqzEdQq0MZSopAmvOiVlgsIUp8G4JoE7yUynKhFoByhCSYND_QEkSkoPXd2rOpFSWHCi6UNqDbDBXIZjOV2WxWjekjO1IDfhbEz3liCdJFjfCLlLZCQ4Kh-0bpGoeKBdIdQeEKTjg97fUdLNMb13o6hTY1JfxsQujMKeC7TDgtRPke2eIPRK5Doj8D4IStcD1uOQ7Wgg9i_QuhWw3oSDOhEm9B1kuwxesKcg10GQ7xco6Q5AegGIX_7J3_nRr_pnrPnhnsOP7B5nVeWO9LFbL7maNSv37xGqX713Brk4A_0pIPeG6TDrPK043wKdIdMiFS_Horkgu4bZKK-ClYDhVC4FekAWRQaG_PFmSjIHV_NyZhAOs2UYPiRPvI14GeKZDnLDk85khScV5sMwkcoEb91UDuyNR9EfBzMcw2HoQhEbBCoQn2BYRtEYBmEq9hIhF0VaWYBR4ioMp0OiKAgeP2beHv_-xxu7kDO9kKcn21V6uue2bM_r-oFfnfzJN0JMue5gphwH5M8Vr1-d_PU6G23Ra04ittIhBUXSQm4X29LL_iXrpzDV40J-5D-__DNrW9fH5JZYyIeH7T_y-h9jkJLdu0AAAA2">Exportar para Excel</a></li><li><a class="command-link" href="/shared/auditoria/search?TipoObjeto=15&amp;titulo=Auditando%20pessoas%20f%C3%ADsicas%2Fjur%C3%ADdicas">Auditar contatos</a></li></ul></div>
+    
+
+
+<div class="popover-menu-wrapper"><span class="import-popover-menu popover-menu-button main-popover-menu-button" list="df2753fc6381432f94266cb3dd1dce0e">Importar</span><ul class="popover-menu-list" id="df2753fc6381432f94266cb3dd1dce0e"><li><a href="/contatos/contactimport?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue" style="">Importação de contatos</a></li></ul></div>
+
+
+    <div class="popover-menu-wrapper"><span class="add-popover-menu popover-menu-button main-popover-menu-button" list="0d00f9f706214b8c86e6c56ee679418f">Adicionar</span><ul class="popover-menu-list" id="0d00f9f706214b8c86e6c56ee679418f"><li><a href="/contatos/pessoas/create?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue" style="">Nova pessoa física</a></li><li><a href="/contatos/empresas/create?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue" style="">Nova pessoa jurídica</a></li></ul></div>
+</div>
+
+<p class="legalone-grid-counter result-header" data-count="50473" data-label="Pessoas físicas/jurídicas encontradas:">Pessoas físicas/jurídicas encontradas: <b>50.473</b></p>
+
+<div class="search-list">
+    <div>
+        <div>
+            <div>
+        <!-- Commands -->
+
+
+<div class='webgrid-wrapper '>        <script type="text/javascript">
+        (function($) {
+            $.fn.swhgLoad = function(url, containerId, callback) {
+                url = url + (url.indexOf('?') == -1 ? '?' : '&') + '__swhg=' + new Date().getTime();
+
+                $('<div/>').load(url + ' ' + containerId, function(data, status, xhr) {
+                    $(containerId).replaceWith($(this).html());
+                    if (typeof(callback) === 'function') {
+                        callback.apply(this, arguments);
+                    }
+                });
+                return this;
+            }
+
+            $(function() {
+                $('table[data-swhgajax="true"],span[data-swhgajax="true"]').each(function() {
+                    var self = $(this);
+                    var containerId = '#' + self.data('swhgcontainer');
+                    var callback = getFunction(self.data('swhgcallback'));
+
+                    $(containerId).parent().delegate(containerId + ' a[data-swhglnk="true"]', 'click', function() {
+                        $(containerId).swhgLoad($(this).attr('href'), containerId, callback);
+                        return false;
+                    });
+                })
+            });
+
+            function getFunction(code, argNames) {
+                argNames = argNames || [];
+                var fn = window, parts = (code || "").split(".");
+                while (fn && parts.length) {
+                    fn = fn[parts.shift()];
+                }
+                if (typeof (fn) === "function") {
+                    return fn;
+                }
+                argNames.push(code);
+                return Function.constructor.apply(null, argNames);
+            }
+        })(jQuery);
+        </script>
+    <table class="webgrid grid-view-column-active" id="9d36c4a1-cb4a-47b5-bd61-f01946caa597" data-titles="##Nome / Razão social##CPF/CNPJ##Profissão/Nome fantasia##Telefone##E-mail##Grupos##Classificações##Tipo" data-swhgajax="true" data-swhgcontainer="ajax-grid" data-swhgcallback="">
+    <thead>
+        <tr class="webgrid-header">
+            <th scope="col">
+            </th>
+            <th scope="col">
+<a data-swhglnk="true" href="/contatos/contatos/search?SortBy=Nome&amp;_SortDirection=ASC">Nome / Raz&#227;o social</a>            </th>
+            <th scope="col">
+<a data-swhglnk="true" href="/contatos/contatos/search?SortBy=CPF_CNPJ&amp;_SortDirection=ASC">CPF/CNPJ</a>            </th>
+            <th scope="col">
+Profiss&#227;o/Nome fantasia            </th>
+            <th scope="col">
+<a data-swhglnk="true" href="/contatos/contatos/search?SortBy=MainPhone&amp;_SortDirection=ASC">Telefone</a>            </th>
+            <th scope="col">
+<a data-swhglnk="true" href="/contatos/contatos/search?SortBy=MainEmail&amp;_SortDirection=ASC">E-mail</a>            </th>
+            <th scope="col">
+<a data-swhglnk="true" href="/contatos/contatos/search?SortBy=GruposDeContato&amp;_SortDirection=ASC">Grupos</a>            </th>
+            <th scope="col">
+Classifica&#231;&#245;es            </th>
+            <th scope="col">
+Tipo            </th>
+            <th scope="col">
+            </th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr  class="webgrid-footer grid-checkable">
+            <td colspan="10">1 <a data-swhglnk="true" href="/contatos/contatos/search?Page=2">2</a> <a data-swhglnk="true" href="/contatos/contatos/search?Page=3">3</a> <a data-swhglnk="true" href="/contatos/contatos/search?Page=4">4</a> <a data-swhglnk="true" href="/contatos/contatos/search?Page=5">5</a> <a data-swhglnk="true" href="/contatos/contatos/search?Page=2">Pr&#243;xima</a> <a data-swhglnk="true" href="/contatos/contatos/search?Page=2805">&#218;ltima</a></td>
+        </tr>
+    </tfoot>
+    <tbody>
+        <tr class="webgrid-row-style">
+            <td class="min-width-column grid-non-clickable-column"><input autocomplete="off" class="grid_check" data-val="86210" id="grid_check_86210" name="grid_check_86210" type="checkbox" value="true" /><input name="grid_check_86210" type="hidden" value="false" /><label for="grid_check_86210"></label><input class="visualization-url-content" type="hidden" value="/contatos/pessoas/details/86210?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue"></input></td>
+            <td><a href="/contatos/pessoas/details/86210?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue">- BELCHIOR DA SILVA LIMA</a></td>
+            <td>
+            
+        </td>
+            <td><a href="/contatos/contatos/search?ShowAdvancedFilters=True"></a></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+            <a href="/contatos/contatos/search?ShowAdvancedFilters=True&amp;Tipo=1">Pessoa f&#237;sica</a>
+        </td>
+            <td class="min-width-column grid-non-clickable-column grid-actions-column"><div class="popover-button-wrapper"><span class="legalone-row-actions popover-menu-button" list="87040d86def347b0b73d06466f74575d"><span class="grid-overflow-icon"></span></span><ul class="legalone-row-actions-dropdown popover-menu-list" id="87040d86def347b0b73d06466f74575d"><li><a class="grid-edit-action-row" href="/contatos/pessoas/edit/86210?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue" title="Excluir pessoa física">Alterar</a></li><li><a class="grid-delete-action-row" href="javascript:void(0);" id="delete_281185" title="Excluir pessoa física">Excluir</a><script type="text/javascript"> $("#delete_281185").click(function () { $.alerts.okButton = window.localization.scriptsresources.Sim; $.alerts.cancelButton = window.localization.scriptsresources.Nao;  jConfirm('Esta operação não poderá ser desfeita.\nCaso este item esteja selecionado como critério de filtro em um modelo de relatório, se for o único, os relatórios deste modelo não serão mais gerados.\nApós excluir o item, remova-o dos modelos de relatórios.<br />Tem certeza que deseja excluir a pessoa física?', 'Excluindo: - BELCHIOR DA SILVA LIMA' ,function (retorno) { if (retorno) { window.location = '/contatos/contatos/delete/86210?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue'; } });   });</script></li></ul></div></td>
+        </tr>
+        <tr class="webgrid-alternating-row">
+            <td class="min-width-column grid-non-clickable-column"><input autocomplete="off" class="grid_check" data-val="77201" id="grid_check_77201" name="grid_check_77201" type="checkbox" value="true" /><input name="grid_check_77201" type="hidden" value="false" /><label for="grid_check_77201"></label><input class="visualization-url-content" type="hidden" value="/contatos/pessoas/details/77201?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue"></input></td>
+            <td><a href="/contatos/pessoas/details/77201?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue">070.713.668-70</a></td>
+            <td>
+            
+        </td>
+            <td><a href="/contatos/contatos/search?ShowAdvancedFilters=True"></a></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+            <a href="/contatos/contatos/search?ShowAdvancedFilters=True&amp;Tipo=1">Pessoa f&#237;sica</a>
+        </td>
+            <td class="min-width-column grid-non-clickable-column grid-actions-column"><div class="popover-button-wrapper"><span class="legalone-row-actions popover-menu-button" list="4c9909e15d2f4d5f8426dad5cc53ff9c"><span class="grid-overflow-icon"></span></span><ul class="legalone-row-actions-dropdown popover-menu-list" id="4c9909e15d2f4d5f8426dad5cc53ff9c"><li><a class="grid-edit-action-row" href="/contatos/pessoas/edit/77201?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue" title="Excluir pessoa física">Alterar</a></li><li><a class="grid-delete-action-row" href="javascript:void(0);" id="delete_281186" title="Excluir pessoa física">Excluir</a><script type="text/javascript"> $("#delete_281186").click(function () { $.alerts.okButton = window.localization.scriptsresources.Sim; $.alerts.cancelButton = window.localization.scriptsresources.Nao;  jConfirm('Esta operação não poderá ser desfeita.\nCaso este item esteja selecionado como critério de filtro em um modelo de relatório, se for o único, os relatórios deste modelo não serão mais gerados.\nApós excluir o item, remova-o dos modelos de relatórios.<br />Tem certeza que deseja excluir a pessoa física?', 'Excluindo: 070.713.668-70' ,function (retorno) { if (retorno) { window.location = '/contatos/contatos/delete/77201?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue'; } });   });</script></li></ul></div></td>
+        </tr>
+        <tr class="webgrid-row-style">
+            <td class="min-width-column grid-non-clickable-column"><input autocomplete="off" class="grid_check" data-val="90703" id="grid_check_90703" name="grid_check_90703" type="checkbox" value="true" /><input name="grid_check_90703" type="hidden" value="false" /><label for="grid_check_90703"></label><input class="visualization-url-content" type="hidden" value="/contatos/pessoas/details/90703?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue"></input></td>
+            <td><a href="/contatos/pessoas/details/90703?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue">11944492718</a></td>
+            <td>
+            
+        </td>
+            <td><a href="/contatos/contatos/search?ShowAdvancedFilters=True"></a></td>
+            <td>(11) 94449-2718</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+            <a href="/contatos/contatos/search?ShowAdvancedFilters=True&amp;Tipo=1">Pessoa f&#237;sica</a>
+        </td>
+            <td class="min-width-column grid-non-clickable-column grid-actions-column"><div class="popover-button-wrapper"><span class="legalone-row-actions popover-menu-button" list="acdf7398690e4a32bfff5a8ba336da8a"><span class="grid-overflow-icon"></span></span><ul class="legalone-row-actions-dropdown popover-menu-list" id="acdf7398690e4a32bfff5a8ba336da8a"><li><a class="grid-edit-action-row" href="/contatos/pessoas/edit/90703?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue" title="Excluir pessoa física">Alterar</a></li><li><a class="grid-delete-action-row" href="javascript:void(0);" id="delete_281187" title="Excluir pessoa física">Excluir</a><script type="text/javascript"> $("#delete_281187").click(function () { $.alerts.okButton = window.localization.scriptsresources.Sim; $.alerts.cancelButton = window.localization.scriptsresources.Nao;  jConfirm('Esta operação não poderá ser desfeita.\nCaso este item esteja selecionado como critério de filtro em um modelo de relatório, se for o único, os relatórios deste modelo não serão mais gerados.\nApós excluir o item, remova-o dos modelos de relatórios.<br />Tem certeza que deseja excluir a pessoa física?', 'Excluindo: 11944492718' ,function (retorno) { if (retorno) { window.location = '/contatos/contatos/delete/90703?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue'; } });   });</script></li></ul></div></td>
+        </tr>
+        <tr class="webgrid-alternating-row">
+            <td class="min-width-column grid-non-clickable-column"><input autocomplete="off" class="grid_check" data-val="54816" id="grid_check_54816" name="grid_check_54816" type="checkbox" value="true" /><input name="grid_check_54816" type="hidden" value="false" /><label for="grid_check_54816"></label><input class="visualization-url-content" type="hidden" value="/contatos/pessoas/details/54816?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue"></input></td>
+            <td><a href="/contatos/pessoas/details/54816?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue">15ª JUNTA DE RECURSOS DA PREVIDÊNCIA SOCIAL</a></td>
+            <td>
+            
+        </td>
+            <td><a href="/contatos/contatos/search?ShowAdvancedFilters=True"></a></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+            <a href="/contatos/contatos/search?ShowAdvancedFilters=True&amp;Tipo=1">Pessoa f&#237;sica</a>
+        </td>
+            <td class="min-width-column grid-non-clickable-column grid-actions-column"><div class="popover-button-wrapper"><span class="legalone-row-actions popover-menu-button" list="536d34dbef3247e7b1ee5c35930ad281"><span class="grid-overflow-icon"></span></span><ul class="legalone-row-actions-dropdown popover-menu-list" id="536d34dbef3247e7b1ee5c35930ad281"><li><a class="grid-edit-action-row" href="/contatos/pessoas/edit/54816?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue" title="Excluir pessoa física">Alterar</a></li><li><a class="grid-delete-action-row" href="javascript:void(0);" id="delete_281188" title="Excluir pessoa física">Excluir</a><script type="text/javascript"> $("#delete_281188").click(function () { $.alerts.okButton = window.localization.scriptsresources.Sim; $.alerts.cancelButton = window.localization.scriptsresources.Nao;  jConfirm('Esta operação não poderá ser desfeita.\nCaso este item esteja selecionado como critério de filtro em um modelo de relatório, se for o único, os relatórios deste modelo não serão mais gerados.\nApós excluir o item, remova-o dos modelos de relatórios.<br />Tem certeza que deseja excluir a pessoa física?', 'Excluindo: 15&#170; JUNTA DE RECURSOS DA PREVID&#202;NCIA SOCIAL' ,function (retorno) { if (retorno) { window.location = '/contatos/contatos/delete/54816?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue'; } });   });</script></li></ul></div></td>
+        </tr>
+        <tr class="webgrid-row-style">
+            <td class="min-width-column grid-non-clickable-column"><input autocomplete="off" class="grid_check" data-val="75835" id="grid_check_75835" name="grid_check_75835" type="checkbox" value="true" /><input name="grid_check_75835" type="hidden" value="false" /><label for="grid_check_75835"></label><input class="visualization-url-content" type="hidden" value="/contatos/pessoas/details/75835?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue"></input></td>
+            <td><a href="/contatos/pessoas/details/75835?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue">279892</a></td>
+            <td>
+            
+        </td>
+            <td><a href="/contatos/contatos/search?ShowAdvancedFilters=True"></a></td>
+            <td>(13) 97404-4680</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+            <a href="/contatos/contatos/search?ShowAdvancedFilters=True&amp;Tipo=1">Pessoa f&#237;sica</a>
+        </td>
+            <td class="min-width-column grid-non-clickable-column grid-actions-column"><div class="popover-button-wrapper"><span class="legalone-row-actions popover-menu-button" list="5be2b044a115422987532436cb3b8005"><span class="grid-overflow-icon"></span></span><ul class="legalone-row-actions-dropdown popover-menu-list" id="5be2b044a115422987532436cb3b8005"><li><a class="grid-edit-action-row" href="/contatos/pessoas/edit/75835?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue" title="Excluir pessoa física">Alterar</a></li><li><a class="grid-delete-action-row" href="javascript:void(0);" id="delete_281189" title="Excluir pessoa física">Excluir</a><script type="text/javascript"> $("#delete_281189").click(function () { $.alerts.okButton = window.localization.scriptsresources.Sim; $.alerts.cancelButton = window.localization.scriptsresources.Nao;  jConfirm('Esta operação não poderá ser desfeita.\nCaso este item esteja selecionado como critério de filtro em um modelo de relatório, se for o único, os relatórios deste modelo não serão mais gerados.\nApós excluir o item, remova-o dos modelos de relatórios.<br />Tem certeza que deseja excluir a pessoa física?', 'Excluindo: 279892' ,function (retorno) { if (retorno) { window.location = '/contatos/contatos/delete/75835?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue'; } });   });</script></li></ul></div></td>
+        </tr>
+        <tr class="webgrid-alternating-row">
+            <td class="min-width-column grid-non-clickable-column"><input autocomplete="off" class="grid_check" data-val="100141" id="grid_check_100141" name="grid_check_100141" type="checkbox" value="true" /><input name="grid_check_100141" type="hidden" value="false" /><label for="grid_check_100141"></label><input class="visualization-url-content" type="hidden" value="/contatos/empresas/details/100141?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue"></input></td>
+            <td><a href="/contatos/empresas/details/100141?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue">888.Com Participações LTDA</a></td>
+            <td>
+            10.589.507/0001-86
+        </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>Fornecedor</td>
+            <td>
+            <a href="/contatos/contatos/search?ShowAdvancedFilters=True&amp;Tipo=2">Pessoa jur&#237;dica</a>
+        </td>
+            <td class="min-width-column grid-non-clickable-column grid-actions-column"><div class="popover-button-wrapper"><span class="legalone-row-actions popover-menu-button" list="331b695abdfd43d290e4449318abbe15"><span class="grid-overflow-icon"></span></span><ul class="legalone-row-actions-dropdown popover-menu-list" id="331b695abdfd43d290e4449318abbe15"><li><a class="grid-edit-action-row" href="/contatos/empresas/edit/100141?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue" title="Excluir pessoa jurídica">Alterar</a></li><li><a class="grid-delete-action-row" href="javascript:void(0);" id="delete_281190" title="Excluir pessoa jurídica">Excluir</a><script type="text/javascript"> $("#delete_281190").click(function () { $.alerts.okButton = window.localization.scriptsresources.Sim; $.alerts.cancelButton = window.localization.scriptsresources.Nao;  jConfirm('Esta operação não poderá ser desfeita.\nCaso este item esteja selecionado como critério de filtro em um modelo de relatório, se for o único, os relatórios deste modelo não serão mais gerados.\nApós excluir o item, remova-o dos modelos de relatórios.<br />Tem certeza que deseja excluir a pessoa jurídica?', 'Excluindo: 888.Com Participa&#231;&#245;es LTDA' ,function (retorno) { if (retorno) { window.location = '/contatos/contatos/delete/100141?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue'; } });   });</script></li></ul></div></td>
+        </tr>
+        <tr class="webgrid-row-style">
+            <td class="min-width-column grid-non-clickable-column"><input autocomplete="off" class="grid_check" data-val="86110" id="grid_check_86110" name="grid_check_86110" type="checkbox" value="true" /><input name="grid_check_86110" type="hidden" value="false" /><label for="grid_check_86110"></label><input class="visualization-url-content" type="hidden" value="/contatos/pessoas/details/86110?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue"></input></td>
+            <td><a href="/contatos/pessoas/details/86110?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue">A N N D R E Y  M A R T I N S  R O S S I</a></td>
+            <td>
+            
+        </td>
+            <td><a href="/contatos/contatos/search?ShowAdvancedFilters=True"></a></td>
+            <td>(11) 94791-9185</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+            <a href="/contatos/contatos/search?ShowAdvancedFilters=True&amp;Tipo=1">Pessoa f&#237;sica</a>
+        </td>
+            <td class="min-width-column grid-non-clickable-column grid-actions-column"><div class="popover-button-wrapper"><span class="legalone-row-actions popover-menu-button" list="e3e901c13a024712a58195a164cc0b18"><span class="grid-overflow-icon"></span></span><ul class="legalone-row-actions-dropdown popover-menu-list" id="e3e901c13a024712a58195a164cc0b18"><li><a class="grid-edit-action-row" href="/contatos/pessoas/edit/86110?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue" title="Excluir pessoa física">Alterar</a></li><li><a class="grid-delete-action-row" href="javascript:void(0);" id="delete_281191" title="Excluir pessoa física">Excluir</a><script type="text/javascript"> $("#delete_281191").click(function () { $.alerts.okButton = window.localization.scriptsresources.Sim; $.alerts.cancelButton = window.localization.scriptsresources.Nao;  jConfirm('Esta operação não poderá ser desfeita.\nCaso este item esteja selecionado como critério de filtro em um modelo de relatório, se for o único, os relatórios deste modelo não serão mais gerados.\nApós excluir o item, remova-o dos modelos de relatórios.<br />Tem certeza que deseja excluir a pessoa física?', 'Excluindo: A N N D R E Y  M A R T I N S  R O S S I' ,function (retorno) { if (retorno) { window.location = '/contatos/contatos/delete/86110?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue'; } });   });</script></li></ul></div></td>
+        </tr>
+        <tr class="webgrid-alternating-row">
+            <td class="min-width-column grid-non-clickable-column"><input autocomplete="off" class="grid_check" data-val="100206" id="grid_check_100206" name="grid_check_100206" type="checkbox" value="true" /><input name="grid_check_100206" type="hidden" value="false" /><label for="grid_check_100206"></label><input class="visualization-url-content" type="hidden" value="/contatos/empresas/details/100206?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue"></input></td>
+            <td><a href="/contatos/empresas/details/100206?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue">ABACO CONTABILIDADE S/S LTDA</a></td>
+            <td>
+            02.998.119/0001-20
+        </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>Fornecedor</td>
+            <td>
+            <a href="/contatos/contatos/search?ShowAdvancedFilters=True&amp;Tipo=2">Pessoa jur&#237;dica</a>
+        </td>
+            <td class="min-width-column grid-non-clickable-column grid-actions-column"><div class="popover-button-wrapper"><span class="legalone-row-actions popover-menu-button" list="025ad5757d424421b48b93e4b6b0d68b"><span class="grid-overflow-icon"></span></span><ul class="legalone-row-actions-dropdown popover-menu-list" id="025ad5757d424421b48b93e4b6b0d68b"><li><a class="grid-edit-action-row" href="/contatos/empresas/edit/100206?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue" title="Excluir pessoa jurídica">Alterar</a></li><li><a class="grid-delete-action-row" href="javascript:void(0);" id="delete_281192" title="Excluir pessoa jurídica">Excluir</a><script type="text/javascript"> $("#delete_281192").click(function () { $.alerts.okButton = window.localization.scriptsresources.Sim; $.alerts.cancelButton = window.localization.scriptsresources.Nao;  jConfirm('Esta operação não poderá ser desfeita.\nCaso este item esteja selecionado como critério de filtro em um modelo de relatório, se for o único, os relatórios deste modelo não serão mais gerados.\nApós excluir o item, remova-o dos modelos de relatórios.<br />Tem certeza que deseja excluir a pessoa jurídica?', 'Excluindo: ABACO CONTABILIDADE S/S LTDA' ,function (retorno) { if (retorno) { window.location = '/contatos/contatos/delete/100206?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue'; } });   });</script></li></ul></div></td>
+        </tr>
+        <tr class="webgrid-row-style">
+            <td class="min-width-column grid-non-clickable-column"><input autocomplete="off" class="grid_check" data-val="91605" id="grid_check_91605" name="grid_check_91605" type="checkbox" value="true" /><input name="grid_check_91605" type="hidden" value="false" /><label for="grid_check_91605"></label><input class="visualization-url-content" type="hidden" value="/contatos/pessoas/details/91605?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue"></input></td>
+            <td><a href="/contatos/pessoas/details/91605?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue">ABDIAS DE ALMEIDA NETO</a></td>
+            <td>
+            543.471.738-49
+        </td>
+            <td><a href="/contatos/contatos/search?ShowAdvancedFilters=True"></a></td>
+            <td>(75) 9814-17114</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+            <a href="/contatos/contatos/search?ShowAdvancedFilters=True&amp;Tipo=1">Pessoa f&#237;sica</a>
+        </td>
+            <td class="min-width-column grid-non-clickable-column grid-actions-column"><div class="popover-button-wrapper"><span class="legalone-row-actions popover-menu-button" list="d0864dc1ab55426c83f0f0fec200a2ab"><span class="grid-overflow-icon"></span></span><ul class="legalone-row-actions-dropdown popover-menu-list" id="d0864dc1ab55426c83f0f0fec200a2ab"><li><a class="grid-edit-action-row" href="/contatos/pessoas/edit/91605?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue" title="Excluir pessoa física">Alterar</a></li><li><a class="grid-delete-action-row" href="javascript:void(0);" id="delete_281193" title="Excluir pessoa física">Excluir</a><script type="text/javascript"> $("#delete_281193").click(function () { $.alerts.okButton = window.localization.scriptsresources.Sim; $.alerts.cancelButton = window.localization.scriptsresources.Nao;  jConfirm('Esta operação não poderá ser desfeita.\nCaso este item esteja selecionado como critério de filtro em um modelo de relatório, se for o único, os relatórios deste modelo não serão mais gerados.\nApós excluir o item, remova-o dos modelos de relatórios.<br />Tem certeza que deseja excluir a pessoa física?', 'Excluindo: ABDIAS DE ALMEIDA NETO' ,function (retorno) { if (retorno) { window.location = '/contatos/contatos/delete/91605?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue'; } });   });</script></li></ul></div></td>
+        </tr>
+        <tr class="webgrid-alternating-row">
+            <td class="min-width-column grid-non-clickable-column"><input autocomplete="off" class="grid_check" data-val="51789" id="grid_check_51789" name="grid_check_51789" type="checkbox" value="true" /><input name="grid_check_51789" type="hidden" value="false" /><label for="grid_check_51789"></label><input class="visualization-url-content" type="hidden" value="/contatos/pessoas/details/51789?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue"></input></td>
+            <td><a href="/contatos/pessoas/details/51789?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue">ABDIAS JOSE LIMA</a></td>
+            <td>
+            688.964.685-15
+        </td>
+            <td><a href="/contatos/contatos/search?ShowAdvancedFilters=True"></a></td>
+            <td>16 98242-0414</td>
+            <td></td>
+            <td></td>
+            <td>Cliente ativo</td>
+            <td>
+            <a href="/contatos/contatos/search?ShowAdvancedFilters=True&amp;Tipo=1">Pessoa f&#237;sica</a>
+        </td>
+            <td class="min-width-column grid-non-clickable-column grid-actions-column"><div class="popover-button-wrapper"><span class="legalone-row-actions popover-menu-button" list="b32c54625aad4292acc44fc15d01ae3b"><span class="grid-overflow-icon"></span></span><ul class="legalone-row-actions-dropdown popover-menu-list" id="b32c54625aad4292acc44fc15d01ae3b"><li><a class="grid-edit-action-row" href="/contatos/pessoas/edit/51789?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue" title="Excluir pessoa física">Alterar</a></li><li><a class="grid-delete-action-row" href="javascript:void(0);" id="delete_281194" title="Excluir pessoa física">Excluir</a><script type="text/javascript"> $("#delete_281194").click(function () { $.alerts.okButton = window.localization.scriptsresources.Sim; $.alerts.cancelButton = window.localization.scriptsresources.Nao;  jConfirm('Esta operação não poderá ser desfeita.\nCaso este item esteja selecionado como critério de filtro em um modelo de relatório, se for o único, os relatórios deste modelo não serão mais gerados.\nApós excluir o item, remova-o dos modelos de relatórios.<br />Tem certeza que deseja excluir a pessoa física?', 'Excluindo: ABDIAS JOSE LIMA' ,function (retorno) { if (retorno) { window.location = '/contatos/contatos/delete/51789?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue'; } });   });</script></li></ul></div></td>
+        </tr>
+        <tr class="webgrid-row-style">
+            <td class="min-width-column grid-non-clickable-column"><input autocomplete="off" class="grid_check" data-val="68958" id="grid_check_68958" name="grid_check_68958" type="checkbox" value="true" /><input name="grid_check_68958" type="hidden" value="false" /><label for="grid_check_68958"></label><input class="visualization-url-content" type="hidden" value="/contatos/pessoas/details/68958?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue"></input></td>
+            <td><a href="/contatos/pessoas/details/68958?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue">ABDON DA SILVA</a></td>
+            <td>
+            004.140.788-10
+        </td>
+            <td><a href="/contatos/contatos/search?ShowAdvancedFilters=True"></a></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+            <a href="/contatos/contatos/search?ShowAdvancedFilters=True&amp;Tipo=1">Pessoa f&#237;sica</a>
+        </td>
+            <td class="min-width-column grid-non-clickable-column grid-actions-column"><div class="popover-button-wrapper"><span class="legalone-row-actions popover-menu-button" list="933ab5f9b3f749a6be4306af98d15279"><span class="grid-overflow-icon"></span></span><ul class="legalone-row-actions-dropdown popover-menu-list" id="933ab5f9b3f749a6be4306af98d15279"><li><a class="grid-edit-action-row" href="/contatos/pessoas/edit/68958?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue" title="Excluir pessoa física">Alterar</a></li><li><a class="grid-delete-action-row" href="javascript:void(0);" id="delete_281195" title="Excluir pessoa física">Excluir</a><script type="text/javascript"> $("#delete_281195").click(function () { $.alerts.okButton = window.localization.scriptsresources.Sim; $.alerts.cancelButton = window.localization.scriptsresources.Nao;  jConfirm('Esta operação não poderá ser desfeita.\nCaso este item esteja selecionado como critério de filtro em um modelo de relatório, se for o único, os relatórios deste modelo não serão mais gerados.\nApós excluir o item, remova-o dos modelos de relatórios.<br />Tem certeza que deseja excluir a pessoa física?', 'Excluindo: ABDON DA SILVA' ,function (retorno) { if (retorno) { window.location = '/contatos/contatos/delete/68958?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue'; } });   });</script></li></ul></div></td>
+        </tr>
+        <tr class="webgrid-alternating-row">
+            <td class="min-width-column grid-non-clickable-column"><input autocomplete="off" class="grid_check" data-val="58979" id="grid_check_58979" name="grid_check_58979" type="checkbox" value="true" /><input name="grid_check_58979" type="hidden" value="false" /><label for="grid_check_58979"></label><input class="visualization-url-content" type="hidden" value="/contatos/pessoas/details/58979?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue"></input></td>
+            <td><a href="/contatos/pessoas/details/58979?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue">ABEDENICO PALMA DE MORAES</a></td>
+            <td>
+            427.353.768-00
+        </td>
+            <td><a href="/contatos/contatos/search?ShowAdvancedFilters=True"></a></td>
+            <td>15998070272</td>
+            <td></td>
+            <td></td>
+            <td>Cliente ativo</td>
+            <td>
+            <a href="/contatos/contatos/search?ShowAdvancedFilters=True&amp;Tipo=1">Pessoa f&#237;sica</a>
+        </td>
+            <td class="min-width-column grid-non-clickable-column grid-actions-column"><div class="popover-button-wrapper"><span class="legalone-row-actions popover-menu-button" list="85a1999689714ab7b7a3c76d324c6f29"><span class="grid-overflow-icon"></span></span><ul class="legalone-row-actions-dropdown popover-menu-list" id="85a1999689714ab7b7a3c76d324c6f29"><li><a class="grid-edit-action-row" href="/contatos/pessoas/edit/58979?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue" title="Excluir pessoa física">Alterar</a></li><li><a class="grid-delete-action-row" href="javascript:void(0);" id="delete_281196" title="Excluir pessoa física">Excluir</a><script type="text/javascript"> $("#delete_281196").click(function () { $.alerts.okButton = window.localization.scriptsresources.Sim; $.alerts.cancelButton = window.localization.scriptsresources.Nao;  jConfirm('Esta operação não poderá ser desfeita.\nCaso este item esteja selecionado como critério de filtro em um modelo de relatório, se for o único, os relatórios deste modelo não serão mais gerados.\nApós excluir o item, remova-o dos modelos de relatórios.<br />Tem certeza que deseja excluir a pessoa física?', 'Excluindo: ABEDENICO PALMA DE MORAES' ,function (retorno) { if (retorno) { window.location = '/contatos/contatos/delete/58979?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue'; } });   });</script></li></ul></div></td>
+        </tr>
+        <tr class="webgrid-row-style">
+            <td class="min-width-column grid-non-clickable-column"><input autocomplete="off" class="grid_check" data-val="55937" id="grid_check_55937" name="grid_check_55937" type="checkbox" value="true" /><input name="grid_check_55937" type="hidden" value="false" /><label for="grid_check_55937"></label><input class="visualization-url-content" type="hidden" value="/contatos/pessoas/details/55937?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue"></input></td>
+            <td><a href="/contatos/pessoas/details/55937?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue">ABEL DA SILVA PIMENTEL</a></td>
+            <td>
+            102.554.227-41
+        </td>
+            <td><a href="/contatos/contatos/search?ShowAdvancedFilters=True"></a></td>
+            <td>24993148766</td>
+            <td></td>
+            <td></td>
+            <td>Cliente ativo</td>
+            <td>
+            <a href="/contatos/contatos/search?ShowAdvancedFilters=True&amp;Tipo=1">Pessoa f&#237;sica</a>
+        </td>
+            <td class="min-width-column grid-non-clickable-column grid-actions-column"><div class="popover-button-wrapper"><span class="legalone-row-actions popover-menu-button" list="ca5274d46ba74aea8e843ea402b30ba7"><span class="grid-overflow-icon"></span></span><ul class="legalone-row-actions-dropdown popover-menu-list" id="ca5274d46ba74aea8e843ea402b30ba7"><li><a class="grid-edit-action-row" href="/contatos/pessoas/edit/55937?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue" title="Excluir pessoa física">Alterar</a></li><li><a class="grid-delete-action-row" href="javascript:void(0);" id="delete_281197" title="Excluir pessoa física">Excluir</a><script type="text/javascript"> $("#delete_281197").click(function () { $.alerts.okButton = window.localization.scriptsresources.Sim; $.alerts.cancelButton = window.localization.scriptsresources.Nao;  jConfirm('Esta operação não poderá ser desfeita.\nCaso este item esteja selecionado como critério de filtro em um modelo de relatório, se for o único, os relatórios deste modelo não serão mais gerados.\nApós excluir o item, remova-o dos modelos de relatórios.<br />Tem certeza que deseja excluir a pessoa física?', 'Excluindo: ABEL DA SILVA PIMENTEL' ,function (retorno) { if (retorno) { window.location = '/contatos/contatos/delete/55937?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue'; } });   });</script></li></ul></div></td>
+        </tr>
+        <tr class="webgrid-alternating-row">
+            <td class="min-width-column grid-non-clickable-column"><input autocomplete="off" class="grid_check" data-val="93873" id="grid_check_93873" name="grid_check_93873" type="checkbox" value="true" /><input name="grid_check_93873" type="hidden" value="false" /><label for="grid_check_93873"></label><input class="visualization-url-content" type="hidden" value="/contatos/pessoas/details/93873?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue"></input></td>
+            <td><a href="/contatos/pessoas/details/93873?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue">ABEL DE ABREU CARVALHO FILHO</a></td>
+            <td>
+            602.942.997-34
+        </td>
+            <td><a href="/contatos/contatos/search?ShowAdvancedFilters=True"></a></td>
+            <td>(21) 9945-60763</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+            <a href="/contatos/contatos/search?ShowAdvancedFilters=True&amp;Tipo=1">Pessoa f&#237;sica</a>
+        </td>
+            <td class="min-width-column grid-non-clickable-column grid-actions-column"><div class="popover-button-wrapper"><span class="legalone-row-actions popover-menu-button" list="c9257407a8534c41956c8c2004eeef4d"><span class="grid-overflow-icon"></span></span><ul class="legalone-row-actions-dropdown popover-menu-list" id="c9257407a8534c41956c8c2004eeef4d"><li><a class="grid-edit-action-row" href="/contatos/pessoas/edit/93873?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue" title="Excluir pessoa física">Alterar</a></li><li><a class="grid-delete-action-row" href="javascript:void(0);" id="delete_281198" title="Excluir pessoa física">Excluir</a><script type="text/javascript"> $("#delete_281198").click(function () { $.alerts.okButton = window.localization.scriptsresources.Sim; $.alerts.cancelButton = window.localization.scriptsresources.Nao;  jConfirm('Esta operação não poderá ser desfeita.\nCaso este item esteja selecionado como critério de filtro em um modelo de relatório, se for o único, os relatórios deste modelo não serão mais gerados.\nApós excluir o item, remova-o dos modelos de relatórios.<br />Tem certeza que deseja excluir a pessoa física?', 'Excluindo: ABEL DE ABREU CARVALHO FILHO' ,function (retorno) { if (retorno) { window.location = '/contatos/contatos/delete/93873?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue'; } });   });</script></li></ul></div></td>
+        </tr>
+        <tr class="webgrid-row-style">
+            <td class="min-width-column grid-non-clickable-column"><input autocomplete="off" class="grid_check" data-val="86471" id="grid_check_86471" name="grid_check_86471" type="checkbox" value="true" /><input name="grid_check_86471" type="hidden" value="false" /><label for="grid_check_86471"></label><input class="visualization-url-content" type="hidden" value="/contatos/pessoas/details/86471?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue"></input></td>
+            <td><a href="/contatos/pessoas/details/86471?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue">ABEL DE SOUZA RIBEIRO</a></td>
+            <td>
+            011.548.538-45
+        </td>
+            <td><a href="/contatos/contatos/search?ShowAdvancedFilters=True"></a></td>
+            <td>(11) 96489-8729</td>
+            <td></td>
+            <td></td>
+            <td>Cliente ativo</td>
+            <td>
+            <a href="/contatos/contatos/search?ShowAdvancedFilters=True&amp;Tipo=1">Pessoa f&#237;sica</a>
+        </td>
+            <td class="min-width-column grid-non-clickable-column grid-actions-column"><div class="popover-button-wrapper"><span class="legalone-row-actions popover-menu-button" list="dcd4ffa29b98474ab01f60813ef4ee9b"><span class="grid-overflow-icon"></span></span><ul class="legalone-row-actions-dropdown popover-menu-list" id="dcd4ffa29b98474ab01f60813ef4ee9b"><li><a class="grid-edit-action-row" href="/contatos/pessoas/edit/86471?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue" title="Excluir pessoa física">Alterar</a></li><li><a class="grid-delete-action-row" href="javascript:void(0);" id="delete_281199" title="Excluir pessoa física">Excluir</a><script type="text/javascript"> $("#delete_281199").click(function () { $.alerts.okButton = window.localization.scriptsresources.Sim; $.alerts.cancelButton = window.localization.scriptsresources.Nao;  jConfirm('Esta operação não poderá ser desfeita.\nCaso este item esteja selecionado como critério de filtro em um modelo de relatório, se for o único, os relatórios deste modelo não serão mais gerados.\nApós excluir o item, remova-o dos modelos de relatórios.<br />Tem certeza que deseja excluir a pessoa física?', 'Excluindo: ABEL DE SOUZA RIBEIRO' ,function (retorno) { if (retorno) { window.location = '/contatos/contatos/delete/86471?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue'; } });   });</script></li></ul></div></td>
+        </tr>
+        <tr class="webgrid-alternating-row">
+            <td class="min-width-column grid-non-clickable-column"><input autocomplete="off" class="grid_check" data-val="78259" id="grid_check_78259" name="grid_check_78259" type="checkbox" value="true" /><input name="grid_check_78259" type="hidden" value="false" /><label for="grid_check_78259"></label><input class="visualization-url-content" type="hidden" value="/contatos/pessoas/details/78259?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue"></input></td>
+            <td><a href="/contatos/pessoas/details/78259?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue">ABEL DIONATAN ALBERTO</a></td>
+            <td>
+            008.806.650-92
+        </td>
+            <td><a href="/contatos/contatos/search?ShowAdvancedFilters=True"></a></td>
+            <td>(51) 99406-8548</td>
+            <td></td>
+            <td></td>
+            <td>Cliente ativo</td>
+            <td>
+            <a href="/contatos/contatos/search?ShowAdvancedFilters=True&amp;Tipo=1">Pessoa f&#237;sica</a>
+        </td>
+            <td class="min-width-column grid-non-clickable-column grid-actions-column"><div class="popover-button-wrapper"><span class="legalone-row-actions popover-menu-button" list="daf5bdac89984e8481418166b7b23c8f"><span class="grid-overflow-icon"></span></span><ul class="legalone-row-actions-dropdown popover-menu-list" id="daf5bdac89984e8481418166b7b23c8f"><li><a class="grid-edit-action-row" href="/contatos/pessoas/edit/78259?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue" title="Excluir pessoa física">Alterar</a></li><li><a class="grid-delete-action-row" href="javascript:void(0);" id="delete_281200" title="Excluir pessoa física">Excluir</a><script type="text/javascript"> $("#delete_281200").click(function () { $.alerts.okButton = window.localization.scriptsresources.Sim; $.alerts.cancelButton = window.localization.scriptsresources.Nao;  jConfirm('Esta operação não poderá ser desfeita.\nCaso este item esteja selecionado como critério de filtro em um modelo de relatório, se for o único, os relatórios deste modelo não serão mais gerados.\nApós excluir o item, remova-o dos modelos de relatórios.<br />Tem certeza que deseja excluir a pessoa física?', 'Excluindo: ABEL DIONATAN ALBERTO' ,function (retorno) { if (retorno) { window.location = '/contatos/contatos/delete/78259?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue'; } });   });</script></li></ul></div></td>
+        </tr>
+        <tr class="webgrid-row-style">
+            <td class="min-width-column grid-non-clickable-column"><input autocomplete="off" class="grid_check" data-val="71729" id="grid_check_71729" name="grid_check_71729" type="checkbox" value="true" /><input name="grid_check_71729" type="hidden" value="false" /><label for="grid_check_71729"></label><input class="visualization-url-content" type="hidden" value="/contatos/pessoas/details/71729?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue"></input></td>
+            <td><a href="/contatos/pessoas/details/71729?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue">ABEL EPAMINONDAS SILVEIRA FILHO</a></td>
+            <td>
+            006.430.518-05
+        </td>
+            <td><a href="/contatos/contatos/search?ShowAdvancedFilters=True"></a></td>
+            <td>(11) 99694-7473</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+            <a href="/contatos/contatos/search?ShowAdvancedFilters=True&amp;Tipo=1">Pessoa f&#237;sica</a>
+        </td>
+            <td class="min-width-column grid-non-clickable-column grid-actions-column"><div class="popover-button-wrapper"><span class="legalone-row-actions popover-menu-button" list="663028e5cd2341568e8263f671be9ab0"><span class="grid-overflow-icon"></span></span><ul class="legalone-row-actions-dropdown popover-menu-list" id="663028e5cd2341568e8263f671be9ab0"><li><a class="grid-edit-action-row" href="/contatos/pessoas/edit/71729?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue" title="Excluir pessoa física">Alterar</a></li><li><a class="grid-delete-action-row" href="javascript:void(0);" id="delete_281201" title="Excluir pessoa física">Excluir</a><script type="text/javascript"> $("#delete_281201").click(function () { $.alerts.okButton = window.localization.scriptsresources.Sim; $.alerts.cancelButton = window.localization.scriptsresources.Nao;  jConfirm('Esta operação não poderá ser desfeita.\nCaso este item esteja selecionado como critério de filtro em um modelo de relatório, se for o único, os relatórios deste modelo não serão mais gerados.\nApós excluir o item, remova-o dos modelos de relatórios.<br />Tem certeza que deseja excluir a pessoa física?', 'Excluindo: ABEL EPAMINONDAS SILVEIRA FILHO' ,function (retorno) { if (retorno) { window.location = '/contatos/contatos/delete/71729?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue'; } });   });</script></li></ul></div></td>
+        </tr>
+        <tr class="webgrid-alternating-row">
+            <td class="min-width-column grid-non-clickable-column"><input autocomplete="off" class="grid_check" data-val="90475" id="grid_check_90475" name="grid_check_90475" type="checkbox" value="true" /><input name="grid_check_90475" type="hidden" value="false" /><label for="grid_check_90475"></label><input class="visualization-url-content" type="hidden" value="/contatos/pessoas/details/90475?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue"></input></td>
+            <td><a href="/contatos/pessoas/details/90475?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue">ABEL FERREIRA DE SOUZA</a></td>
+            <td>
+            115.099.377-49
+        </td>
+            <td><a href="/contatos/contatos/search?ShowAdvancedFilters=True"></a></td>
+            <td>(22) 9884-41912</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+            <a href="/contatos/contatos/search?ShowAdvancedFilters=True&amp;Tipo=1">Pessoa f&#237;sica</a>
+        </td>
+            <td class="min-width-column grid-non-clickable-column grid-actions-column"><div class="popover-button-wrapper"><span class="legalone-row-actions popover-menu-button" list="0da4c3bfb694475888e7786768962283"><span class="grid-overflow-icon"></span></span><ul class="legalone-row-actions-dropdown popover-menu-list" id="0da4c3bfb694475888e7786768962283"><li><a class="grid-edit-action-row" href="/contatos/pessoas/edit/90475?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue" title="Excluir pessoa física">Alterar</a></li><li><a class="grid-delete-action-row" href="javascript:void(0);" id="delete_281202" title="Excluir pessoa física">Excluir</a><script type="text/javascript"> $("#delete_281202").click(function () { $.alerts.okButton = window.localization.scriptsresources.Sim; $.alerts.cancelButton = window.localization.scriptsresources.Nao;  jConfirm('Esta operação não poderá ser desfeita.\nCaso este item esteja selecionado como critério de filtro em um modelo de relatório, se for o único, os relatórios deste modelo não serão mais gerados.\nApós excluir o item, remova-o dos modelos de relatórios.<br />Tem certeza que deseja excluir a pessoa física?', 'Excluindo: ABEL FERREIRA DE SOUZA' ,function (retorno) { if (retorno) { window.location = '/contatos/contatos/delete/90475?returnUrl=%2Fcontatos%2Fcontatos%2Fsearch%3Fajaxnavigation%3Dtrue'; } });   });</script></li></ul></div></td>
+        </tr>
+    </tbody>
+    </table>
+<input data-selector-id="grid_checked_ids" id="SelectedIndexes" name="SelectedIndexes" type="hidden" value="" /><script type="text/javascript">$(document).ready(function () { $('#9d36c4a1-cb4a-47b5-bd61-f01946caa597').toolbar({totalRegisters: 50473, hasCheckFiltered: true, hasCheckPage: true, checkRows: {"SearchModelSerialized":null,"SelectFirsts":false,"SelectAll":false,"SelectedIds":[],"UnselectedIds":[],"UseStringIds":false,"SelectedStringIds":[],"UnselectedStringIds":[],"BatchChangeLimit":1000}, hasGearIcon: true, batchEventsLimit: 1000, rowsPerPage: 18, currentPage: '1', isCheckedFirsts: false });$('#9d36c4a1-cb4a-47b5-bd61-f01946caa597').toolbar('addItem', {text: 'Configurar monitoramento', icon:'', callback: $.toolbar.actions.modal('/contatos/Contatos/ViewContactsConfigureMonitoringModal', { url: '/contatos/Contatos/ViewContactsConfigureMonitoringModal', title: 'Configurando monitoramento(s) do Datacloud diarios oficiais', width: 600, height: null, saveButtonText: '', cancelButtonText: '', confirmationTitle: '', confirmationText: '', showSaveButton: true, showCancelButton: true, modalGenericParams: null }),  id: ''   });$('#9d36c4a1-cb4a-47b5-bd61-f01946caa597').toolbar('addItem', {text: 'Desabilitar monitoramento', icon:'', callback: $.toolbar.actions.modal('/contatos/Contatos/ViewContactsDisableMonitoringModal', { url: '/contatos/Contatos/ViewContactsDisableMonitoringModal', title: 'Desabilitando monitoramento(s) do Datacloud diários oficiais', width: 600, height: null, saveButtonText: '', cancelButtonText: '', confirmationTitle: '', confirmationText: '', showSaveButton: true, showCancelButton: true, modalGenericParams: null }),  id: ''   }); });</script></div>                    
+                    <script type="text/javascript">
+                        // Setup grid.
+                        $(function() {
+                            window.modules.gridModule.associateGridCheck();
+                            window.modules.gridModule.init({
+                                id: '9d36c4a1-cb4a-47b5-bd61-f01946caa597'
+                            });
+                            window.modules.gridModule.setSortingDirectionClass();
+                        });
+                    </script>
+            </div>
+        </div>
+    </div>
+</div>
+                </div>
+            </div>
+
+
+
+
+            <div id="lastColumn"></div>
+        </div>
+    </div>
+</div>
+
+<div class="notificacao">
+    <ul class="notificacoes">
+        
+
+    </ul>
+</div>
+
+<script type="text/javascript">
+    notificacoes(
+        '/shared/Notificacoes2/GetNotificacao',
+        false,
+        180000
+    );
+</script>
+    <div id="cronometro"></div>
+
+
+
+    <div id="upcoming-activities">
+        <div class="upact-container">
+            <span class="upact-toggle unselectable">
+                <span class="upact-countdiff"></span>
+                <span class="upact-breadcumb">
+                </span>
+                <b>Minhas pr&#243;ximas atividades</b>
+
+                <img class="upact-arrow" src="/Static/Content/Images/up.svg" />
+            </span>
+            <div style="clear:both"></div>
+            <div id="upact-agenda-container" class="upact-agenda upact-empty">
+                <div class="upact-loading">
+                    <span class="upact-loading-icon"></span>
+                    <span class="loading-text">Carregando</span>
+                </div>
+                <div class="upact-more-container">
+                    <button>Carregar mais</button>
+                </div>
+            </div>
+            <div style="clear:both"></div>
+        </div>
+    </div>
+    <script>
+    $(document).ready(function () {
+        window.modules.agenda.upcomingActivities.setup({
+            configEndpoint: "/agenda/CompromissoTarefa/GetUpcomingActivitiesConfig",
+            dataEndpoint: "/agenda/CompromissoTarefa/GetUpcomingActivities",
+            alldayString: "Dia inteiro",
+            taskDetails: "/agenda/Tarefas/DetailsCompromissoTarefa/",
+            appointmentDetails: "/agenda/Compromissos/DetailsCompromissoTarefa/",
+            culture: 'pt-br',
+            upcomingActivitiesConfig: '{"Count":0,"IsVisible":true,"HasPermission":true}'
+          });
+      });
+    </script>
+
+
+<script deffer>
+    stopPageLoad(true);
+</script>
+<script type="text/javascript">
+
+    /**
+        * This script creates a global, dependency-free tooltip system. It automatically
+        * attaches to any element on the page that has a `data-tooltip` attribute.
+        *
+        * It uses a single, reused tooltip element for performance and relies on
+        * event delegation, ensuring it works seamlessly with dynamically loaded content.
+        *
+        * <element data-tooltip="Your tooltip text here"></element>
+        * <element data-tooltip="Another tooltip" data-tooltip-position="top"></element>
+        */
+
+    //Verify if the tooltip system is already initialized to avoid multiple initializations.
+    if (!window.tooltipSystemInitialized) {
+        window.tooltipSystemInitialized = true;
+
+        // Ensure only one tooltip instance exists, even with partial page loads.
+
+        var existingTooltip = document.querySelector('.custom-tooltip-container');
+        if (existingTooltip) {
+            existingTooltip.parentNode.removeChild(existingTooltip);
+        }
+
+        // Create a single, reusable tooltip element for the entire page.
+        var tooltipContainer = document.createElement('div');
+        tooltipContainer.className = 'custom-tooltip-container';
+
+        var tooltipArrow = document.createElement('div');
+        tooltipArrow.className = 'custom-tooltip-arrow';
+
+        tooltipContainer.appendChild(tooltipArrow);
+        document.body.appendChild(tooltipContainer);
+
+        // Debounce timer to prevent flickering on rapid mouse movements.
+        var hideTooltipTimeout;
+
+        function showTooltip(element) {
+            clearTimeout(hideTooltipTimeout);
+            var text = element.getAttribute('data-tooltip');
+            var position = element.getAttribute('data-tooltip-position') || 'bottom'; // Default position is 'bottom'.
+            if (!text) return;
+
+            // Use an inner <span> for precise horizontal alignment if available; otherwise, use the element itself.
+            var textElement = element.querySelector('span') || element;
+            var containerRect = element.getBoundingClientRect();
+            var anchorRect = textElement.getBoundingClientRect();
+
+            var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            var scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+
+            var top, left;
+
+            tooltipContainer.innerHTML = text;
+            tooltipContainer.insertBefore(tooltipArrow, tooltipContainer.firstChild);
+            left = anchorRect.left + scrollLeft + (anchorRect.width / 2);
+
+            // Configurable Positioning Logic
+            if (position === 'top') {
+                // Position above the element.
+                top = containerRect.top + scrollTop - 10;
+                tooltipContainer.style.transform = 'translateX(-50%) translateY(-100%)';
+
+                // Configure arrow to point down.
+                tooltipArrow.style.top = '100%';
+                tooltipArrow.style.borderTopColor = '#3B3F4A';
+                tooltipArrow.style.borderBottomColor = 'transparent';
+            } else {
+                // Position below the element (default).
+                top = containerRect.bottom + scrollTop + 10;
+                tooltipContainer.style.transform = 'translateX(-50%)';
+
+                // Configure arrow to point up.
+                tooltipArrow.style.top = '-10px';
+                tooltipArrow.style.borderBottomColor = '#3B3F4A';
+                tooltipArrow.style.borderTopColor = 'transparent';
+            }
+
+            tooltipContainer.style.top = top + 'px';
+            tooltipContainer.style.left = left + 'px';
+
+            tooltipContainer.style.display = 'block';
+            setTimeout(function () {
+                tooltipContainer.style.opacity = '1';
+            }, 10);
+        }
+
+        function hideTooltip() {
+            hideTooltipTimeout = setTimeout(function () {
+                tooltipContainer.style.opacity = '0';
+                setTimeout(function () {
+                    tooltipContainer.style.display = 'none';
+                }, 200);
+            }, 100);
+        }
+
+        // Event delegation on `body` ensures tooltips work even for dynamically added elements.
+        document.body.addEventListener('mouseover', function (e) {
+            var target = e.target.closest('[data-tooltip]');
+            if (target) {
+                showTooltip(target);
+            }
+        });
+
+        document.body.addEventListener('mouseout', function (e) {
+            var target = e.target.closest('[data-tooltip]');
+            if (target) {
+                hideTooltip();
+            }
+        });
+
+    }
+
+</script>
+</body>
+
+
+
+
+<div class="botton-bar"></div>
+</html>
+<meta id="memusage" value="-937033728" />
+
+<script src='/static/Scripts/LegalOneAuthenticator/legal-one-authenticator-home-button.js' type='text/javascript'></script>
+
+
+<script src='/static/Scripts/Agenda/agenda-kanban-management.js' type='text/javascript'></script>
+
+<link href='/static/Content/themes/new/agenda/manage-kanban.css' rel='stylesheet' type='text/css' />

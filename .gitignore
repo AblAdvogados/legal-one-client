@@ -1,0 +1,19 @@
+# Ambiente virtual
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# Variáveis de ambiente e segredos
+.env
+
+# Artefatos de build
+dist/
+*.egg-info/
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode/settings.json

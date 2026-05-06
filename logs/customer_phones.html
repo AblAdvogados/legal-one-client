@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Erro</title>
+    <style type="text/css">
+        body
+        {
+            background-color: #F5F6F7;
+            font-family: Arial;
+            font-size: 14px;
+        }
+        .wrapper
+        {
+            margin: 50px auto;
+            width: 960px;
+            text-align: center;
+        }
+        .main
+        {
+            background-color: white;
+            box-shadow: 0 0 10px #BBBBBB;
+            padding: 1px 30px;
+        }
+        #show-detail
+        {
+            cursor: pointer;
+            color: #5B7BAB;
+        }
+        #show-detail:hover
+        {
+            text-decoration: underline;
+        }
+        .hide
+        {
+            display: none;
+        }
+        .details-wrapper
+        {
+            border-width: 1px 0pt;
+            border-style: solid;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: rgb(255, 255, 241);
+            border-color: rgb(242, 229, 229);
+            color: gray;
+        }
+        .button
+        {
+            background-color: #F1F1F1;
+            border-radius: 10px 10px 10px 10px;
+            color: #666666;
+            cursor: pointer;
+            display: inline-block;
+            font-weight: bold;
+            margin: 20px 5px;
+            padding: 10px;
+            width: 220px;
+        }
+    </style>
+    <script language="javascript" type="text/javascript">
+        function showDetail() {
+            document.getElementById("detail").removeAttribute("class");
+            document.getElementById("show-detail").setAttribute("class", "hide");
+        }
+    </script>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+</head>
+<body>
+    <div class="wrapper">
+        <div class="main">
+            <div style="color: rgb(51, 102, 153); font-weight: bold; text-align: center; font-size: 1.8em;
+                margin-top: 20px;">
+                
+   A página solicitada não foi encontrada.
+
+            </div>
+                <div style="color: #666666; margin-top: 10px">
+                    
+   A p&#225;gina solicitada n&#227;o foi encontrada.
+
+                </div>
+                            <div class="details-wrapper">
+                    <div id="detail">
+                        C&#243;digo de refer&#234;ncia: a021a469-56a7-4cee-9bbf-b9225aecc1ef
+                    </div>
+                </div>
+            <div>
+                
+    <div onclick="window.history.back()" class="button">
+        Voltar para a página anterior
+    </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

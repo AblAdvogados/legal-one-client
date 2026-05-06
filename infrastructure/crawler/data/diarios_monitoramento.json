@@ -1,0 +1,424 @@
+{
+  "diarios": [
+    {
+      "id": "4",
+      "estado": "Acre",
+      "diario": "Diário da Justiça do Estado do Acre"
+    },
+    {
+      "id": "110",
+      "estado": "Acre",
+      "diario": "Diário Oficial do Estado de Acre"
+    },
+    {
+      "id": "151",
+      "estado": "Acre",
+      "diario": "Diário do Tribunal de Contas do Acre"
+    },
+    {
+      "id": "149",
+      "estado": "Alagoas",
+      "diario": "Diário Oficial do TREAL"
+    },
+    {
+      "id": "128",
+      "estado": "Alagoas",
+      "diario": "Diário Oficial de Alagoas"
+    },
+    {
+      "id": "51",
+      "estado": "Alagoas",
+      "diario": "Diário da Justiça do Estado de Alagoas"
+    },
+    {
+      "id": "83",
+      "estado": "Alagoas",
+      "diario": "Diário do Tribunal de Contas de Alagoas"
+    },
+    {
+      "id": "5",
+      "estado": "Alagoas",
+      "diario": "Diário do Tribunal Regional do Trabalho da 19ª Região"
+    },
+    {
+      "id": "129",
+      "estado": "Amapá",
+      "diario": "Diário Oficial do Amapá"
+    },
+    {
+      "id": "77",
+      "estado": "Amapá",
+      "diario": "Diário da Justiça do Estado do Amapá"
+    },
+    {
+      "id": "6",
+      "estado": "Amazonas",
+      "diario": "Diário da Justiça do Estado do Amazonas"
+    },
+    {
+      "id": "7",
+      "estado": "Amazonas",
+      "diario": "Diário do Tribunal Regional do Trabalho da 11ª Região"
+    },
+    {
+      "id": "140",
+      "estado": "Amazonas",
+      "diario": "Diário Oficial do Amazonas"
+    },
+    {
+      "id": "113",
+      "estado": "Amazonas",
+      "diario": "Diário do Tribunal de Contas do Amazonas"
+    },
+    {
+      "id": "154",
+      "estado": "Amazonas",
+      "diario": "Tribunal Regional Eleitoral do Amazonas"
+    },
+    {
+      "id": "59",
+      "estado": "Bahia",
+      "diario": "Diário da Justiça do Estado da Bahia"
+    },
+    {
+      "id": "8",
+      "estado": "Bahia",
+      "diario": "Diário do Tribunal Regional do Trabalho da 5ª Região"
+    },
+    {
+      "id": "147",
+      "estado": "Bahia",
+      "diario": "Diário do Tribunal de Contas da Bahia"
+    },
+    {
+      "id": "148",
+      "estado": "Ceará",
+      "diario": "Diário do Tribunal de Contas do Ceará"
+    },
+    {
+      "id": "123",
+      "estado": "Ceará",
+      "diario": "Diário Oficial do Ceará"
+    },
+    {
+      "id": "9",
+      "estado": "Ceará",
+      "diario": "Diário da Justiça do Estado do Ceará"
+    },
+    {
+      "id": "79",
+      "estado": "Ceará",
+      "diario": "Diário da Justiça Federal do Ceará"
+    },
+    {
+      "id": "10",
+      "estado": "Ceará",
+      "diario": "Diário do Tribunal Regional do Trabalho da 7ª Região"
+    },
+    {
+      "id": "14",
+      "estado": "Distrito Federal",
+      "diario": "Diário da Justiça do Distrito Federal"
+    },
+    {
+      "id": "15",
+      "estado": "Distrito Federal",
+      "diario": "Diário do Tribunal Regional do Trabalho da 10ª Região"
+    },
+    {
+      "id": "11",
+      "estado": "Distrito Federal",
+      "diario": "Diário Oficial do Distrito Federal"
+    },
+    {
+      "id": "13",
+      "estado": "Distrito Federal",
+      "diario": "Diário da Justiça Federal"
+    },
+    {
+      "id": "16",
+      "estado": "Espírito Santo",
+      "diario": "Diário da Justiça do Estado do Espírito Santo"
+    },
+    {
+      "id": "17",
+      "estado": "Espírito Santo",
+      "diario": "Diário do Tribunal Regional do Trabalho da 17ª Região"
+    },
+    {
+      "id": "122",
+      "estado": "Espírito Santo",
+      "diario": "Diário Oficial do Espírito Santo"
+    },
+    {
+      "id": "18",
+      "estado": "Goiás",
+      "diario": "Diário da Justiça do Estado de Goiás"
+    },
+    {
+      "id": "19",
+      "estado": "Goiás",
+      "diario": "Diário do Tribunal Regional do Trabalho da 18ª Região"
+    },
+    {
+      "id": "120",
+      "estado": "Goiás",
+      "diario": "Diário Oficial do Estado de Goiás"
+    },
+    {
+      "id": "20",
+      "estado": "Maranhão",
+      "diario": "Diário da Justiça do Estado do Maranhão"
+    },
+    {
+      "id": "21",
+      "estado": "Maranhão",
+      "diario": "Diário do Tribunal Regional do Trabalho da 16ª Região"
+    },
+    {
+      "id": "131",
+      "estado": "Maranhão",
+      "diario": "Diário Oficial do Maranhão"
+    },
+    {
+      "id": "22",
+      "estado": "Mato Grosso",
+      "diario": "Diário da Justiça do Estado do Mato Grosso"
+    },
+    {
+      "id": "23",
+      "estado": "Mato Grosso",
+      "diario": "Diário do Tribunal Regional do Trabalho da 23ª Região"
+    },
+    {
+      "id": "118",
+      "estado": "Mato Grosso",
+      "diario": "Diário Oficial do Estado de Mato Grosso"
+    },
+    {
+      "id": "24",
+      "estado": "Mato Grosso do Sul",
+      "diario": "Diário da Justiça do Estado do Mato Grosso do Sul"
+    },
+    {
+      "id": "25",
+      "estado": "Mato Grosso do Sul",
+      "diario": "Diário do Tribunal Regional do Trabalho da 24ª Região"
+    },
+    {
+      "id": "119",
+      "estado": "Mato Grosso do Sul",
+      "diario": "Diário Oficial do Estado de Mato Grosso do Sul"
+    },
+    {
+      "id": "26",
+      "estado": "Minas Gerais",
+      "diario": "Diário da Justiça do Estado de Minas Gerais"
+    },
+    {
+      "id": "27",
+      "estado": "Minas Gerais",
+      "diario": "Diário do Tribunal Regional do Trabalho da 3ª Região"
+    },
+    {
+      "id": "121",
+      "estado": "Minas Gerais",
+      "diario": "Diário Oficial de Minas Gerais"
+    },
+    {
+      "id": "28",
+      "estado": "Pará",
+      "diario": "Diário da Justiça do Estado do Pará"
+    },
+    {
+      "id": "29",
+      "estado": "Pará",
+      "diario": "Diário do Tribunal Regional do Trabalho da 8ª Região"
+    },
+    {
+      "id": "132",
+      "estado": "Pará",
+      "diario": "Diário Oficial do Pará"
+    },
+    {
+      "id": "78",
+      "estado": "Paraíba",
+      "diario": "Diário da Justiça do Estado da Paraíba"
+    },
+    {
+      "id": "133",
+      "estado": "Paraíba",
+      "diario": "Diário Oficial da Paraíba"
+    },
+    {
+      "id": "30",
+      "estado": "Paraná",
+      "diario": "Diário da Justiça do Estado do Paraná"
+    },
+    {
+      "id": "31",
+      "estado": "Paraná",
+      "diario": "Diário do Tribunal Regional do Trabalho da 9ª Região"
+    },
+    {
+      "id": "116",
+      "estado": "Paraná",
+      "diario": "Diário Oficial do Estado do Paraná"
+    },
+    {
+      "id": "32",
+      "estado": "Pernambuco",
+      "diario": "Diário da Justiça do Estado de Pernambuco"
+    },
+    {
+      "id": "33",
+      "estado": "Pernambuco",
+      "diario": "Diário do Tribunal Regional do Trabalho da 6ª Região"
+    },
+    {
+      "id": "124",
+      "estado": "Pernambuco",
+      "diario": "Diário Oficial do Estado de Pernambuco"
+    },
+    {
+      "id": "34",
+      "estado": "Piauí",
+      "diario": "Diário da Justiça do Estado do Piauí"
+    },
+    {
+      "id": "35",
+      "estado": "Piauí",
+      "diario": "Diário do Tribunal Regional do Trabalho da 22ª Região"
+    },
+    {
+      "id": "134",
+      "estado": "Piauí",
+      "diario": "Diário Oficial do Piauí"
+    },
+    {
+      "id": "60",
+      "estado": "Rio de Janeiro",
+      "diario": "Diário da Justiça do Estado do Rio de Janeiro"
+    },
+    {
+      "id": "36",
+      "estado": "Rio de Janeiro",
+      "diario": "Diário do Tribunal Regional do Trabalho da 1ª Região"
+    },
+    {
+      "id": "117",
+      "estado": "Rio de Janeiro",
+      "diario": "Diário Oficial do Estado do Rio de Janeiro"
+    },
+    {
+      "id": "80",
+      "estado": "Rio Grande do Norte",
+      "diario": "Diário da Justiça do Estado do Rio Grande do Norte"
+    },
+    {
+      "id": "135",
+      "estado": "Rio Grande do Norte",
+      "diario": "Diário Oficial do Rio Grande do Norte"
+    },
+    {
+      "id": "37",
+      "estado": "Rio Grande do Sul",
+      "diario": "Diário da Justiça do Estado do Rio Grande do Sul"
+    },
+    {
+      "id": "38",
+      "estado": "Rio Grande do Sul",
+      "diario": "Diário do Tribunal Regional do Trabalho da 4ª Região"
+    },
+    {
+      "id": "115",
+      "estado": "Rio Grande do Sul",
+      "diario": "Diário Oficial do Estado do Rio Grande do Sul"
+    },
+    {
+      "id": "152",
+      "estado": "Rondônia",
+      "diario": "Diário da Justiça do Estado de Rondônia"
+    },
+    {
+      "id": "136",
+      "estado": "Rondônia",
+      "diario": "Diário Oficial do Estado de Rondônia"
+    },
+    {
+      "id": "153",
+      "estado": "Roraima",
+      "diario": "Diário da Justiça do Estado de Roraima"
+    },
+    {
+      "id": "137",
+      "estado": "Roraima",
+      "diario": "Diário Oficial do Estado de Roraima"
+    },
+    {
+      "id": "81",
+      "estado": "Santa Catarina",
+      "diario": "Diário da Justiça do Estado de Santa Catarina"
+    },
+    {
+      "id": "82",
+      "estado": "Santa Catarina",
+      "diario": "Diário do Tribunal Regional do Trabalho da 12ª Região"
+    },
+    {
+      "id": "114",
+      "estado": "Santa Catarina",
+      "diario": "Diário Oficial do Estado de Santa Catarina"
+    },
+    {
+      "id": "2",
+      "estado": "São Paulo",
+      "diario": "Diário da Justiça do Estado de São Paulo"
+    },
+    {
+      "id": "3",
+      "estado": "São Paulo",
+      "diario": "Diário do Tribunal Regional do Trabalho da 2ª Região"
+    },
+    {
+      "id": "12",
+      "estado": "São Paulo",
+      "diario": "Diário do Tribunal Regional do Trabalho da 15ª Região"
+    },
+    {
+      "id": "1",
+      "estado": "São Paulo",
+      "diario": "Diário Oficial do Estado de São Paulo"
+    },
+    {
+      "id": "91",
+      "estado": "São Paulo",
+      "diario": "Tribunal Regional Eleitoral de São Paulo"
+    },
+    {
+      "id": "39",
+      "estado": "Sergipe",
+      "diario": "Diário da Justiça do Estado do Sergipe"
+    },
+    {
+      "id": "47",
+      "estado": "Sergipe",
+      "diario": "Diário do Tribunal Regional do Trabalho da 20ª Região"
+    },
+    {
+      "id": "41",
+      "estado": "Tocantins",
+      "diario": "Diário da Justiça do Estado do Tocantins"
+    },
+    {
+      "id": "40",
+      "estado": "Tocantins",
+      "diario": "Diário Oficial do Estado de Tocantins"
+    },
+    {
+      "id": "99",
+      "estado": "Tocantins",
+      "diario": "Diário do Tribunal de Contas do Tocantins"
+    }
+  ]
+}

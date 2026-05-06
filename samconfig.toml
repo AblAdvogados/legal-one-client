@@ -1,0 +1,30 @@
+# samconfig.toml
+# Configuração persistente do SAM CLI para o projeto legal-one-client.
+# Gerado uma vez com "sam deploy --guided" e versionado no repositório.
+# Referência: https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-config.html
+
+version = 0.1
+
+# ── Ambiente padrão (produção) ────────────────────────────────────────────────
+[default.global.parameters]
+stack_name = "legalone-client"
+
+[default.build.parameters]
+cached = true          # reutiliza camadas do build anterior quando não há mudanças
+parallel = true        # paraleliza o build de múltiplas funções
+
+[default.deploy.parameters]
+stack_name          = "legalone-client"
+region              = "us-east-1"
+capabilities        = "CAPABILITY_IAM"
+confirm_changeset   = true             # exibe o diff antes de aplicar
+fail_on_empty_changeset = false        # não falha se não houver mudanças
+resolve_s3          = true             # SAM gerencia o bucket S3 de artefatos automaticamente
+image_repositories  = [
+    "LegalOneFunction=021891594077.dkr.ecr.us-east-1.amazonaws.com/legalone-client"
+]
+# Valores dos parâmetros do template.yaml.
+# Segredos (username, password, jwt-secret, api-key) ficam no SSM —
+# a Lambda os busca em runtime via boto3 (SSM_*_PATH env vars).
+# Apenas SessionTableName é passado explicitamente aqui.
+parameter_overrides = "SessionTableName=legal-one-session-store"

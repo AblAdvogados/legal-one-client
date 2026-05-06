@@ -1,0 +1,117 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: "legalone-client API FastAPI + Mangum para automa\xE7\xE3o de cadastros\
+  \ e consultas no LegalOne. Deploy via imagem Docker no ECR. Concorr\xEAncia m\xE1\
+  xima 1 para serializar requisi\xE7\xF5es ao servidor do LegalOne.\n"
+Parameters:
+  SessionTableName:
+    Type: String
+    Default: legal-one-session-store
+    Description: Nome da tabela DynamoDB usada pelo SessionManager
+Globals:
+  Function:
+    Timeout: 45
+    MemorySize: 512
+    Environment:
+      Variables:
+        SSM_USERNAME_PATH: /legal-one/username
+        SSM_PASSWORD_PATH: /legal-one/password
+        SSM_JWT_SECRET_PATH: /legal-one/jwt-secret
+        SSM_API_KEY_PATH: /legal-one/api-key
+        DYNAMODB_TABLE:
+          Ref: SessionTableName
+Resources:
+  SessionTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName:
+        Ref: SessionTableName
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+      - AttributeName: pk
+        AttributeType: S
+      KeySchema:
+      - AttributeName: pk
+        KeyType: HASH
+      TimeToLiveSpecification:
+        AttributeName: expires_at
+        Enabled: true
+  LegalOneFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Architectures:
+      - arm64
+      FunctionName: legalone-client
+      PackageType: Image
+      Policies:
+      - DynamoDBCrudPolicy:
+          TableName:
+            Ref: SessionTable
+      - Statement:
+        - Effect: Allow
+          Action:
+          - ssm:GetParameter
+          Resource:
+          - Fn::Sub: arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/legal-one/username
+          - Fn::Sub: arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/legal-one/password
+          - Fn::Sub: arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/legal-one/jwt-secret
+          - Fn::Sub: arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/legal-one/api-key
+        - Effect: Allow
+          Action:
+          - kms:Decrypt
+          Resource:
+            Fn::Sub: arn:aws:kms:${AWS::Region}:${AWS::AccountId}:alias/aws/ssm
+      Events:
+        Api:
+          Type: HttpApi
+          Properties:
+            ApiId:
+              Ref: LegalOneHttpApi
+            Method: ANY
+            Path: /{proxy+}
+        ApiRoot:
+          Type: HttpApi
+          Properties:
+            ApiId:
+              Ref: LegalOneHttpApi
+            Method: ANY
+            Path: /
+      ImageUri: legalonefunction:latest
+    Metadata:
+      DockerContext: /Users/thomas/Documents/projetos/legal-one-client
+      DockerTag: latest
+      Dockerfile: Dockerfile
+      SamResourceId: LegalOneFunction
+  LegalOneHttpApi:
+    Type: AWS::Serverless::HttpApi
+    Properties:
+      StageName: prod
+      CorsConfiguration:
+        AllowOrigins:
+        - '*'
+        AllowMethods:
+        - GET
+        - POST
+        - PUT
+        - DELETE
+        - OPTIONS
+        AllowHeaders:
+        - Content-Type
+        - Authorization
+Outputs:
+  ApiUrl:
+    Description: "URL p\xFAblica da API (API Gateway HTTP API)"
+    Value:
+      Fn::Sub: https://${LegalOneHttpApi}.execute-api.${AWS::Region}.amazonaws.com/prod
+  FunctionArn:
+    Description: "ARN da fun\xE7\xE3o Lambda"
+    Value:
+      Fn::GetAtt:
+      - LegalOneFunction
+      - Arn
+  SessionTableArn:
+    Description: "ARN da tabela DynamoDB de sess\xE3o"
+    Value:
+      Fn::GetAtt:
+      - SessionTable
+      - Arn

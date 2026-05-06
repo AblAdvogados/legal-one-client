@@ -1,0 +1,354 @@
+<!DOCTYPE HTML>
+<!--[if lte IE 8]>
+	<html class="ie8" dir="ltr" lang="pt-BR">
+<![endif]-->
+<!--[if IE 9]>
+	<html class="ie9" dir="ltr" lang="pt-BR">
+<![endif]-->
+<html dir="ltr" lang="pt-BR">
+<head>
+	<!-- Copyright 2019: Thomson Reuters. All Rights Reserved. Proprietary and Confidential information of Thomson Reuters. Disclosure, Use or Reproduction without the written authorization of Thomson Reuters is prohibited. -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=IE6" /> 
+	<meta name="viewport" content="width=device-width"/>
+	<title>Legal One Firm Signon</title>
+
+	<link rel="shortcut icon" href="/Version2/images/favicon.ico?v=26.02.0" />
+
+	
+		<link href="/Version2/Content/jquery-ui.min.css?v=26.02.0" rel="stylesheet" type="text/css" />
+
+<link href="/Version2/Content/cosi.css?v=26.02.0" rel="stylesheet" type="text/css" />
+
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet" type="text/css" />
+	
+			<script src="/Version2/Scripts/JqueryV2/jquery-3.6.1.min.js?v=26.02.0" type="text/javascript"></script>
+			<script src="/Version2/Scripts/JqueryV2/jquery.validate-1.19.5.min.js?v=26.02.0" type="text/javascript"></script>
+			<script src="/Version2/Scripts/JqueryV2/jquery-ui-1.13.2.min.js?v=26.02.0" type="text/javascript"></script>
+		<script src="/Version2/Scripts/ApplicationV2/OnePass.js?v=26.02.0" type="text/javascript"></script>
+		<script src="/Version2/Scripts/ApplicationV2/jquery.validate.trgr.js?v=26.02.0" type="text/javascript"></script>
+		<script src="/Version2/Scripts/ApplicationV2/AlertDialog.js?v=26.02.0" type="text/javascript"></script>
+		<script src="/Version2/Scripts/ApplicationV2/Toast.js?v=26.02.0" type="text/javascript"></script>
+		<script src="/Version2/Scripts/ApplicationV2/jquery.antiforgery.min.js?v=26.02.0" type="text/javascript"></script>
+		<!--[if !lte IE 8]><!-->
+		<script src="/Version2/Scripts/JqueryV2/svg4everybody.min.js?v=26.02.0" type="text/javascript"></script>
+		<!--<![endif]-->
+
+<!--[if !lte IE 8]><!-->
+<script>svg4everybody();</script>
+<!--<![endif]-->
+
+
+	<script type="text/javascript">
+		OnePass.TextValidationMessage = "Esses caracteres s&#227;o inv&#225;lidos: * &amp;lt; &amp;gt;";
+		OnePass.TextValidationNoAsteriskMessage = "Esses caracteres s&#227;o inv&#225;lidos: &amp;lt; &amp;gt;";
+		OnePass.AjaxRequestTimeOut = 10000;
+
+			 OnePass.AjaxRequestTimeOut = 10000;
+
+		$.ajaxSetup({
+			timeout: OnePass.AjaxRequestTimeOut
+		});
+
+		OnePass.KeepAliveUrl = "/v2/keepalive?productid=L1NJ&returnto=https%3A%2F%2Flogin.novajus.com.br%2FOnePass%2FLoginOnePass%2F";
+		OnePass.StartSessionKeepAlive();
+	</script>
+	
+	
+
+	<link href="/Version2/Content/marketing.css?v=26.02.0" rel="stylesheet" type="text/css" />
+	<script src="/Version2/Scripts/JqueryV2/jquery.showpassword.js?v=26.02.0" type="text/javascript"></script>
+	<script type="text/javascript" src="/Version2/Scripts/ApplicationV2/CapsLock.js?v=26.02.0"></script>
+	<script type="text/javascript" src="/Version2/Scripts/ApplicationV2/Home.js?v=26.02.0"></script>
+
+	
+
+	
+	<meta name="description" content="Sign on to Thomson Reuters suite of products and services." />
+
+
+</head>
+<body class="full cosi" lang="pt-BR">
+	<div class="Page-wrapper">
+		
+
+		<div id="main" class="Flex-wrap Content-wrap" role="main">
+			
+
+			
+
+
+
+
+
+
+
+
+<div class="Flex-content">
+	
+<div class="PageHeader">
+	<div class="Cosi-logo Content-wrap--small">
+			<a href="http://www.thomsonreuters.com">
+				<svg role="img" width="193" height="30" focusable="false" aria-label="Thomson Reuters">
+					<use xlink:href="/Version2/images/svg-defs.svg?v=26.02.0#svg-TRLogo-Optimized"></use>
+					<img src="/Version2/images/svg-TRLogo-Optimized.png?v=26.02.0" />
+				</svg>
+			</a>
+	</div>
+	<div id="dynamicToastMessage"></div>
+</div>
+	<div class="Content-wrap--small">
+		<div class="Form--hasWrapper">
+<form action="/?productId=L1NJ&amp;returnto=https%3A%2F%2Flogin.novajus.com.br%2FOnePass%2FLoginOnePass%2F&amp;bhcp=1&amp;bhav=&amp;bhsh=1080&amp;bhsw=1920&amp;bhiw=1920&amp;bhih=1080&amp;bhtz=-3&amp;bhlu=pt-br&amp;bhsp=0&amp;bhqs=1" id="form0" method="post"><input name="__RequestVerificationToken" type="hidden" value="6ln3MdzMpOseMsNVWruW0GJH7a7MczGCeLx_PWphLgKv70Wgnwg07mBTmusqP2If8iJWtqwBMpQSIKcgGbtzTA1I_Wg1" /><input id="IsCDNAvailable" name="IsCDNAvailable" type="hidden" value="False" /><input id="IsCloudAccessible" name="IsCloudAccessible" type="hidden" value="False" /><input id="MinutesToMidnight" name="MinutesToMidnight" type="hidden" value="0" /><input id="OIDCStartUrl" name="OIDCStartUrl" type="hidden" value="/v2/migrate/oidc?sessionType=1&amp;productid=L1NJ&amp;returnto=https%3A%2F%2Flogin.novajus.com.br%2FOnePass%2FLoginOnePass%2F" /><input id="ViewProductCode" name="ViewProductCode" type="hidden" value="L1NJ" /><input id="TraceToken" name="TraceToken" type="hidden" value="" />				<div class="Form-content" role="form">
+					
+	<h1 class="CustomFont Cosi-header">Legal One Firm</h1>
+
+	<div class="Cosi-signIn">
+			<div class="Signon-item">
+				<span class="Icon-wrapper Icon-wrapper--large">
+					<svg role="img" class="Icon-svg" focusable="false" aria-hidden="true">
+						<use xlink:href="/Version2/images/svg-defs.svg?v=26.02.0#svg-Locked"></use>
+					</svg>
+				</span>
+				Fazer login usando o OnePass
+			</div>
+					<div class="Signon-item list--hasPipe">
+					<a href="https://login.novajus.com.br/conta/login?loginSelection=true">Alterar op&#231;&#227;o de login</a>
+			</div>
+	</div>
+
+					
+
+					
+
+
+					
+
+					<div class="Form">
+						<div class="Form-textSelect">
+							<label class="InlineLabel" for="Username">Nome de usu&#225;rio</label>
+							<div>
+								<input aria-describedby="helpertext" aria-required="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="" id="Username" name="Username" type="text" value="" />
+								<span aria-live="assertive" class="field-validation-valid InlineError-message" id="Username_validationMessage" role="status"></span>
+							</div>
+						</div>
+						<div class="Form-textSelect">
+							<label class="InlineLabel" for="Password">Senha</label>		
+							<div>
+<div class="Password-wrap"><input aria-describedby="helpertext" autocapitalize="off" autocomplete="off" autocorrect="off" class="Password-input" data-typetoggle="#Password_showtext" id="Password" name="Password" type="password" /><div class="Form-inlineCheckboxWrapper"><span class="Form-inlineCheckbox"><input id="Password_showtext" type="checkbox"></input><label for="Password_showtext">Mostrar texto<span class="u-hiddenVisually">Senha</span></label></span></div></div>                                <span aria-live="assertive" class="field-validation-valid InlineError-message" id="Password_validationMessage" role="status"></span>
+							</div>
+							<div aria-live="rude" class="capslockindicator" id="Password_CapsLock_validationMessage"><span>A tecla Caps Lock est&#225; ativada.</span></div>
+						</div>
+						
+<div class="Form-textSelect">
+		<div class="CheckboxList">
+			<input id="SaveUsername" name="SaveUsername" onclick="Home.SelectOneCheckbox(this)" type="checkbox" value="true" /><input name="SaveUsername" type="hidden" value="false" />
+			<label for="SaveUsername">Salvar nome de usu&#225;rio</label>
+		</div>
+			<div class="CheckboxList">
+				<input id="SaveUsernamePassword" name="SaveUsernamePassword" onclick="Home.SelectOneCheckbox(this)" type="checkbox" value="true" /><input name="SaveUsernamePassword" type="hidden" value="false" />
+				<label for="SaveUsernamePassword">Salvar nome de usu&#225;rio e senha</label>
+			</div>
+</div>
+
+						
+<input id="SiteKey" name="SiteKey" type="hidden" value="6LfXqQ4TAAAAAP03bI9JsnflEJ3g3dnm3BM009OJ" />
+<input id="CultureCode" name="CultureCode" type="hidden" value="pt-BR" />
+<input id="OverrideCaptchaFlags" name="OverrideCaptchaFlags" type="hidden" value="False" />
+
+<div class="Form">
+	<div class="Recaptcha Form-textSelect">
+		<div id="captcha"></div>
+		<div class="inputfieldcontainer">
+				<script src="https://www.google.com/recaptcha/api.js?render=explicit&amp;hl=pt-BR" async defer></script>
+
+		</div>
+	</div>
+</div>
+					</div>
+					<div class="ButtonBar ButtonBar--hasLink" role="presentation">
+						<div class="ButtonBar-item">
+							<button type="submit" value="submit" name="SignIn" id="SignIn" class="Button Button--raised Button--primary Button--large">Login</button>
+						</div>
+					</div>
+					<div class="Form">
+						<div class="Form-textSelect">
+							<ul class="Cosi-FormExtras-NoBorder">
+								<li>
+									<a href="https://onepass.thomsonreuters.com/v3/forgot/username?productid=L1NJ&amp;viewproductid=L1NJ&amp;culture=pt-BR&amp;returnto=https%3A%2F%2Fsignon.thomsonreuters.com%2F%3FproductId%3DL1NJ%26returnto%3Dhttps%253a%252f%252flogin.novajus.com.br%252fOnePass%252fLoginOnePass%252f%26bhav%3D%26bhsh%3D1080%26bhsw%3D1920%26bhiw%3D1920%26bhih%3D1080%26bhtz%3D-3%26bhlu%3Dpt-br%26bhsp%3D0%26bhqs%3D1">Esqueceu o usu&#225;rio?</a><br />
+								</li>
+								<li>
+									<a href="https://onepass.thomsonreuters.com/v3/forgot/password?productid=L1NJ&amp;viewproductid=L1NJ&amp;culture=pt-BR&amp;returnto=https%3A%2F%2Fsignon.thomsonreuters.com%2F%3FproductId%3DL1NJ%26returnto%3Dhttps%253a%252f%252flogin.novajus.com.br%252fOnePass%252fLoginOnePass%252f%26bhav%3D%26bhsh%3D1080%26bhsw%3D1920%26bhiw%3D1920%26bhih%3D1080%26bhtz%3D-3%26bhlu%3Dpt-br%26bhsp%3D0%26bhqs%3D1">Esqueceu a senha?
+</a>
+								</li>
+							</ul>
+
+						</div>
+					</div>
+					
+	<ul class="Cosi-FormExtras">
+			<li>
+				<a href="https://onepass.thomsonreuters.com/v3/new?from=cosi&amp;fromlink=addreg&amp;ttd=0313261530270eC2rsL6fXZ49bhN2nDBAr6U698EC7llm7I9spluTWzi_F2XCebdTT7-3TOoWUSajUzUWmMopvj1-jZHYredRSTC718ht5nXW-12NIjhlq58mu6qyeZFJkLdX2a1XI4BirUrmyXvOMqqIRlQAcmSrBmNBIOJilDqHspG52bw6F4yfbWt26UffKQTsXJlEO74Dzo1dz49uH0yORZh0Mzm4C2t6jVszzKMjEAc-AxuyrIsqhi4Iv6mBaiqcnu8Pn2HMwRcS8RYT8z1LPnFNJ4mToR0f8j747Ux1N0BobMz_5PY02NYBhV8ngvr97_zuDpKMNNUcN55fkxTD5bPfuvHcUQ&amp;productid=L1NJ&amp;viewproductid=L1NJ&amp;culture=pt-BR&amp;returnto=https%3A%2F%2Fsignon.thomsonreuters.com%2F%3FproductId%3DL1NJ%26returnto%3Dhttps%253a%252f%252flogin.novajus.com.br%252fOnePass%252fLoginOnePass%252f%26bhav%3D%26bhsh%3D1080%26bhsw%3D1920%26bhiw%3D1920%26bhih%3D1080%26bhtz%3D-3%26bhlu%3Dpt-br%26bhsp%3D0%26bhqs%3D1" target="_self">Adicionar chave de registro</a>
+			</li>
+		<li>
+			<a href="https://onepass.thomsonreuters.com/v3/new?from=cosi&amp;ttd=0313261530270eC2rsL6fXZ49bhN2nDBAr6U698EC7llm7I9spluTWzi_F2XCebdTT7-3TOoWUSajUzUWmMopvj1-jZHYredRSTC718ht5nXW-12NIjhlq58mu6qyeZFJkLdX2a1XI4BirUrmyXvOMqqIRlQAcmSrBmNBIOJilDqHspG52bw6F4yfbWt26UffKQTsXJlEO74Dzo1dz49uH0yORZh0Mzm4C2t6jVszzKMjEAc-AxuyrIsqhi4Iv6mBaiqcnu8Pn2HMwRcS8RYT8z1LPnFNJ4mToR0f8j747Ux1N0BobMz_5PY02NYBhV8ngvr97_zuDpKMNNUcN55fkxTD5bPfuvHcUQ&amp;productid=L1NJ&amp;viewproductid=L1NJ&amp;culture=pt-BR&amp;returnto=https%3A%2F%2Fsignon.thomsonreuters.com%2F%3FproductId%3DL1NJ%26returnto%3Dhttps%253a%252f%252flogin.novajus.com.br%252fOnePass%252fLoginOnePass%252f%26bhav%3D%26bhsh%3D1080%26bhsw%3D1920%26bhiw%3D1920%26bhih%3D1080%26bhtz%3D-3%26bhlu%3Dpt-br%26bhsp%3D0%26bhqs%3D1" target="_self">Criar perfil OnePass</a>
+		</li>
+		<li>
+			<a href="https://onepass.thomsonreuters.com/v3/?ttd=0313261530270eC2rsL6fXZ49bhN2nDBAr6U698EC7llm7I9spluTWzi_F2XCebdTT7-3TOoWUSajUzUWmMopvj1-jZHYredRSTC718ht5nXW-12NIjhlq58mu6qyeZFJkLdX2a1XI4BirUrmyXvOMqqIRlQAcmSrBmNBIOJilDqHspG52bw6F4yfbWt26UffKQTsXJlEO74Dzo1dz49uH0yORZh0Mzm4C2t6jVszzKMjEAc-AxuyrIsqhi4Iv6mBaiqcnu8Pn2HMwRcS8RYT8z1LPnFNJ4mToR0f8j747Ux1N0BobMz_5PY02NYBhV8ngvr97_zuDpKMNNUcN55fkxTD5bPfuvHcUQ&amp;productid=L1NJ&amp;viewproductid=L1NJ&amp;culture=pt-BR&amp;returnto=https%3A%2F%2Fsignon.thomsonreuters.com%2F%3FproductId%3DL1NJ%26returnto%3Dhttps%253a%252f%252flogin.novajus.com.br%252fOnePass%252fLoginOnePass%252f%26bhav%3D%26bhsh%3D1080%26bhsw%3D1920%26bhiw%3D1920%26bhih%3D1080%26bhtz%3D-3%26bhlu%3Dpt-br%26bhsp%3D0%26bhqs%3D1" target="_self">Atualizar perfil do OnePass</a>
+		</li>
+			</ul>
+
+				</div>
+				<script type="text/javascript">
+					CapsLock.BindElement("Password")
+					$(function() {
+			// call the validate method on our form, and pass in our explicit options
+			$("#form0").validate({
+				ignore: ":hidden",
+				onkeyup: false,
+				rules: {
+					Password: {
+						rangelength:[8, 64],
+						invalidchars:"<>＜＞",
+						required:true
+					},
+					Username: {
+						invalidchars:"<>＜＞",
+						rangelength:[6, 70],
+						required:true
+					}
+				},
+				messages: {
+					Password: {
+						rangelength:"A senha é muito curta ou muito longa.",
+						invalidchars:"Esses caracteres são inválidos: \u0026lt; \u0026gt;",
+						required:"Digite uma senha."
+					},
+					Username: {
+						invalidchars:"Esses caracteres são inválidos: \u0026lt; \u0026gt;",
+						rangelength:"O usuário é muito curto ou muito longo.",
+						required:"Digite um usuário."
+					}
+				},
+				submitHandler: function(form) {if (!this.beenSubmitted) {this.beenSubmitted = true;form.submit();}},
+				errorClass: "validation-error",
+				errorElement: "span",
+				errorPlacement: function(error, element) {
+					if (element.attr("name") == "Password") {
+						$("#Password_validationMessage").empty();
+						error.appendTo("#Password_validationMessage");
+						return;
+					}
+
+					if (element.attr("name") == "Username") {
+						$("#Username_validationMessage").empty();
+						error.appendTo("#Username_validationMessage");
+						return;
+					}
+
+					var elementName=element.attr("name");
+					if (elementName.endsWith("-clone")) {
+						elementName = elementName.substring(0,elementName.length-6);
+					}
+					if ($("#"+elementName+"_validationMessage").length > 0) {
+						$("#"+elementName+"_validationMessage").empty();
+						error.appendTo("#"+elementName+"_validationMessage");
+						return;
+					}
+
+					error.insertAfter(element);
+				}
+
+			});
+$("#Username").trigger("focus");
+		});
+
+				</script>
+</form>									<script type="text/javascript">
+				Home.BindMidnightTime();
+			</script>
+		</div>
+		
+
+	</div>
+</div>
+
+
+<script type="text/javascript">
+	$(function () {
+		var checkedCaptcha = false;
+		var captchaIsAlreadyDisplayed = false;
+
+		$('#Password').showPassword();
+
+		if (!checkedCaptcha && !captchaIsAlreadyDisplayed)
+		{
+			Home.BindCaptchaUserValidation();
+
+			if ($('#Username').val().length > 0) {
+				Home.CheckUserRememberMeAndCaptcha(false);
+			}
+		}
+	});
+</script>
+
+
+		</div>
+
+		
+<div id="footer" class="Footer" role="contentinfo">
+	<div class="Content-wrap">
+			<div class="Select-custom-wrap">
+				<label id="languageLabel" for="language" class="Select-custom-label" aria-hidden="true">Idioma</label>
+				<div class="Select-custom">
+					<select aria-labelledby="languageLabel" name="language" id="language">
+							<option selected="selected" value="pt-br">Portugu&#234;s (Brasil)</option>
+							<option value="ES">Espa&#241;ol</option>
+							<option value="EN">English</option>
+					</select>
+					<div class="Select-custom-button"></div>
+				</div>
+			</div>
+		<ul class="Copyright GlobalFooter-menu" x-ms-format-detection="none">
+				<li><span>&copy; 2026 Thomson Reuters.</span></li>
+
+				<li>Suporte t&#233;cnico: 1-800-934-9378</li>
+
+		</ul>
+		<ul class="GlobalFooter-menu">
+											</ul>
+	</div>
+</div>
+
+<script type="text/javascript">
+	$(function () {
+		OnePass.BindSelectToAction($("#language"), "pt-br", OnePass.ChangeLanguage);
+
+		// Hack to make language refresh with rest of page when clicking back button in Chrome
+		$("#language").val($("#language").find('option[selected]').val());
+	});
+</script>
+		
+	</div>
+	<script>
+		$(function() {
+			// bind a click event to the 'skip' link
+			$(".Skip-link").on("click", function(event){
+
+				// strip the leading hash and declare
+				// the content we're skipping to
+				var skipTo="#"+this.href.split('#')[1];
+
+				// Setting 'tabindex' to -1 takes an element out of normal
+				// tab flow but allows it to be focused via javascript
+				$(skipTo).attr('tabindex', -1).on('blur focusout', function () {
+
+					// when focus leaves this element,
+					// remove the tabindex attribute
+					$(this).removeAttr('tabindex');
+
+				}).trigger("focus"); // focus on the content container
+			});
+		});
+	</script>
+</body>
+</html>

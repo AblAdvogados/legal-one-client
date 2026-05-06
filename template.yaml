@@ -1,0 +1,164 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+
+Description: >
+  legalone-client
+  API FastAPI + Mangum para automação de cadastros e consultas no LegalOne.
+  Deploy via imagem Docker no ECR. Concorrência máxima 1 para serializar
+  requisições ao servidor do LegalOne.
+
+# ── Parâmetros ────────────────────────────────────────────────────────────────
+# Apenas parâmetros sem dados sensíveis ficam aqui.
+# Segredos (SecureString) são resolvidos via dynamic references do CloudFormation
+# diretamente nos blocos Environment.Variables, na forma:
+#   {{resolve:ssm-secure:/legal-one/<name>}}
+# Isso evita o erro "type not supported by CloudFormation" ao usar
+# AWS::SSM::Parameter::Value<String> com SecureStrings.
+#
+# Pré-requisito — crie os parâmetros SSM antes do primeiro deploy:
+#   aws ssm put-parameter --name /legal-one/username  --value "..." --type SecureString
+#   aws ssm put-parameter --name /legal-one/password  --value "..." --type SecureString
+#   aws ssm put-parameter --name /legal-one/jwt-secret --value "..." --type SecureString
+#   aws ssm put-parameter --name /legal-one/api-key    --value "..." --type SecureString
+
+Parameters:
+
+  SessionTableName:
+    Type: String
+    Default: legal-one-session-store
+    Description: Nome da tabela DynamoDB usada pelo SessionManager
+
+# ── Globals ───────────────────────────────────────────────────────────────────
+# Aplicados a todas as funções Lambda do template.
+
+Globals:
+  Function:
+    Timeout: 45          # segundos — crawlers fazem requests HTTP externos
+    MemorySize: 512      # MB — BeautifulSoup + requests em memória
+    Environment:
+      Variables:
+        # Nomes dos parâmetros SSM — valores resolvidos em runtime via boto3
+        SSM_USERNAME_PATH:   /legal-one/username
+        SSM_PASSWORD_PATH:   /legal-one/password
+        SSM_JWT_SECRET_PATH: /legal-one/jwt-secret
+        SSM_API_KEY_PATH:    /legal-one/api-key
+        DYNAMODB_TABLE:      !Ref SessionTableName
+
+# ── Recursos ──────────────────────────────────────────────────────────────────
+
+Resources:
+
+  # ── 1. Tabela DynamoDB — cache de sessão e lock distribuído ─────────────────
+  # O SessionManager usa dois itens fixos nesta tabela:
+  #   pk="COOKIES" → JSON dos cookies + expires_at
+  #   pk="LOCK"    → lock distribuído de refresh (TTL curto)
+  # O atributo TimeToLiveSpecification limpa automaticamente itens expirados.
+
+  SessionTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Ref SessionTableName
+      BillingMode: PAY_PER_REQUEST   # on-demand — tráfego baixo e irregular
+      AttributeDefinitions:
+        - AttributeName: pk
+          AttributeType: S
+      KeySchema:
+        - AttributeName: pk
+          KeyType: HASH
+      TimeToLiveSpecification:
+        AttributeName: expires_at    # mesmo atributo gravado pelo SessionManager
+        Enabled: true
+
+  # ── 2. Função Lambda — aplicação FastAPI via Mangum ──────────────────────────
+
+  LegalOneFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Architectures:
+        - arm64
+      FunctionName: legalone-client
+      PackageType: Image           # imagem Docker em vez de ZIP
+      
+      # ReservedConcurrentExecutions: 1  # serializa requisições ao LegalOne;
+      #                                  # excedentes recebem 429 imediatamente
+      Policies:
+        # Permissões mínimas para o SessionManager operar na tabela
+        - DynamoDBCrudPolicy:
+            TableName: !Ref SessionTable
+        # Leitura dos segredos no SSM Parameter Store (SecureString)
+        - Statement:
+            - Effect: Allow
+              Action:
+                - ssm:GetParameter
+              Resource:
+                - !Sub "arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/legal-one/username"
+                - !Sub "arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/legal-one/password"
+                - !Sub "arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/legal-one/jwt-secret"
+                - !Sub "arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/legal-one/api-key"
+            - Effect: Allow
+              Action:
+                - kms:Decrypt
+              Resource: !Sub "arn:aws:kms:${AWS::Region}:${AWS::AccountId}:alias/aws/ssm"
+
+      Events:
+        # Captura qualquer método e path e repassa ao Mangum/FastAPI
+        Api:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref LegalOneHttpApi
+            Method: ANY
+            Path: /{proxy+}
+
+        # Rota raiz (GET / → docs do FastAPI, health check, etc.)
+        ApiRoot:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref LegalOneHttpApi
+            Method: ANY
+            Path: /
+
+    Metadata:
+      # Instrui o SAM a construir a imagem a partir do Dockerfile na raiz.
+      # DockerBuildArgs garante build amd64 mesmo em Apple Silicon (M1/M2/M3).
+      DockerTag: latest
+      DockerContext: .
+      Dockerfile: Dockerfile
+
+  # ── 3. API Gateway HTTP API (v2) ─────────────────────────────────────────────
+  # Usado apenas como ponto de entrada HTTP público com URL estável.
+  # Toda a autenticação (JWT) é feita dentro do FastAPI — sem Authorizer aqui.
+  # CORS configurado para aceitar qualquer origem interna; ajuste AllowOrigins
+  # para os domínios reais das aplicações clientes quando necessário.
+
+  LegalOneHttpApi:
+    Type: AWS::Serverless::HttpApi
+    Properties:
+      StageName: prod
+      CorsConfiguration:
+        AllowOrigins:
+          - "*"
+        AllowMethods:
+          - GET
+          - POST
+          - PUT
+          - DELETE
+          - OPTIONS
+        AllowHeaders:
+          - Content-Type
+          - Authorization
+
+# ── Outputs ───────────────────────────────────────────────────────────────────
+
+Outputs:
+
+  ApiUrl:
+    Description: URL pública da API (API Gateway HTTP API)
+    Value: !Sub "https://${LegalOneHttpApi}.execute-api.${AWS::Region}.amazonaws.com/prod"
+
+  FunctionArn:
+    Description: ARN da função Lambda
+    Value: !GetAtt LegalOneFunction.Arn
+
+  SessionTableArn:
+    Description: ARN da tabela DynamoDB de sessão
+    Value: !GetAtt SessionTable.Arn
