@@ -1,3 +1,5 @@
+import sys
+sys.path.append('.')
 import math
 import requests
 from datetime import datetime, time
@@ -235,6 +237,9 @@ class Authenticator:
 
         response = self._submit_credentials(login_fields)
 
+        with open('response_after_login.html', 'w', encoding='utf-8') as f:
+            f.write(response.text)  # salva o HTML para análise posterior, se necessário
+
         # Passo 5 e 6 desativados — o requests segue os redirects automaticamente
         # e deposita os cookies de sessão sem intervenção manual.
         jwt_token, nonce, redirect_to, js_url = self._extract_jwt_from_redirect(response)
@@ -246,3 +251,12 @@ class Authenticator:
         subscription_key = self._get_subscription_key(js_url, jwt_token, nonce, redirect_to)
 
         return jwt_token, subscription_key, self.session.cookies.get_dict()
+
+
+if __name__ == "__main__":
+    # Exemplo de uso
+    auth = Authenticator('thomas.maia@abladvogados.com', 'Legalone-125')
+    jwt, subscription_key, cookies = auth.authenticate()
+    print("JWT:", jwt)
+    print("Subscription Key:", subscription_key)
+    print("Cookies:", cookies)

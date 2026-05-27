@@ -1,0 +1,185 @@
+<!DOCTYPE HTML>
+<!--[if lte IE 8]>
+	<html class="ie8" dir="ltr" lang="pt-BR">
+<![endif]-->
+<!--[if IE 9]>
+	<html class="ie9" dir="ltr" lang="pt-BR">
+<![endif]-->
+<html dir="ltr" lang="pt-BR">
+<head>
+	<!-- Copyright 2019: Thomson Reuters. All Rights Reserved. Proprietary and Confidential information of Thomson Reuters. Disclosure, Use or Reproduction without the written authorization of Thomson Reuters is prohibited. -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=IE6" /> 
+	<meta name="viewport" content="width=device-width"/>
+	<title>OnePass Signon</title>
+	<link rel="shortcut icon" href="/Version2/images/favicon.ico?v=26.04.0" />
+
+	
+		<link href="/Version2/Content/jquery-ui.min.css?v=26.04.0" rel="stylesheet" type="text/css" />
+
+<link href="/Version2/Content/cosi.css?v=26.04.0" rel="stylesheet" type="text/css" />
+
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet" type="text/css" />
+	
+			<script src="/Version2/Scripts/JqueryV2/jquery-3.6.1.min.js?v=26.04.0" type="text/javascript"></script>
+			<script src="/Version2/Scripts/JqueryV2/jquery.validate-1.19.5.min.js?v=26.04.0" type="text/javascript"></script>
+			<script src="/Version2/Scripts/JqueryV2/jquery-ui-1.13.2.min.js?v=26.04.0" type="text/javascript"></script>
+		<script src="/Version2/Scripts/ApplicationV2/OnePass.js?v=26.04.0" type="text/javascript"></script>
+		<script src="/Version2/Scripts/ApplicationV2/jquery.validate.trgr.js?v=26.04.0" type="text/javascript"></script>
+		<script src="/Version2/Scripts/ApplicationV2/AlertDialog.js?v=26.04.0" type="text/javascript"></script>
+		<script src="/Version2/Scripts/ApplicationV2/Toast.js?v=26.04.0" type="text/javascript"></script>
+		<script src="/Version2/Scripts/ApplicationV2/jquery.antiforgery.min.js?v=26.04.0" type="text/javascript"></script>
+		<!--[if !lte IE 8]><!-->
+		<script src="/Version2/Scripts/JqueryV2/svg4everybody.min.js?v=26.04.0" type="text/javascript"></script>
+		<!--<![endif]-->
+
+<!--[if !lte IE 8]><!-->
+<script>svg4everybody();</script>
+<!--<![endif]-->
+
+
+	<script type="text/javascript">
+		OnePass.TextValidationMessage = "Esses caracteres s&#227;o inv&#225;lidos: * &amp;lt; &amp;gt;";
+		OnePass.TextValidationNoAsteriskMessage = "Esses caracteres s&#227;o inv&#225;lidos: &amp;lt; &amp;gt;";
+		OnePass.AjaxRequestTimeOut = 10000;
+
+			 OnePass.AjaxRequestTimeOut = 10000;
+		
+		$.ajaxSetup({
+			timeout: OnePass.AjaxRequestTimeOut
+		});
+
+		OnePass.KeepAliveUrl = "/v2/keepalive?productid=L1NJ&returnto=https%3A%2F%2Flogin.novajus.com.br%2FOnePass%2FLoginOnePass%2F";
+		OnePass.StartSessionKeepAlive();
+	</script>
+	
+	
+</head>
+<body class="full cosi" lang="pt-BR">
+	<div class="Page-wrapper">
+		
+
+		<div id="main" class="Main-wrap" role="main">
+			
+
+			
+<div class="PageHeader">
+	<div class="Cosi-logo Content-wrap--small">
+			<a href="http://www.thomsonreuters.com">
+				<svg role="img" width="193" height="30" focusable="false" aria-label="Thomson Reuters">
+					<use xlink:href="/Version2/images/svg-defs.svg?v=26.04.0#svg-TRLogo-Optimized"></use>
+					<img src="/Version2/images/svg-TRLogo-Optimized.png?v=26.04.0" />
+				</svg>
+			</a>
+	</div>
+	<div id="dynamicToastMessage"></div>
+</div>
+			<div class="Content-wrap--small">
+				<div class="Form--hasWrapper">
+					<div class="Form-content" role="form">
+						
+	<h1 class="CustomFont Cosi-header">OnePass</h1>
+
+
+						
+
+						
+
+						
+
+
+
+<div class="Content-wrap--small">
+	<h1>Erro geral</h1>
+</div>
+
+<div class="Content-wrap--small">
+	<div class="Helper-text-wrap">
+		<p>Desculpe. Ocorreu um erro ao processar suas informa&#231;&#245;es. Voc&#234; pode pressionar o bot&#227;o Voltar e tentar novamente. Se o erro persistir, entre em contato com o suporte t&#233;cnico.</p>
+		<a href="/v2?productid=L1NJ&amp;returnto=https%3A%2F%2Flogin.novajus.com.br%2FOnePass%2FLoginOnePass%2F" class="Button Button--large ButtonLink--icon Button-backToProduct">
+			<div class="Icon-wrapper Icon-wrapper--large">
+				<svg role="img" title="back" class="Icon-svg Icon-svg--onLight" focusable="false" aria-hidden="true">
+					<use xlink:href="/Version2/images/svg-defs.svg?v=26.04.0#svg-Back"></use>
+				</svg>
+			</div>
+			<span>Voltar ao OnePass</span>
+		</a>
+	</div>
+</div>
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+		
+<div id="footer" class="Footer" role="contentinfo">
+	<div class="Content-wrap">
+			<div class="Select-custom-wrap">
+				<label id="languageLabel" for="language" class="Select-custom-label" aria-hidden="true">Idioma</label>
+				<div class="Select-custom">
+					<select aria-labelledby="languageLabel" name="language" id="language">
+							<option value="EN">English</option>
+							<option value="ES">Espa&#241;ol</option>
+							<option value="FR">Fran&#231;ais</option>
+							<option value="PT">Portugu&#234;s</option>
+							<option value="ZH">中文</option>
+							<option value="JA">日本語</option>
+							<option value="de">Deutsch</option>
+							<option value="vi">Ti&#234;́ng Việt</option>
+							<option value="th">ไทย</option>
+							<option value="ko">한국어</option>
+							<option value="zh-tw">中文(台灣)</option>
+							<option value="cs">Čeština</option>
+							<option value="da">Dansk</option>
+							<option value="es-ar">Espa&#241;ol (Argentina)</option>
+							<option value="es-mx">Espa&#241;ol (M&#233;xico)</option>
+							<option value="fr-ca">Fran&#231;ais (Canada)</option>
+							<option value="it">Italiano</option>
+							<option value="hu">Magyar</option>
+							<option value="nl">Nederlands</option>
+							<option value="nl-be">Nederlands (Belgi&#235;)</option>
+							<option value="no">Norsk</option>
+							<option value="pl">Polski</option>
+							<option selected="selected" value="pt-br">Portugu&#234;s (Brasil)</option>
+							<option value="ro">Rom&#226;nă</option>
+							<option value="sk">Slovenčina</option>
+							<option value="fi">Suomi</option>
+							<option value="sv">Svenska</option>
+							<option value="tr">T&#252;rk&#231;e</option>
+							<option value="el">Ελληνικά</option>
+							<option value="bg">Български</option>
+							<option value="ru">Русский</option>
+							<option value="he">עברית</option>
+							<option value="ar">العربية</option>
+					</select>
+					<div class="Select-custom-button"></div>
+				</div>
+			</div>
+		<ul class="Copyright GlobalFooter-menu" x-ms-format-detection="none">
+				<li><span>&copy; 2026 Thomson Reuters.</span></li>
+
+				<li>US Technical Support: 1-800-934-9378</li>
+					<li><span>&nbsp;<a href="https://www.thomsonreuters.com/en-us/help/westlaw-international/resources/support-services.html" target="onepassfooterlinks">Global Support Contacts</a></span></li>
+
+		</ul>
+		<ul class="GlobalFooter-menu">
+				<li><a href="https://www.thomsonreuters.com/en/privacy-statement.html" target="onepassfooterlinks">Privacidade</a></li>
+											</ul>
+	</div>
+</div>
+
+<script type="text/javascript">
+	$(function () {
+		OnePass.BindSelectToAction($("#language"), "pt-br", OnePass.ChangeLanguage);
+
+		// Hack to make language refresh with rest of page when clicking back button in Chrome
+		$("#language").val($("#language").find('option[selected]').val());
+	});
+</script>
+		
+	</div>
+	
+
+</body>
+</html>

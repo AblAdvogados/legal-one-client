@@ -8,7 +8,8 @@ from datetime import datetime, timedelta, timezone
 
 logger = logging.getLogger(__name__)
 
-from infrastructure.crawler.authenticator import Authenticator
+# from infrastructure.crawler.authenticator import Authenticator
+from infrastructure.crawler.new_authenticator import Authenticator
 from core.errors import AuthenticationError, SessionRefreshTimeoutError
 
 LOCK_TTL = 30       # segundos
