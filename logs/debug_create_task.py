@@ -35,7 +35,7 @@ _tasks_mod.TasksCrawler.create_task = _patched_create_task
 
 # ── Importa service (após o patch) ───────────────────────────────────────────
 from core.config import settings
-from infrastructure.crawler.authenticator import Authenticator
+from infrastructure.crawler.onepass_authenticator import Authenticator
 from infrastructure.crawler.tasks import TasksCrawler
 from services.task.task_service import TaskService
 

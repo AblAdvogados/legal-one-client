@@ -17,3 +17,6 @@ dist/
 
 # IDE
 .vscode/settings.json
+
+# arquivos .ipynb
+*.ipynb

@@ -15,7 +15,7 @@ RETURN_TO = 'https%3a%2f%2flogin.novajus.com.br%2fOnePass%2fLoginOnePass%2f'
 _C = LegalOneConstants
 
 
-class Authenticator:
+class OnePassAuthenticator:
     """
     Authenticator for LegalOne platform.
     Fluxo:
@@ -255,7 +255,7 @@ class Authenticator:
 
 if __name__ == "__main__":
     # Exemplo de uso
-    auth = Authenticator('thomas.maia@abladvogados.com', 'Legalone-125')
+    auth = OnePassAuthenticator('thomas.maia@abladvogados.com', 'senha_exemplo')
     jwt, subscription_key, cookies = auth.authenticate()
     print("JWT:", jwt)
     print("Subscription Key:", subscription_key)

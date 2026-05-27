@@ -15,7 +15,7 @@ for noisy in ("boto3", "botocore", "urllib3", "s3transfer"):
     logging.getLogger(noisy).setLevel(logging.WARNING)
 
 from core.config import settings
-from infrastructure.crawler.authenticator import Authenticator
+from infrastructure.crawler.onepass_authenticator import Authenticator
 from infrastructure.crawler.tasks import TasksCrawler
 
 

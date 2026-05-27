@@ -89,7 +89,7 @@ _C = LegalOneConstants
 logger = logging.getLogger(__name__)
 
 
-class Authenticator:
+class TRAuthenticator:
     """
     Authenticador do LegalOne via Auth0 (OIDC Authorization Code Flow).
 
@@ -543,19 +543,20 @@ class Authenticator:
 
 
 if __name__ == "__main__":
-    logging.basicConfig(level=logging.DEBUG, format='%(levelname)s %(name)s: %(message)s')
+    pass
+    # logging.basicConfig(level=logging.DEBUG, format='%(levelname)s %(name)s: %(message)s')
 
-    import os
-    username = os.environ.get('LEGALONE_USER', 'thomas.maia@abladvogados.com')
-    password = os.environ.get('LEGALONE_PASS', 'Legalone-125')
+    # import os
+    # username = os.environ.get('LEGALONE_USER', 'thomas.maia@abladvogados.com')
+    # password = os.environ.get('LEGALONE_PASS', '')
 
-    auth = Authenticator(username, password)
+    # auth = TRAuthenticator(username, password)
 
-    try:
-        jwt_token, subscription_key, cookies = auth.authenticate()
-        print(f"\n✓ JWT obtido:           {jwt_token[:40]}...")
-        print(f"✓ Subscription key:     {subscription_key}")
-        print(f"✓ Cookies de sessão:    {list(cookies.keys())}")
-    except AuthenticationError as exc:
-        print(f"\n✗ Falha na autenticação: {exc}")
-        raise SystemExit(1)
+    # try:
+    #     jwt_token, subscription_key, cookies = auth.authenticate()
+    #     print(f"\n✓ JWT obtido:           {jwt_token[:40]}...")
+    #     print(f"✓ Subscription key:     {subscription_key}")
+    #     print(f"✓ Cookies de sessão:    {list(cookies.keys())}")
+    # except AuthenticationError as exc:
+    #     print(f"\n✗ Falha na autenticação: {exc}")
+    #     raise SystemExit(1)

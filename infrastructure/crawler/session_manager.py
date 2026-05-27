@@ -8,8 +8,7 @@ from datetime import datetime, timedelta, timezone
 
 logger = logging.getLogger(__name__)
 
-# from infrastructure.crawler.authenticator import Authenticator
-from infrastructure.crawler.new_authenticator import Authenticator
+from infrastructure.crawler.authenticator.tr_authenticator import TRAuthenticator
 from core.errors import AuthenticationError, SessionRefreshTimeoutError
 
 LOCK_TTL = 30       # segundos
@@ -187,7 +186,7 @@ class SessionManager:
     def _do_login(self) -> dict:
         logger.info("_do_login: iniciando autenticação no LegalOne")
         t0 = time.time()
-        jwt, subscription_key, cookies = Authenticator(self.username, self.password).authenticate()
+        jwt, subscription_key, cookies = TRAuthenticator(self.username, self.password).authenticate()
 
         self.jwt = jwt  # opcional: armazenar o JWT para depuração ou uso futuro, embora não seja necessário para os cookies
         self.subscription_key = subscription_key  # opcional: armazenar a subscription key para depuração ou uso futuro, embora não seja necessário para os cookies
