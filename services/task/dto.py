@@ -64,6 +64,8 @@ class CreateTaskServiceInput:
     lembretes: list[LembreteServiceInput] = field(default_factory=list)
     incluir_recorrencia: bool = False
     observacoes: str = ""
+    tipo: Optional[str] = None
+    subtipo: Optional[str] = None
 
 
 # ══════════════════════════════════════════════════════════════════════════════

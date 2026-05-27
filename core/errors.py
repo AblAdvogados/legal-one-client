@@ -262,3 +262,20 @@ class TarefaRejeitadaError(ValidationError):
             "Criação de tarefa rejeitada pelo servidor.",
             errors=errors,
         )
+
+
+class TipoTarefaNaoEncontradoError(LegalOneError):
+    """Tipo ou subtipo de tarefa não encontrado no mapeamento de tipos_tarefa.json."""
+    def __init__(self, tipo: str, subtipo: str | None = None):
+        self.tipo = tipo
+        self.subtipo = subtipo
+        if subtipo:
+            super().__init__(
+                f"Tipo '{tipo}' ou subtipo '{subtipo}' ou não encontrado. "
+                "Verifique o valor exato no Legalone (com acentos ou com espaços vazios no começo ou no final)."
+            )
+        else:
+            super().__init__(
+                f"Tipo de tarefa '{tipo}' não encontrado. "
+                "Verifique o valor exato no Legalone (com acentos ou com espaços vazios no começo ou no final)."
+            )

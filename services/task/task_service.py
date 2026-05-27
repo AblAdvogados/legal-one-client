@@ -36,6 +36,7 @@ from core.errors import (
     UsuarioNaoEncontradoError,
 )
 from infrastructure.crawler.tasks import TasksCrawler
+from infrastructure.lookup.tipo_tarefa_mapper import map_tipo_tarefa
 from parsers.task_parser import interpret_create_task_response
 from services.task.dto import (
     CreateTaskResult,
@@ -128,6 +129,8 @@ class TaskService:
         # ]
 
         # 5. Montar TaskPayload totalmente resolvido
+        tipo_text, tipo_id = map_tipo_tarefa(req.tipo, req.subtipo)
+
         payload = TaskPayload(
             processo_id=vinculo_id,
             num_pasta_processo=num_pasta,
@@ -138,6 +141,8 @@ class TaskService:
             hr_final=req.hr_final,
             deadline_date=req.deadline_date or "",
             deadline_time=req.deadline_time or "",
+            tipo_text=tipo_text,
+            tipo_id=tipo_id,
             show_activity_in_kanban=show_kanban,
             kanban_board_text=kb_text,
             kanban_board_id=kb_id,

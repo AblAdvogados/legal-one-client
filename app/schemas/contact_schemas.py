@@ -7,7 +7,7 @@ Validam formato antes de qualquer lógica de negócio.
 """
 
 import re
-from pydantic import BaseModel, field_validator
+from pydantic import BaseModel, EmailStr, field_validator
 
 
 # ── Request ───────────────────────────────────────────────────────────────────
@@ -18,13 +18,19 @@ class PersonalDataSchema(BaseModel):
     data_nascimento: str | None = None
     sexo: str | None = None        # 'M' | 'F' (case-insensitive)
     observacao: str | None = None
+    email: EmailStr | None = None
+    rg: str | None = None
+    estado_civil: str | None = None
+    profissao: str | None = None
 
     @field_validator("cpf")
     @classmethod
     def validar_cpf(cls, v: str) -> str:
-        if not re.fullmatch(r"\d{3}\.\d{3}\.\d{3}-\d{2}", v.strip()):
-            raise ValueError("CPF deve estar no formato ###.###.###-##.")
-        return v.strip()
+        nums_cpf = re.sub(r"\D", "", v)  # Remove tudo que não for dígito
+        if len(nums_cpf) != 11:
+            raise ValueError("CPF deve conter 11 dígitos, no formato 001.234.567-89 ou 00123456789.")
+        # formatar CPF para o formato 001.234.567-89
+        return f"{nums_cpf[:3]}.{nums_cpf[3:6]}.{nums_cpf[6:9]}-{nums_cpf[9:]}"
 
     @field_validator("nome")
     @classmethod
@@ -42,6 +48,21 @@ class PersonalDataSchema(BaseModel):
         if v.upper().strip() not in ("M", "F", "MASCULINO", "FEMININO", ""):
             raise ValueError("Sexo, se informado, deve ser 'M', 'Masculino', 'F' ou 'Feminino'. Mayúsculas e minúsculas são ignoradas.")
         return v.upper()
+
+    @field_validator("email", mode="before")
+    @classmethod
+    def normalizar_email(cls, v: object) -> object:
+        if isinstance(v, str) and v.strip() == "":
+            return None
+        return v
+
+    @field_validator("rg", "estado_civil", "profissao", mode="before")
+    @classmethod
+    def normalizar_str_opcional(cls, v: str | None) -> str | None:
+        if v is None:
+            return None
+        stripped = v.strip()
+        return stripped if stripped else None
 
 
 class PhonesSchema(BaseModel):
@@ -146,6 +167,10 @@ class PersonalDataResponse(BaseModel):
     data_nascimento: str | None = None
     sexo: str | None = None
     observacao: str | None = None
+    email: str | None = None
+    rg: str | None = None
+    estado_civil: str | None = None
+    profissao: str | None = None
 
 
 class CustomFieldsResponse(BaseModel):

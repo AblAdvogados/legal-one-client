@@ -1,0 +1,12 @@
+{
+    "Casada": 1,
+    "Casado": 2,
+    "Divorciada": 3,
+    "Divorciado": 4,
+    "Separada": 5,
+    "Separado": 6,
+    "Solteira": 7,
+    "Solteiro": 8,
+    "União estável": 11,
+    "Viúva": 9
+}

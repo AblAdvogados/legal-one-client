@@ -18,6 +18,10 @@ class PersonalData:
     data_nascimento: Optional[str] = ""
     sexo: Optional[str] = ""   # 'm'/'masculino' → '0'; 'f'/'feminino' → '1'
     observacao: Optional[str] = ""
+    email: Optional[str] = None
+    rg: Optional[str] = None
+    estado_civil: Optional[str] = None
+    profissao: Optional[str] = None
 
 
 @dataclass

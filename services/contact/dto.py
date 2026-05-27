@@ -55,6 +55,14 @@ class ResolvedSelectField:
     option_id: str
 
 
+@dataclass
+class ResolvedEmail:
+    """Email com tipo e flags de principal/cobrança já resolvidos."""
+    email: str
+    tipo_id: str = "1"       # 1 = pessoal
+    is_principal: bool = True
+
+
 # ══════════════════════════════════════════════════════════════════════════════
 # 2. ContactPayload — envelope service → crawler
 # ══════════════════════════════════════════════════════════════════════════════
@@ -70,7 +78,13 @@ class ContactPayload:
     sexo: str = ""
     data_nascimento: str = ""
     observacao: str = ""
+    rg: str = ""
+    profissao_texto: str = ""
+    profissao_id: str = ""
+    estado_civil_texto: str = ""
+    estado_civil_id: str = ""
 
+    email: Optional[ResolvedEmail] = None
     telefones: list[ResolvedPhone] = field(default_factory=list)
     endereco: Optional[ResolvedAddress] = None
     campos_texto: list[ResolvedTextField] = field(default_factory=list)

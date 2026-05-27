@@ -82,6 +82,31 @@ INPUT_COMPLETO = CreateContactInput(
     custom_fields=_CUSTOM_FIELDS_VALIDOS,
 )
 
+# CreateContactInput com dados reais para o teste de integração
+INPUT_CADASTRO_REAL = CreateContactInput(
+    dados_pessoais=PersonalData(
+        cpf='039.726.028-80',
+        nome='FULANO DA SILVA',
+        sexo='M',
+        data_nascimento='04/07/1980',
+        rg='154424028',
+        email='email@gmail.com',
+        estado_civil='Divorciado',
+        profissao='tratorista',
+    ),
+    telefones=Phone(celular='(11) 91230-2380'),
+    endereco=Address(
+        pais='Brasil',
+        uf='MG',
+        cidade='MUNHOZ',
+        logradouro='RURAL RESIDENCIAL SANTO EXPEDITO',
+        numero='0',
+        complemento='CX 2',
+        bairro='RIBEIRAO FUNDO',
+        cep='37620-000',
+    ),
+)
+
 # CreateContactInput mínimo — só dados obrigatórios + telefone, sem endereço
 INPUT_SEM_ENDERECO = CreateContactInput(
     dados_pessoais=_DADOS_PESSOAIS,
@@ -186,6 +211,105 @@ class TestBuildPayload(unittest.TestCase):
         self.assertEqual(len(warnings), 1)
         self.assertEqual(warnings[0].field_name, 'Endereço')
 
+    # ── Novos campos pessoais ─────────────────────────────────────────────────
+
+    def test_inclui_rg(self):
+        """RG informado deve aparecer no payload."""
+        inp = CreateContactInput(dados_pessoais=PersonalData(
+            cpf=_DADOS_PESSOAIS.cpf, nome=_DADOS_PESSOAIS.nome, rg='15442486',
+        ))
+        payload, warnings = build_payload(inp)
+        self.assertEqual(payload.rg, '15442486')
+        self.assertEqual(warnings, [])
+
+    def test_inclui_email(self):
+        """Email informado deve gerar ResolvedEmail com tipo_id='1' e is_principal=True."""
+        inp = CreateContactInput(dados_pessoais=PersonalData(
+            cpf=_DADOS_PESSOAIS.cpf, nome=_DADOS_PESSOAIS.nome,
+            email='joao@example.com',
+        ))
+        payload, warnings = build_payload(inp)
+        self.assertIsNotNone(payload.email)
+        self.assertEqual(payload.email.email, 'joao@example.com')
+        self.assertEqual(payload.email.tipo_id, '1')
+        self.assertTrue(payload.email.is_principal)
+        self.assertEqual(warnings, [])
+
+    def test_profissao_valida_resolve_id(self):
+        """Profissão conhecida deve preencher profissao_texto e profissao_id sem warnings."""
+        inp = CreateContactInput(dados_pessoais=PersonalData(
+            cpf=_DADOS_PESSOAIS.cpf, nome=_DADOS_PESSOAIS.nome,
+            profissao='tratorista',
+        ))
+        payload, warnings = build_payload(inp)
+        self.assertEqual(payload.profissao_id, '49')
+        self.assertNotEqual(payload.profissao_texto, '')
+        self.assertEqual(warnings, [])
+
+    def test_profissao_case_insensitive(self):
+        """'TRATORISTA' deve resolver para o mesmo ID que 'tratorista'."""
+        inp = CreateContactInput(dados_pessoais=PersonalData(
+            cpf=_DADOS_PESSOAIS.cpf, nome=_DADOS_PESSOAIS.nome,
+            profissao='TRATORISTA',
+        ))
+        payload, _ = build_payload(inp)
+        self.assertEqual(payload.profissao_id, '49')
+
+    def test_profissao_invalida_gera_warning(self):
+        """Profissão desconhecida deve gerar warning e deixar profissao_id vazio."""
+        inp = CreateContactInput(dados_pessoais=PersonalData(
+            cpf=_DADOS_PESSOAIS.cpf, nome=_DADOS_PESSOAIS.nome,
+            profissao='INEXISTENTE',
+        ))
+        payload, warnings = build_payload(inp)
+        self.assertEqual(len(warnings), 1)
+        self.assertEqual(warnings[0].field_name, 'profissao')
+        self.assertEqual(payload.profissao_id, '')
+        self.assertEqual(payload.profissao_texto, '')
+
+    def test_estado_civil_valido_resolve_id(self):
+        """Estado civil conhecido deve preencher texto e id sem warnings."""
+        inp = CreateContactInput(dados_pessoais=PersonalData(
+            cpf=_DADOS_PESSOAIS.cpf, nome=_DADOS_PESSOAIS.nome,
+            estado_civil='Divorciado',
+        ))
+        payload, warnings = build_payload(inp)
+        self.assertEqual(payload.estado_civil_id, '4')
+        self.assertEqual(payload.estado_civil_texto, 'Divorciado')
+        self.assertEqual(warnings, [])
+
+    def test_estado_civil_case_insensitive(self):
+        """'divorciado' deve resolver para o mesmo ID que 'Divorciado'."""
+        inp = CreateContactInput(dados_pessoais=PersonalData(
+            cpf=_DADOS_PESSOAIS.cpf, nome=_DADOS_PESSOAIS.nome,
+            estado_civil='divorciado',
+        ))
+        payload, _ = build_payload(inp)
+        self.assertEqual(payload.estado_civil_id, '4')
+
+    def test_estado_civil_invalido_gera_warning(self):
+        """Estado civil desconhecido deve gerar warning e deixar os campos vazios."""
+        inp = CreateContactInput(dados_pessoais=PersonalData(
+            cpf=_DADOS_PESSOAIS.cpf, nome=_DADOS_PESSOAIS.nome,
+            estado_civil='Casamentado',
+        ))
+        payload, warnings = build_payload(inp)
+        self.assertEqual(len(warnings), 1)
+        self.assertEqual(warnings[0].field_name, 'estado_civil')
+        self.assertEqual(payload.estado_civil_id, '')
+        self.assertEqual(payload.estado_civil_texto, '')
+
+    def test_sem_novos_campos_nao_altera_comportamento(self):
+        """Input sem os novos campos deve manter rg/email/profissao/estado_civil zerados."""
+        payload, warnings = build_payload(INPUT_SEM_ENDERECO)
+        self.assertEqual(payload.rg, '')
+        self.assertIsNone(payload.email)
+        self.assertEqual(payload.profissao_id, '')
+        self.assertEqual(payload.profissao_texto, '')
+        self.assertEqual(payload.estado_civil_id, '')
+        self.assertEqual(payload.estado_civil_texto, '')
+        self.assertEqual(warnings, [])
+
 
 # ══════════════════════════════════════════════════════════════════════════════
 # Utilitários de integração
@@ -210,7 +334,7 @@ def _save_html(filename: str, html: str) -> None:
 
 class TestCadastroCompleto(unittest.TestCase):
     """
-    Cenário: cadastro com endereço válido e todos os custom_fields preenchidos.
+    Cenário: cadastro com dados reais — email, RG, estado civil, profissão e endereço.
     Expectativa: success=True, warnings=[].
     ATENÇÃO: cria contato real — apague no LegalOne após o teste.
     """
@@ -227,7 +351,7 @@ class TestCadastroCompleto(unittest.TestCase):
             return html
 
         crawler.create_contact = _intercept
-        cls.result = service.create_contact(INPUT_COMPLETO)
+        cls.result = service.create_contact(INPUT_CADASTRO_REAL)
 
     def test_sucesso(self):
         """result.success deve ser True."""

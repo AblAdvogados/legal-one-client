@@ -8,15 +8,16 @@ já resolvidos e produzir a lista de tuplas pronta para o requests.post(files=).
 Não faz HTTP, não conhece sessão, não resolve IDs — é uma função de montagem pura.
 """
 
+from __future__ import annotations
+
 import json
 import uuid
 from functools import cache
 from pathlib import Path
+from typing import TYPE_CHECKING
 
-from services.contact.dto import (
-    ContactPayload,
-    ResolvedAddress,
-)
+if TYPE_CHECKING:
+    from services.contact.dto import ContactPayload, ResolvedAddress
 
 _DATA_DIR = Path(__file__).parent.parent / "data"
 
@@ -42,6 +43,8 @@ def build_contact_payload(dto: ContactPayload) -> list:
     files: list = []
     _add_personal_data(files, dto)
     _add_telefones(files, dto)
+    if dto.email:
+        _add_emails(files, dto)
     if dto.endereco:
         _add_endereco(files, dto.endereco)
     _add_campos_texto(files, dto)
@@ -66,10 +69,10 @@ def _add_personal_data(files: list, dto: ContactPayload) -> None:
         ("Sexo",                                             (None, dto.sexo)),
         ("Tratamento",                                       (None, "")),
         ("TratamentoId",                                     (None, "")),
-        ("ProfissaoText",                                    (None, "")),
-        ("ProfissaoId",                                      (None, "")),
-        ("EstadoCivilText",                                  (None, "")),
-        ("EstadoCivilId",                                    (None, "")),
+        ("ProfissaoText",                                    (None, dto.profissao_texto)),
+        ("ProfissaoId",                                      (None, dto.profissao_id)),
+        ("EstadoCivilText",                                  (None, dto.estado_civil_texto)),
+        ("EstadoCivilId",                                    (None, dto.estado_civil_id)),
         ("NivelEducacionalText",                             (None, "")),
         ("NivelEducacionalId",                               (None, "")),
         ("MatriculaCodigo",                                  (None, "")),
@@ -81,7 +84,7 @@ def _add_personal_data(files: list, dto: ContactPayload) -> None:
         ("TipoIdentidadeUFText",                             (None, "")),
         ("TipoIdentidadeUFId",                               (None, "")),
         ("NITPISPASEP",                                      (None, "")),
-        ("RG",                                               (None, "")),
+        ("RG",                                               (None, dto.rg)),
         ("CTPS",                                             (None, "")),
         ("Serie",                                            (None, "")),
         ("TituloEleitor",                                    (None, "")),
@@ -106,6 +109,25 @@ def _add_telefones(files: list, dto: ContactPayload) -> None:
             (f"Telefones[{_id}].IsPrincipal", (None, is_principal)),
             (f"Telefones[{_id}].IsPrincipal", (None, "false")),
         ])
+
+
+def _add_emails(files: list, dto: ContactPayload) -> None:
+    e = dto.email
+    _id = str(uuid.uuid4())
+    is_principal = "true" if e.is_principal else "false"
+    files.extend([
+        ("Emails.Index",                          (None, _id)),
+        (f"Emails[{_id}]._Index",                 (None, f"Emails[{_id}]")),
+        (f"Emails[{_id}].Id",                     (None, "")),
+        (f"Emails[{_id}].Email",                  (None, e.email)),
+        (f"Emails[{_id}].TipoId",                 (None, e.tipo_id)),
+        (f"Emails[{_id}].IsPrincipal",            (None, is_principal)),
+        (f"Emails[{_id}].IsPrincipal",            (None, "false")),
+        (f"Emails[{_id}].IsCobranca",             (None, "true")),
+        (f"Emails[{_id}].IsCobranca",             (None, "false")),
+        (f"Emails[{_id}].IsFaturamento",          (None, "true")),
+        (f"Emails[{_id}].IsFaturamento",          (None, "false")),
+    ])
 
 
 def _add_endereco(files: list, e: ResolvedAddress) -> None:

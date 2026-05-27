@@ -74,6 +74,10 @@ def _to_service_input(req: CreateContactRequest) -> CreateContactInput:
         data_nascimento=dp.data_nascimento or "",
         sexo=dp.sexo or "",
         observacao=dp.observacao or "",
+        email=dp.email,
+        rg=dp.rg,
+        estado_civil=dp.estado_civil,
+        profissao=dp.profissao,
     )
 
     telefones = None

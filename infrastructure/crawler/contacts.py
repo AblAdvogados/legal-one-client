@@ -11,13 +11,18 @@ NÃO conhece: dataclasses de entrada públicas, mapeamentos de IDs,
 lógica de negócio nem montagem de tuplas multipart.
 """
 
+from __future__ import annotations
+
 import logging
 import time
+from datetime import datetime
+from typing import TYPE_CHECKING
 
 from infrastructure.crawler.base_crawler import BaseCrawler
-from services.contact.dto import ContactPayload
 from infrastructure.crawler.payload_builders.contact_payload_builder import build_contact_payload
-from datetime import datetime
+
+if TYPE_CHECKING:
+    from services.contact.dto import ContactPayload
 
 logger = logging.getLogger(__name__)
 

@@ -76,6 +76,8 @@ def _to_service_input(req: CreateTaskRequest) -> CreateTaskServiceInput:
         ],
         incluir_recorrencia=req.incluir_recorrencia,
         observacoes=req.observacoes,
+        tipo=req.tipo,
+        subtipo=req.subtipo,
     )
 
 

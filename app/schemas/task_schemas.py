@@ -6,7 +6,10 @@ Contrato público da API — o caller envia apenas dados de negócio (nomes, nú
 sem IDs internos do LegalOne. A resolução de IDs é feita pelo TaskService.
 """
 
-from pydantic import BaseModel, Field, model_validator
+from pydantic import BaseModel, Field, field_validator, model_validator
+
+from core.errors import TipoTarefaNaoEncontradoError
+from infrastructure.lookup.tipo_tarefa_mapper import map_tipo_tarefa
 
 
 class ResponsavelSchema(BaseModel):
@@ -144,13 +147,13 @@ class CreateTaskRequest(BaseModel):
 
     # ── Deadline (opcional, mas se date → time obrigatório) ───────────────────
     deadline_date: str | None = Field(
-        default=None,
+        default="",
         description="Data do prazo fatal no formato dd/MM/yyyy. "
                     "Se fornecido, deadline_time também é obrigatório.",
         examples=["25/05/2026"],
     )
     deadline_time: str | None = Field(
-        default=None,
+        default="",
         description="Hora do prazo fatal no formato HH:mm:ss. "
                     "Obrigatório quando deadline_date for fornecido.",
         examples=["17:00:00"],
@@ -176,11 +179,56 @@ class CreateTaskRequest(BaseModel):
     )
 
     # ── Observações (opcional) ────────────────────────────────────────────────
-    observacoes: str = Field(
+    observacoes: str | None = Field(
         default="",
         description="Texto livre de observações associado à tarefa.",
         examples=["Verificar documentação prévia."],
     )
+
+    # ── Tipo da tarefa (opcional) ─────────────────────────────────────────────
+    tipo: str | None = Field(
+        default=None,
+        description="Tipo da tarefa conforme cadastrado no LegalOne (campo Path do JSON). "
+                    "Ex.: 'BACKOFFICE'. Omitir para usar o tipo padrão 'Diversos'.",
+        examples=["BACKOFFICE"],
+    )
+    subtipo: str | None = Field(
+        default=None,
+        description="Subtipo da tarefa (requer 'tipo').",
+        examples=["ANALISE DE CASO"],
+    )
+
+    @field_validator("tipo", "subtipo", mode="before")
+    @classmethod
+    def normalizar_tipo(cls, v: object) -> str | None:
+        if v is None or (isinstance(v, str) and v.strip() == ""):
+            return None
+        return v
+
+    @model_validator(mode="after")
+    def validar_tipo_tarefa(self) -> "CreateTaskRequest":
+        if self.subtipo and not self.tipo:
+            raise ValueError("'tipo' é obrigatório quando 'subtipo' é fornecido.")
+        if self.tipo:
+            try:
+                map_tipo_tarefa(self.tipo, self.subtipo)
+            except TipoTarefaNaoEncontradoError as exc:
+                raise ValueError(str(exc)) from exc
+        return self
+
+    @field_validator("observacoes", mode="before")
+    @classmethod
+    def normalizar_observacoes(cls, v: object) -> str:
+        if v is None or (isinstance(v, str) and v.strip() == ""):
+            return ""
+        return v
+
+    @field_validator("deadline_date", "deadline_time", mode="before")
+    @classmethod
+    def normalizar_deadline(cls, v: object) -> str:
+        if v is None or (isinstance(v, str) and v.strip() == ""):
+            return ""
+        return v
 
     @model_validator(mode="after")
     def deadline_completo(self) -> "CreateTaskRequest":

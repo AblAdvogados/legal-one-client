@@ -32,6 +32,8 @@ from core.errors import (
 )
 from domain.contact import ContactDetails, ContactSummary, CreateContactInput
 from infrastructure.lookup.city_mapper import map_cidade_to_id
+from infrastructure.lookup.estado_civil_mapper import map_estado_civil_to_id
+from infrastructure.lookup.profissao_mapper import map_profissao_to_id
 from infrastructure.lookup.state_mapper import map_uf_to_id
 from infrastructure.lookup.select_mapper import (
     FN_CLASS_BACK,
@@ -50,6 +52,7 @@ from parsers.contact_parser import (
 from services.contact.dto import (
     ContactPayload,
     ResolvedAddress,
+    ResolvedEmail,
     ResolvedPhone,
     ResolvedSelectField,
     ResolvedTextField,
@@ -104,6 +107,31 @@ def build_payload(dados: CreateContactInput) -> tuple[ContactPayload, list[Field
         data_nascimento=dp.data_nascimento or "",
         observacao=dp.observacao or "",
     )
+
+    # ── Campos simples de dados pessoais ─────────────────────────────────────
+    if dp.rg:
+        payload.rg = dp.rg
+
+    if dp.email:
+        payload.email = ResolvedEmail(email=dp.email)
+
+    if dp.profissao:
+        try:
+            canonical, prof_id = map_profissao_to_id(dp.profissao)
+            payload.profissao_texto = canonical
+            payload.profissao_id = prof_id
+        except MappingError as exc:
+            logger.info("build_payload: campo opcional degradado — field=profissao reason=%s", exc)
+            warnings.append(FieldError(field_name="profissao", message=str(exc)))
+
+    if dp.estado_civil:
+        try:
+            canonical, ec_id = map_estado_civil_to_id(dp.estado_civil)
+            payload.estado_civil_texto = canonical
+            payload.estado_civil_id = ec_id
+        except MappingError as exc:
+            logger.info("build_payload: campo opcional degradado — field=estado_civil reason=%s", exc)
+            warnings.append(FieldError(field_name="estado_civil", message=str(exc)))
 
     # ── Telefones (nunca falham) ──────────────────────────────────────────────
     if dados.telefones:

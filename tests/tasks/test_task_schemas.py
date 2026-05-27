@@ -14,7 +14,6 @@ Offline, sem HTTP.
 
 import unittest
 
-import pytest
 from pydantic import ValidationError
 
 from app.schemas.task_schemas import (
@@ -167,8 +166,8 @@ class TestCreateTaskRequest(unittest.TestCase):
         self.assertEqual(req.lembretes, [])
         self.assertFalse(req.incluir_recorrencia)
         self.assertEqual(req.observacoes, "")
-        self.assertIsNone(req.deadline_date)
-        self.assertIsNone(req.deadline_time)
+        self.assertEqual(req.deadline_date, "")
+        self.assertEqual(req.deadline_time, "")
 
     def test_completo_valido(self):
         """Body completo com todos os opcionais preenchidos."""
@@ -238,8 +237,8 @@ class TestCreateTaskRequest(unittest.TestCase):
 
     def test_aceita_sem_deadline(self):
         req = CreateTaskRequest(**_MINIMAL_VALID_BODY)
-        self.assertIsNone(req.deadline_date)
-        self.assertIsNone(req.deadline_time)
+        self.assertEqual(req.deadline_date, "")
+        self.assertEqual(req.deadline_time, "")
 
     # ── Responsáveis ≥ 1 ─────────────────────────────────────────────────────
 
@@ -247,6 +246,108 @@ class TestCreateTaskRequest(unittest.TestCase):
         body = {**_MINIMAL_VALID_BODY, "responsaveis": []}
         with self.assertRaises(ValidationError):
             CreateTaskRequest(**body)
+
+    # ── Normalização None / "" ────────────────────────────────────────────────
+
+    def test_observacoes_none_normaliza_para_string_vazia(self):
+        """None em observacoes deve ser aceito e normalizado para ''."""
+        req = CreateTaskRequest(**{**_MINIMAL_VALID_BODY, "observacoes": None})
+        self.assertEqual(req.observacoes, "")
+
+    def test_observacoes_vazio_normaliza_para_string_vazia(self):
+        """'' em observacoes deve ser normalizado para ''."""
+        req = CreateTaskRequest(**{**_MINIMAL_VALID_BODY, "observacoes": ""})
+        self.assertEqual(req.observacoes, "")
+
+    def test_deadline_none_normaliza_para_string_vazia(self):
+        """None em deadline_date/time deve ser normalizado para ''."""
+        req = CreateTaskRequest(**{
+            **_MINIMAL_VALID_BODY,
+            "deadline_date": None,
+            "deadline_time": None,
+        })
+        self.assertEqual(req.deadline_date, "")
+        self.assertEqual(req.deadline_time, "")
+
+    def test_deadline_ambos_vazios_nao_erro(self):
+        """'' em ambos deadline_date e deadline_time não deve lançar ValidationError."""
+        req = CreateTaskRequest(**{
+            **_MINIMAL_VALID_BODY,
+            "deadline_date": "",
+            "deadline_time": "",
+        })
+        self.assertEqual(req.deadline_date, "")
+        self.assertEqual(req.deadline_time, "")
+
+    def test_rejeita_deadline_date_preenchido_com_time_vazio(self):
+        """deadline_date preenchido + deadline_time='' deve ser rejeitado."""
+        body = {**_MINIMAL_VALID_BODY, "deadline_date": "10/04/2026", "deadline_time": ""}
+        with self.assertRaises(ValidationError) as ctx:
+            CreateTaskRequest(**body)
+        self.assertIn("deadline_time", str(ctx.exception).lower())
+
+    def test_rejeita_deadline_time_preenchido_com_date_vazio(self):
+        """deadline_time preenchido + deadline_date='' deve ser rejeitado."""
+        body = {**_MINIMAL_VALID_BODY, "deadline_date": "", "deadline_time": "17:00:00"}
+        with self.assertRaises(ValidationError) as ctx:
+            CreateTaskRequest(**body)
+        self.assertIn("deadline_date", str(ctx.exception).lower())
+
+
+    # ── Tipo/Subtipo ──────────────────────────────────────────────────────────
+
+    def test_tipo_ausente_aceito(self):
+        req = CreateTaskRequest(**_MINIMAL_VALID_BODY)
+        self.assertIsNone(req.tipo)
+        self.assertIsNone(req.subtipo)
+
+    def test_tipo_none_normaliza(self):
+        req = CreateTaskRequest(**{**_MINIMAL_VALID_BODY, "tipo": None})
+        self.assertIsNone(req.tipo)
+
+    def test_tipo_vazio_normaliza_para_none(self):
+        req = CreateTaskRequest(**{**_MINIMAL_VALID_BODY, "tipo": ""})
+        self.assertIsNone(req.tipo)
+
+    def test_tipo_valido_aceito(self):
+        req = CreateTaskRequest(**{**_MINIMAL_VALID_BODY, "tipo": "BACKOFFICE"})
+        self.assertEqual(req.tipo, "BACKOFFICE")
+
+    def test_tipo_e_subtipo_validos_aceitos(self):
+        req = CreateTaskRequest(**{
+            **_MINIMAL_VALID_BODY,
+            "tipo": "BACKOFFICE",
+            "subtipo": "ANALISE DE CASO",
+        })
+        self.assertEqual(req.tipo, "BACKOFFICE")
+        self.assertEqual(req.subtipo, "ANALISE DE CASO")
+
+    def test_tipo_sem_acento_aceito(self):
+        """Tipo sem acento deve encontrar entrada acentuada no JSON."""
+        req = CreateTaskRequest(**{
+            **_MINIMAL_VALID_BODY,
+            "tipo": "BACKOFFICE",
+            "subtipo": "ANALISE DE CASO",
+        })
+        self.assertIsNotNone(req.tipo)
+
+    def test_rejeita_subtipo_sem_tipo(self):
+        body = {**_MINIMAL_VALID_BODY, "subtipo": "ANALISE DE CASO"}
+        with self.assertRaises(ValidationError) as ctx:
+            CreateTaskRequest(**body)
+        self.assertIn("tipo", str(ctx.exception).lower())
+
+    def test_rejeita_tipo_invalido(self):
+        body = {**_MINIMAL_VALID_BODY, "tipo": "TIPO_INEXISTENTE_XYZ"}
+        with self.assertRaises(ValidationError) as ctx:
+            CreateTaskRequest(**body)
+        self.assertIn("TIPO_INEXISTENTE_XYZ", str(ctx.exception))
+
+    def test_rejeita_subtipo_invalido(self):
+        body = {**_MINIMAL_VALID_BODY, "tipo": "BACKOFFICE", "subtipo": "SUBTIPO_INEXISTENTE_XYZ"}
+        with self.assertRaises(ValidationError) as ctx:
+            CreateTaskRequest(**body)
+        self.assertIn("SUBTIPO_INEXISTENTE_XYZ", str(ctx.exception))
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -256,12 +357,8 @@ class TestCreateTaskRequest(unittest.TestCase):
 class TestCreateTaskResponse(unittest.TestCase):
 
     def test_sucesso(self):
-        r = CreateTaskResponse(success=True, message="OK")
+        r = CreateTaskResponse(success=True)
         self.assertTrue(r.success)
-
-    def test_default_message(self):
-        r = CreateTaskResponse(success=False)
-        self.assertEqual(r.message, "")
 
 
 if __name__ == "__main__":
