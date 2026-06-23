@@ -28,7 +28,7 @@ def parse_list_of_lawsuits(html: str) -> List[LawsuitSummary]:
     """
     resultado = []
     soup = BeautifulSoup(html, 'html.parser')
-    rows = soup.select('table tbody tr.webgrid-row-style')
+    rows = soup.select('table tbody tr[class^="webgrid-"]')
     for row in rows:
         
         # Número do processo: primeiro link dentro de grid-main-text

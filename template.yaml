@@ -134,6 +134,7 @@ Resources:
     Type: AWS::Serverless::HttpApi
     Properties:
       StageName: prod
+      Description: "Restaurando system tags - maio/2026" 
       CorsConfiguration:
         AllowOrigins:
           - "*"
