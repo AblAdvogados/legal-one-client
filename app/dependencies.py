@@ -36,4 +36,6 @@ _tasks_crawler = TasksCrawler(session_manager=_session_manager)
 search_service  = SearchService(crawler=_search_crawler)
 contact_service = ContactService(crawler=_contacts_crawler)
 lawsuit_service = LawsuitService(lawsuits_crawler=_lawsuits_crawler, contacts_crawler=_contacts_crawler)
-task_service = TaskService(crawler=_tasks_crawler)
+# search_service injetado como fallback do lookup de processo: desde 28/08/2026
+# o LookupLawSuit não casa mais por "Número antigo"; a busca global ainda casa.
+task_service = TaskService(crawler=_tasks_crawler, search_service=search_service)

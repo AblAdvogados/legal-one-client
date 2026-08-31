@@ -31,6 +31,7 @@ class LawsuitLookupRow:
       - ``Titulo``               → :attr:`titulo` (título do processo)
       - ``ClientePrincipalNome`` → :attr:`nome_cliente_principal`
       - ``ClientePrincipalId``   → :attr:`id_cliente_principal`
+      - ``NumeroAntigo``         → :attr:`numero_antigo` (nº administrativo/legado, ex: protocolo INSS)
     """
     id: int
     numero_processo: str | None
@@ -38,6 +39,7 @@ class LawsuitLookupRow:
     titulo: str | None
     nome_cliente_principal: str | None
     id_cliente_principal: int | None
+    numero_antigo: str | None = None
 
     @classmethod
     def from_dict(cls, raw: dict) -> LawsuitLookupRow:
@@ -48,6 +50,7 @@ class LawsuitLookupRow:
             titulo=raw.get("Titulo"),
             nome_cliente_principal=raw.get("ClientePrincipalNome"),
             id_cliente_principal=raw.get("ClientePrincipalId"),
+            numero_antigo=raw.get("NumeroAntigo"),
         )
 
 

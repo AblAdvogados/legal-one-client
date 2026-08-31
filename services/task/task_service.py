@@ -21,7 +21,12 @@ NÃO pertence ao service:
 from __future__ import annotations
 
 import logging
+import re
 import time
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from services.search_service import SearchService
 
 logger = logging.getLogger(__name__)
 
@@ -55,8 +60,12 @@ class TaskService:
     _MAX_POST_RETRIES = 1
     _TIME_BETWEEN_HTTP_REQUESTS = 0.3  # Tempo fixo entre requisições para evitar sobrecarregar o servidor
 
-    def __init__(self, crawler: TasksCrawler) -> None:
+    def __init__(self, crawler: TasksCrawler, search_service: "SearchService | None" = None) -> None:
         self._crawler = crawler
+        # Busca global usada como fallback do lookup de processo (ver
+        # _resolve_vinculo_via_busca_global). Opcional para não quebrar
+        # instanciações existentes; sem ela o fallback fica desativado.
+        self._search_service = search_service
 
     def _delay_between_requests(self):
         """Retorna o tempo de delay recomendado entre requisições para evitar sobrecarregar o servidor."""
@@ -248,6 +257,13 @@ class TaskService:
         RelationshipId/VinculoGridId no payload; o campo ``Pasta`` é
         usado como Description/VinculoGridText.
 
+        Desde 28/08/2026 o LookupLawSuit do LegalOne deixou de casar o termo
+        contra o campo "Número antigo" (onde fica o protocolo do INSS) — passou
+        a encontrar apenas pelo número da pasta. Quando o lookup direto não
+        encontra, este método usa a busca global (que ainda casa por número
+        antigo) para descobrir a pasta e refaz o lookup por ela, validando o
+        número por igualdade exata antes de aceitar o vínculo.
+
         Args:
             numero_processo: número do processo (ex: ``"0008579"``).
 
@@ -259,17 +275,110 @@ class TaskService:
             ProcessoNaoEncontradoError: se nenhum processo for encontrado.
         """
         result = self._crawler.lookup_lawsuit(numero_processo)
-        if result.count == 0 or not result.rows or not any(row.numero_processo == numero_processo for row in result.rows):
+        row = self._match_lookup_row(result, numero_processo)
+
+        if row is None:
+            row = self._resolve_vinculo_via_busca_global(numero_processo)
+
+        if row is None:
             logger.warning("_resolve_vinculo: processo não encontrado numero_processo=%s", numero_processo)
             raise ProcessoNaoEncontradoError(numero_processo)
-        for row in result.rows:
-            if numero_processo == row.numero_processo:
-                break  # `row` já é o correto — não resetar para index 0
-        else:
-            logger.warning("_resolve_vinculo: processo não encontrado numero_processo=%s", numero_processo)
-            raise ProcessoNaoEncontradoError(numero_processo)
+
         logger.info("_resolve_vinculo: processo encontrado numero_processo=%s vinculo_id=%s", numero_processo, row.id)
         return str(row.id), row.nome_pasta_processo or ""
+
+    @staticmethod
+    def _match_lookup_row(result, numero_processo: str):
+        """
+        Retorna a primeira row cujo número casa EXATAMENTE com ``numero_processo``,
+        ou ``None`` se nenhuma casar.
+
+        A comparação é por igualdade exata (nunca substring) contra o
+        ``ProcessNumber`` e o ``NumeroAntigo`` da row — assim um protocolo
+        administrativo contido dentro do número de outro processo (ex: CNJ de
+        um judicial) jamais é aceito por engano; já um processo judicial que
+        guarda o protocolo no campo "Número antigo" é aceito corretamente.
+        """
+        for row in result.rows:
+            if numero_processo in (row.numero_processo, row.numero_antigo):
+                return row
+        return None
+
+    # Extrai o número da pasta de descrições como "Proc - 0020963".
+    _PASTA_DESCRIPTION_RE = re.compile(r"Proc\s*-\s*(\S+)", re.IGNORECASE)
+
+    def _resolve_vinculo_via_busca_global(self, numero_processo: str):
+        """
+        Fallback: resolve o vínculo via busca global quando o LookupLawSuit
+        direto não encontra o processo.
+
+        Fluxo:
+          1. Busca global (``/shared/global/search``) pelo número — ela ainda
+             casa por "Número antigo".
+          2. Para cada resultado, extrai o número da pasta da description
+             (ex: ``"Proc - 0020963"`` → ``"0020963"``).
+          3. Refaz ``lookup_lawsuit`` pela pasta e valida o número retornado
+             por igualdade exata (via :meth:`_match_lookup_row`).
+
+        A busca global é por continência, então pode retornar processos cujo
+        número apenas CONTÉM o termo — a validação exata do passo 3 descarta
+        esses falsos positivos.
+
+        Returns:
+            A row validada, ou ``None`` se nenhum candidato casar.
+        """
+        if self._search_service is None:
+            logger.warning(
+                "_resolve_vinculo_via_busca_global: search_service não configurado — fallback indisponível"
+            )
+            return None
+
+        try:
+            resultado = self._search_service.search(term=numero_processo, contexts=["Processos"])
+        except Exception as exc:
+            logger.warning(
+                "_resolve_vinculo_via_busca_global: erro na busca global numero_processo=%s erro=%s",
+                numero_processo, exc,
+            )
+            return None
+
+        grupo = next((g for g in resultado.groups if g.context == "Processos"), None)
+        if grupo is None or not grupo.items:
+            logger.info(
+                "_resolve_vinculo_via_busca_global: busca global sem resultados numero_processo=%s",
+                numero_processo,
+            )
+            return None
+
+        pastas_testadas: set[str] = set()
+        for item in grupo.items:
+            match = self._PASTA_DESCRIPTION_RE.search(item.description or "")
+            if not match:
+                logger.info(
+                    "_resolve_vinculo_via_busca_global: description sem número de pasta: %r",
+                    item.description,
+                )
+                continue
+            num_pasta = match.group(1)
+            if num_pasta in pastas_testadas:
+                continue
+            pastas_testadas.add(num_pasta)
+
+            self._delay_between_requests()
+            lookup = self._crawler.lookup_lawsuit(num_pasta)
+            row = self._match_lookup_row(lookup, numero_processo)
+            if row is not None:
+                logger.info(
+                    "_resolve_vinculo_via_busca_global: processo resolvido via pasta=%s numero_processo=%s vinculo_id=%s",
+                    num_pasta, numero_processo, row.id,
+                )
+                return row
+            logger.info(
+                "_resolve_vinculo_via_busca_global: pasta=%s não corresponde ao número %s (descartada)",
+                num_pasta, numero_processo,
+            )
+
+        return None
 
     # ── Resolução de usuário ──────────────────────────────────────────────────
 
